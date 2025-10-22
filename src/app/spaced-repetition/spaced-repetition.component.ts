@@ -270,7 +270,9 @@ export class SpacedRepetitionComponent {
       this.initializeSampleCards();
     }
 
-    this.isLoading.set(false);
+    setTimeout(() => {
+      this.isLoading.set(false);
+    }, 300);
   }
 
   private initializeSampleCards(): void {
