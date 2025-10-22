@@ -10,6 +10,8 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { FSRS, Card, Rating, State, Grade, createEmptyCard } from 'ts-fsrs';
 import { HttpClient } from '@angular/common/http';
+import { FlashcardArrayMetadata, flashcardArraysMetadata } from './flashcard-metadata';
+import { FlashcardArraysListComponent } from './flashcard-arrays-list.component';
 
 interface StudyCard {
   id: string;
@@ -24,7 +26,7 @@ interface StudyCard {
   templateUrl: './spaced-repetition.component.html',
   styleUrls: ['./spaced-repetition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FlashcardArraysListComponent],
 })
 export class SpacedRepetitionComponent {
   private fb = inject(FormBuilder);
@@ -39,6 +41,8 @@ export class SpacedRepetitionComponent {
   currentCardIndex = signal(0);
   showAddForm = signal(false);
   isLoading = signal(true);
+  selectedFlashcards = signal<FlashcardArrayMetadata>({} as FlashcardArrayMetadata);
+  currentView = signal<'study' | 'arraysList'>('study');
 
   // Form for adding new cards
   cardForm = this.fb.nonNullable.group({
@@ -78,6 +82,8 @@ export class SpacedRepetitionComponent {
   });
 
   constructor() {
+    const selectedArray = flashcardArraysMetadata[1];
+    this.selectedFlashcards.set(selectedArray);
     this.loadCards();
   }
 
@@ -225,7 +231,7 @@ export class SpacedRepetitionComponent {
       },
     }));
 
-    localStorage.setItem('spaced-repetition-cards', JSON.stringify(cardsData));
+    localStorage.setItem(this.selectedFlashcards().localStorageKey, JSON.stringify(cardsData));
   }
 
   private loadCards(): void {
@@ -233,7 +239,7 @@ export class SpacedRepetitionComponent {
       return;
     }
 
-    const savedData = localStorage.getItem('spaced-repetition-cards');
+    const savedData = localStorage.getItem(this.selectedFlashcards().localStorageKey);
     if (savedData) {
       try {
         const cardsData = JSON.parse(savedData);
@@ -261,11 +267,11 @@ export class SpacedRepetitionComponent {
 
     setTimeout(() => {
       this.isLoading.set(false);
-    }, 300);
+    }, 200);
   }
 
   private initializeSampleCards(): void {
-    this.http.get<StudyCard[]>('/assets/flashcards.json').subscribe({
+    this.http.get<StudyCard[]>(this.selectedFlashcards().path).subscribe({
       next: (data) => {
         const cards: StudyCard[] = data.map((data: any) => ({
           id: crypto.randomUUID(),
@@ -287,5 +293,13 @@ export class SpacedRepetitionComponent {
         console.error('Error loading flashcards:', error);
       },
     });
+  }
+
+  toggleToArraysList(): void {
+    this.currentView.set('arraysList');
+  }
+
+  toggleToStudyView(): void {
+    this.currentView.set('study');
   }
 }

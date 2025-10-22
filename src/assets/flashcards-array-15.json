@@ -1,0 +1,282 @@
+[
+  {
+    "front": "Esperto, inteligente (🧠)",
+    "back": "slim",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Fechadura, bloqueio (🔒)",
+    "back": "slot",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Estreito, fino (↔️)",
+    "back": "smal",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Rápido, veloz (⚡)",
+    "back": "snel",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Sopa (🍲)",
+    "back": "soep",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Às vezes (⏳)",
+    "back": "soms",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Jogo, brincadeira (🎲)",
+    "back": "spel",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Cidade (🏙️)",
+    "back": "stad",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Passo, etapa (👣)",
+    "back": "stap",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Voz (🗣️)",
+    "back": "stem",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Estrela (⭐)",
+    "back": "ster",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Silencioso, quieto (🤫)",
+    "back": "stil",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Pó, sujeira (🟫)",
+    "back": "stof",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Tolo, estúpido (🤦‍♂️)",
+    "back": "stom",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Parar (✋)",
+    "back": "stop",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Pedaço, parte (🧩)",
+    "back": "stuk",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Língua, idioma (🗣️)",
+    "back": "taal",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Dente (🦷)",
+    "back": "tand",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Táxi (🚕)",
+    "back": "taxi",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Equipe, time (🏆)",
+    "back": "team",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  }
+]

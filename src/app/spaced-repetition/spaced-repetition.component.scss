@@ -14,6 +14,35 @@
     margin-bottom: 1rem;
   }
 
+  .view-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    .btn-nav {
+      padding: 0.5rem 1rem;
+      border: 2px solid #e9ecef;
+      background: #fff;
+      color: #6c757d;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #f8f9fa;
+        border-color: #dee2e6;
+      }
+
+      &.active {
+        background: #007bff;
+        color: #fff;
+        border-color: #007bff;
+      }
+    }
+  }
+
   .stats {
     display: flex;
     justify-content: center;

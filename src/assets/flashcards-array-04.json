@@ -1,0 +1,282 @@
+[
+  {
+    "front": "Chapéu (🎩)",
+    "back": "kap",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Gato (🐱)",
+    "back": "kat",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Galinha (🐔)",
+    "back": "kip",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Cozinheiro (👨‍🍳)",
+    "back": "kok",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Tigela, vasilha (🥣)",
+    "back": "kom",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Xícara, copo (☕)",
+    "back": "kop",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Lição, aula (📖)",
+    "back": "les",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Lábio (👄)",
+    "back": "lip",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Solto, livre (🆓)",
+    "back": "los",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Destino, sorte (🎲)",
+    "back": "lot",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Preguiçoso (🛌)",
+    "back": "lui",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Homem (👨)",
+    "back": "man",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Mapa (🗺️)",
+    "back": "map",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Faca (🔪)",
+    "back": "mes",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Com, junto (➕)",
+    "back": "met",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Mim, eu (🙋‍♀️)",
+    "back": "mij",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Menor, pouco (🔹)",
+    "back": "min",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Errar, falhar (❌)",
+    "back": "mis",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Molhado, úmido (💧)",
+    "back": "nat",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Não (❌)",
+    "back": "nee",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  }
+]

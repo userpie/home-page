@@ -1,0 +1,282 @@
+[
+  {
+    "front": "Figurinha, pequena imagem (🖼️)",
+    "back": "plaatje",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Teto (🏠)",
+    "back": "plafond",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Plástico (🛍️)",
+    "back": "plastic",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Polícia (👮‍♂️)",
+    "back": "politie",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Posição, lugar (📌)",
+    "back": "positie",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Lápis (✏️)",
+    "back": "potlood",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Princesa (👸)",
+    "back": "prinses",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Produto, item (📦)",
+    "back": "product",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Público, audiência (👥)",
+    "back": "publiek",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Relatório, registro (📄)",
+    "back": "rapport",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Sombra (🌑)",
+    "back": "schaduw",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Segundo (⏱️)",
+    "back": "seconde",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Sinal, indicação (🚨)",
+    "back": "signaal",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Chave (🔑)",
+    "back": "sleutel",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Fechar (🔒)",
+    "back": "sluiten",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Cortar (✂️)",
+    "back": "snijden",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Falar, conversar (🗣️)",
+    "back": "spreken",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Estação (🚉)",
+    "back": "station",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Carimbo (📬)",
+    "back": "stempel",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Empoeirado (🟫)",
+    "back": "stoffig",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  }
+]

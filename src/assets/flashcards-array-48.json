@@ -1,0 +1,282 @@
+[
+  {
+    "front": "responder",
+    "back": "antwoorden",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "ameaça",
+    "back": "bedreiging",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "importante",
+    "back": "belangrijk",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "em breve, logo",
+    "back": "binnenkort",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Elétrico, movido a eletricidade (⚡)",
+    "back": "elektrisch",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Perigoso (☠️)",
+    "back": "gevaarlijk",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Prisão (🏛️)",
+    "back": "gevangenis",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Avô (👴)",
+    "back": "grootvader",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Lembrar-se (🧠)",
+    "back": "herinneren",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Instrumento, ferramenta (🎻)",
+    "back": "instrument",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Naturalmente (🌱)",
+    "back": "natuurlijk",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Escapar (🏃‍♂️💨)",
+    "back": "ontsnappen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Assaltar, invadir (🏃‍♂️💥)",
+    "back": "overvallen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Restaurante (🍽️)",
+    "back": "restaurant",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Gritar (🗣️)",
+    "back": "schreeuwen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Quarto (🛏️)",
+    "back": "slaapkamer",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Retorno, volta (🔄)",
+    "back": "terugkomst",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Convidar (✉️🎉)",
+    "back": "uitnodigen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Mudar, alterar (🔄)",
+    "back": "veranderen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Triste, sofrido (😢)",
+    "back": "verdrietig",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  }
+]

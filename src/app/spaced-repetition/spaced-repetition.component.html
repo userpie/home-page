@@ -1,7 +1,27 @@
 <div class="spaced-repetition-container">
   <header class="header">
     <h1>Spaced Repetition Study</h1>
-    @if (!isLoading()) {
+
+    <nav class="view-navigation">
+      <button
+        type="button"
+        (click)="toggleToArraysList()"
+        class="btn btn-nav"
+        [class.active]="currentView() === 'arraysList'"
+      >
+        Arrays List
+      </button>
+      <button
+        type="button"
+        (click)="toggleToStudyView()"
+        class="btn btn-nav"
+        [class.active]="currentView() === 'study'"
+      >
+        Study
+      </button>
+    </nav>
+
+    @if (!isLoading() && currentView() === 'study') {
     <div class="stats">
       <span>Cards due: {{ dueCards().length }}</span>
       <span>Total cards: {{ allCards().length }}</span>
@@ -9,7 +29,9 @@
     }
   </header>
 
-  @if (isLoading()) {
+  @if (currentView() === 'arraysList') {
+  <app-flashcard-arrays-list></app-flashcard-arrays-list>
+  } @else if (isLoading()) {
   <div class="loading">
     <p>Loading cards...</p>
   </div>

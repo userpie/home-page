@@ -1,0 +1,282 @@
+[
+  {
+    "front": "depender de",
+    "back": "afhangen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "compromisso, encontro",
+    "back": "afspraak",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "geral, comum",
+    "back": "algemeen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "resposta",
+    "back": "antwoord",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "cobrir",
+    "back": "bedekken",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "experiente, habilidoso",
+    "back": "bedreven",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.802Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "proteger",
+    "back": "bescherm",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "conter, incluir",
+    "back": "bevatten",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "casamento",
+    "back": "bruiloft",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Completo, sem faltar nada (✔️)",
+    "back": "compleet",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Máquina para processar dados (💻)",
+    "back": "computer",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Estado ou forma física (💪)",
+    "back": "conditie",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Ação de supervisionar ou controlar (🎛️)",
+    "back": "controle",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Perto, próximo (📍)",
+    "back": "dichtbij",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Acontecer (⚡)",
+    "back": "gebeuren",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Nascimento (👶)",
+    "back": "geboorte",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Comportar-se (🤝)",
+    "back": "gedragen",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Amado, querido (❤️)",
+    "back": "geliefde",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Desfrutar, aproveitar (😊)",
+    "back": "genieten",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  },
+  {
+    "front": "Adequado, apropriado (✔️)",
+    "back": "geschikt",
+    "fsrsCard": {
+      "due": "2025-10-22T19:30:00.803Z",
+      "stability": 0,
+      "difficulty": 0,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "reps": 0,
+      "lapses": 0,
+      "state": 0
+    }
+  }
+]
