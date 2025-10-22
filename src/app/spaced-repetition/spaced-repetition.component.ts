@@ -1,0 +1,284 @@
+import {
+  Component,
+  ChangeDetectionStrategy,
+  signal,
+  computed,
+  inject,
+  PLATFORM_ID,
+  effect,
+} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FSRS, Card, Rating, State, Grade, createEmptyCard } from 'ts-fsrs';
+import flashcards from './flash-cards';
+
+interface StudyCard {
+  id: string;
+  front: string;
+  back: string;
+  fsrsCard: Card;
+  isRevealed: boolean;
+}
+
+@Component({
+  selector: 'app-spaced-repetition',
+  templateUrl: './spaced-repetition.html',
+  styleUrls: ['./spaced-repetition.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, ReactiveFormsModule],
+})
+export class SpacedRepetitionComponent {
+  private fb = inject(FormBuilder);
+  private fsrs = new FSRS({});
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
+
+  // Signals for component state
+  allCards = signal<StudyCard[]>([]);
+  currentCardIndex = signal(0);
+  showAddForm = signal(false);
+  isLoading = signal(true);
+
+  // Form for adding new cards
+  cardForm = this.fb.nonNullable.group({
+    front: ['', [Validators.required]],
+    back: ['', [Validators.required]],
+  });
+
+  // Computed values
+  dueCards = computed(() => {
+    console.log('Computing due cards', this.isLoading());
+    if (this.isLoading()) return [];
+    const now = new Date();
+
+    console.log(
+      'Due cards:',
+      this.allCards().filter(
+        (card) => card.fsrsCard.state === State.New || card.fsrsCard.due <= now
+      )
+    );
+
+    return this.allCards().filter(
+      (card) => card.fsrsCard.state === State.New || card.fsrsCard.due <= now
+    );
+  });
+
+  currentCard = computed(() => {
+    const due = this.dueCards();
+    const index = this.currentCardIndex();
+    console.log('Current card:', due[index]);
+    return due[index] || null;
+  });
+
+  qsdf = effect(() => {
+    console.log('Effect triggered, current card is:', this.currentCard());
+  });
+  // Get scheduling preview for rating buttons
+  getSchedulingPreview = computed(() => {
+    const current = this.currentCard();
+    if (!current) return null;
+
+    const schedulingCards = this.fsrs.repeat(current.fsrsCard, new Date());
+
+    return {
+      again: schedulingCards[Rating.Again].card.due,
+      hard: schedulingCards[Rating.Hard].card.due,
+      good: schedulingCards[Rating.Good].card.due,
+      easy: schedulingCards[Rating.Easy].card.due,
+    };
+  });
+
+  constructor() {
+    this.loadCards();
+  }
+
+  revealCard(): void {
+    const current = this.currentCard();
+    if (current) {
+      const updatedCards = this.allCards().map((card) =>
+        card.id === current.id ? { ...card, isRevealed: true } : card
+      );
+      this.allCards.set(updatedCards);
+    }
+  }
+
+  rateCard(grade: Grade): void {
+    const current = this.currentCard();
+    if (!current) return;
+
+    // Get the rating from FSRS
+    const rating =
+      grade === 1
+        ? Rating.Again
+        : grade === 2
+        ? Rating.Hard
+        : grade === 3
+        ? Rating.Good
+        : Rating.Easy;
+
+    // Schedule the card with FSRS
+    const schedulingCards = this.fsrs.repeat(current.fsrsCard, new Date());
+    const updatedFsrsCard = schedulingCards[rating].card;
+
+    // Update the card in our collection
+    const updatedCards = this.allCards().map((card) =>
+      card.id === current.id
+        ? {
+            ...card,
+            fsrsCard: updatedFsrsCard,
+            isRevealed: false,
+          }
+        : card
+    );
+
+    this.allCards.set(updatedCards);
+    this.saveCards();
+
+    // Move to next card or reset if no more due cards
+    const newDueCards = this.dueCards();
+    if (newDueCards.length === 0) {
+      this.currentCardIndex.set(0);
+    } else {
+      const nextIndex = this.currentCardIndex();
+      if (nextIndex >= newDueCards.length) {
+        this.currentCardIndex.set(0);
+      }
+    }
+  }
+
+  addCard(): void {
+    if (this.cardForm.valid) {
+      const formValue = this.cardForm.getRawValue();
+
+      const newCard: StudyCard = {
+        id: crypto.randomUUID(),
+        front: formValue.front,
+        back: formValue.back,
+        fsrsCard: createEmptyCard(),
+        isRevealed: false,
+      };
+
+      this.allCards.update((cards) => [...cards, newCard]);
+      this.saveCards();
+      this.cancelAddCard();
+    }
+  }
+
+  cancelAddCard(): void {
+    this.showAddForm.set(false);
+    this.cardForm.reset();
+  }
+
+  resetAllCards(): void {
+    if (confirm('Are you sure you want to reset all cards? This will clear all progress.')) {
+      const resetCards = this.allCards().map((card) => ({
+        ...card,
+        fsrsCard: createEmptyCard(),
+        isRevealed: false,
+      }));
+      this.allCards.set(resetCards);
+      this.currentCardIndex.set(0);
+      this.saveCards();
+    }
+  }
+
+  // Format time until next review
+  formatTimeUntil(date: Date): string {
+    const now = new Date();
+    const diffMs = date.getTime() - now.getTime();
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffMinutes < 60) {
+      return `${Math.max(1, diffMinutes)}m`;
+    } else if (diffHours < 24) {
+      return `${diffHours}h`;
+    } else if (diffDays < 30) {
+      return `${diffDays}d`;
+    } else {
+      const diffMonths = Math.floor(diffDays / 30);
+      return `${diffMonths}mo`;
+    }
+  }
+
+  // Get card statistics
+  getCardStats(card: StudyCard): string {
+    const fsrsCard = card.fsrsCard;
+    if (fsrsCard.state === State.New) {
+      return 'New card';
+    }
+
+    const reviews = fsrsCard.reps;
+    const lapses = fsrsCard.lapses;
+    const difficulty = Math.round(fsrsCard.difficulty * 10) / 10;
+
+    return `${reviews} reviews, ${lapses} lapses, difficulty: ${difficulty}`;
+  }
+
+  private saveCards(): void {
+    if (!this.isBrowser) return;
+
+    const cardsData = this.allCards().map((card) => ({
+      id: card.id,
+      front: card.front,
+      back: card.back,
+      fsrsCard: {
+        due: card.fsrsCard.due.toISOString(),
+        stability: card.fsrsCard.stability,
+        difficulty: card.fsrsCard.difficulty,
+        elapsed_days: card.fsrsCard.elapsed_days,
+        scheduled_days: card.fsrsCard.scheduled_days,
+        reps: card.fsrsCard.reps,
+        lapses: card.fsrsCard.lapses,
+        state: card.fsrsCard.state,
+        last_review: card.fsrsCard.last_review?.toISOString(),
+      },
+    }));
+
+    localStorage.setItem('spaced-repetition-cards', JSON.stringify(cardsData));
+  }
+
+  private loadCards(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    const savedData = localStorage.getItem('spaced-repetition-cards');
+    if (savedData) {
+      try {
+        const cardsData = JSON.parse(savedData);
+        const cards: StudyCard[] = cardsData.map((data: any) => ({
+          id: data.id,
+          front: data.front,
+          back: data.back,
+          isRevealed: false,
+          fsrsCard: {
+            ...data.fsrsCard,
+            due: new Date(data.fsrsCard.due),
+            last_review: data.fsrsCard.last_review
+              ? new Date(data.fsrsCard.last_review)
+              : undefined,
+          },
+        }));
+        this.allCards.set(cards);
+      } catch (error) {
+        console.error('Error loading cards:', error);
+        this.initializeSampleCards();
+      }
+    } else {
+      this.initializeSampleCards();
+    }
+
+    this.isLoading.set(false);
+  }
+
+  private initializeSampleCards(): void {
+    const sampleCards: StudyCard[] = flashcards.map((data) => ({
+      ...data,
+      id: crypto.randomUUID(),
+    }));
+    this.allCards.set(sampleCards);
+    this.saveCards();
+  }
+}
