@@ -5,12 +5,11 @@ import {
   computed,
   inject,
   PLATFORM_ID,
-  effect,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { FSRS, Card, Rating, State, Grade, createEmptyCard } from 'ts-fsrs';
-import flashcards from './flash-cards';
+import { HttpClient } from '@angular/common/http';
 
 interface StudyCard {
   id: string;
@@ -22,8 +21,8 @@ interface StudyCard {
 
 @Component({
   selector: 'app-spaced-repetition',
-  templateUrl: './spaced-repetition.html',
-  styleUrls: ['./spaced-repetition.scss'],
+  templateUrl: './spaced-repetition.component.html',
+  styleUrls: ['./spaced-repetition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, ReactiveFormsModule],
 })
@@ -32,6 +31,8 @@ export class SpacedRepetitionComponent {
   private fsrs = new FSRS({});
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
+
+  private readonly http = inject(HttpClient);
 
   // Signals for component state
   allCards = signal<StudyCard[]>([]);
@@ -47,16 +48,8 @@ export class SpacedRepetitionComponent {
 
   // Computed values
   dueCards = computed(() => {
-    console.log('Computing due cards', this.isLoading());
     if (this.isLoading()) return [];
     const now = new Date();
-
-    console.log(
-      'Due cards:',
-      this.allCards().filter(
-        (card) => card.fsrsCard.state === State.New || card.fsrsCard.due <= now
-      )
-    );
 
     return this.allCards().filter(
       (card) => card.fsrsCard.state === State.New || card.fsrsCard.due <= now
@@ -66,13 +59,9 @@ export class SpacedRepetitionComponent {
   currentCard = computed(() => {
     const due = this.dueCards();
     const index = this.currentCardIndex();
-    console.log('Current card:', due[index]);
     return due[index] || null;
   });
 
-  qsdf = effect(() => {
-    console.log('Effect triggered, current card is:', this.currentCard());
-  });
   // Get scheduling preview for rating buttons
   getSchedulingPreview = computed(() => {
     const current = this.currentCard();
@@ -276,11 +265,27 @@ export class SpacedRepetitionComponent {
   }
 
   private initializeSampleCards(): void {
-    const sampleCards: StudyCard[] = flashcards.map((data) => ({
-      ...data,
-      id: crypto.randomUUID(),
-    }));
-    this.allCards.set(sampleCards);
-    this.saveCards();
+    this.http.get<StudyCard[]>('/assets/flashcards.json').subscribe({
+      next: (data) => {
+        const cards: StudyCard[] = data.map((data: any) => ({
+          id: crypto.randomUUID(),
+          front: data.front,
+          back: data.back,
+          isRevealed: false,
+          fsrsCard: {
+            ...data.fsrsCard,
+            due: new Date(data.fsrsCard.due),
+            last_review: data.fsrsCard.last_review
+              ? new Date(data.fsrsCard.last_review)
+              : undefined,
+          },
+        }));
+        this.allCards.set(cards);
+        this.saveCards();
+      },
+      error: (error) => {
+        console.error('Error loading flashcards:', error);
+      },
+    });
   }
 }
