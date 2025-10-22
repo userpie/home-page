@@ -1,0 +1,98 @@
+@if (!isLoading()) {
+<div class="stats">
+  <span>Cards due: {{ dueCards().length }}</span>
+  <span>Total cards: {{ allCards().length }}</span>
+  <span class="current-array">Array {{ selectedFlashcards().arrayNumber }}</span>
+</div>
+} @if (isLoading()) {
+<div class="loading">
+  <p>Loading cards...</p>
+</div>
+} @else if (!currentCard()) {
+<div class="no-cards">
+  <h2>No cards to review!</h2>
+  <p>Great job! All cards have been reviewed.</p>
+  <button type="button" (click)="showAddForm.set(true)" class="btn btn-primary">
+    Add New Card
+  </button>
+</div>
+} @else {
+<div class="study-area">
+  <div class="card-counter">{{ currentCardIndex() + 1 }} / {{ dueCards().length }}</div>
+
+  <div class="flashcard" [class.revealed]="currentCard().isRevealed">
+    <div class="card-front">
+      <h3>{{ currentCard().front }}</h3>
+      @if (!currentCard().isRevealed) {
+      <button type="button" (click)="revealCard()" class="btn btn-secondary">Show Answer</button>
+      }
+    </div>
+
+    @if (currentCard().isRevealed) {
+    <div class="card-back">
+      <p>Answer:</p>
+      <h3>{{ currentCard().back }}</h3>
+
+      <div class="card-stats">
+        <small>{{ getCardStats(currentCard()) }}</small>
+      </div>
+
+      <div class="rating-buttons">
+        @if (getSchedulingPreview(); as preview) {
+        <button type="button" (click)="rateCard(1)" class="btn btn-rating btn-again">
+          <span class="rating-label">Again</span>
+          <span class="rating-time">{{ formatTimeUntil(preview.again) }}</span>
+        </button>
+        <button type="button" (click)="rateCard(2)" class="btn btn-rating btn-hard">
+          <span class="rating-label">Hard</span>
+          <span class="rating-time">{{ formatTimeUntil(preview.hard) }}</span>
+        </button>
+        <button type="button" (click)="rateCard(3)" class="btn btn-rating btn-good">
+          <span class="rating-label">Good</span>
+          <span class="rating-time">{{ formatTimeUntil(preview.good) }}</span>
+        </button>
+        <button type="button" (click)="rateCard(4)" class="btn btn-rating btn-easy">
+          <span class="rating-label">Easy</span>
+          <span class="rating-time">{{ formatTimeUntil(preview.easy) }}</span>
+        </button>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>
+} @if (showAddForm()) {
+<div class="add-card-form">
+  <h3>Add New Card</h3>
+  <form [formGroup]="cardForm" (ngSubmit)="addCard()">
+    <div class="form-group">
+      <label for="front">Front (Question):</label>
+      <textarea
+        id="front"
+        formControlName="front"
+        placeholder="Enter the question or prompt"
+        rows="3"
+      >
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="back">Back (Answer):</label>
+      <textarea id="back" formControlName="back" placeholder="Enter the answer" rows="3">
+      </textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="cardForm.invalid" class="btn btn-primary">Add Card</button>
+      <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </form>
+</div>
+}
+
+<div class="controls">
+  <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">Add Card</button>
+  <button type="button" (click)="resetAllCards()" class="btn btn-outline btn-danger">
+    Reset All
+  </button>
+</div>

@@ -1,0 +1,60 @@
+<div class="flashcard-arrays-container">
+  <div class="header-section">
+    <h2>Flashcard Arrays</h2>
+    <p class="subtitle">Overview of all available flashcard collections</p>
+  </div>
+  <div class="arrays-list">
+    @for (array of flashcardArrays(); track array.arrayNumber) {
+    <div
+      class="array-card"
+      [class.selected]="isSelected(array.arrayNumber)"
+      (click)="selectArray(array.arrayNumber)"
+    >
+      <div class="array-header">
+        <div class="title-section">
+          <h3>Array {{ array.arrayNumber }}</h3>
+          @if (isSelected(array.arrayNumber)) {
+          <span class="selected-badge">Selected</span>
+          }
+        </div>
+        <span class="total-cards">{{ array.totalCards }} cards</span>
+      </div>
+
+      <div class="array-details">
+        <p class="description">{{ array.description }}</p>
+
+        <div class="statistics">
+          <div class="stat-item">
+            <span class="label">Average length:</span>
+            <span class="value">{{ array.statistics.averageBackLength }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="label">Range:</span>
+            <span class="value"
+              >{{ array.statistics.minBackLength }} - {{ array.statistics.maxBackLength }}</span
+            >
+          </div>
+        </div>
+
+        <div class="length-distribution">
+          <h4>Length Distribution:</h4>
+          <div class="distribution-items">
+            @for (item of getLengthDistributionEntries(array.lengthDistribution); track item.length)
+            {
+            <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
+            }
+          </div>
+        </div>
+
+        @if (isSelected(array.arrayNumber)) {
+        <div class="action-section">
+          <button type="button" class="start-study-btn" (click)="startStudying($event, array)">
+            Start Studying This Array
+          </button>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>
