@@ -260,7 +260,8 @@ export class StudyView implements OnInit {
   }
 
   private initializeSampleCards(): void {
-    this.http.get<StudyCard[]>(this.selectedFlashcards().path).subscribe({
+    // make the path go to the domain / assets/
+    this.http.get<StudyCard[]>('/home-page' + this.selectedFlashcards().path).subscribe({
       next: (data) => {
         const cards: StudyCard[] = data.map((data: any) => ({
           id: crypto.randomUUID(),
