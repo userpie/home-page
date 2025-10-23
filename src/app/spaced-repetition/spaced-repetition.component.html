@@ -23,7 +23,7 @@
   </header>
 
   @if (currentView() === 'arraysList') {
-  <app-flashcard-arrays-list (arraySelected)="onArraySelected($event)"></app-flashcard-arrays-list>
+  <app-flashcard-arrays-list (collectionSelected)="onArraySelected($event)"></app-flashcard-arrays-list>
   } @else if(selectedFlashcards()) {
   <app-study-view [selectedFlashcards]="selectedFlashcards()"></app-study-view>
   }

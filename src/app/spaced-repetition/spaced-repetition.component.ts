@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FlashcardArrayMetadata } from './flashcard-metadata';
-import { FlashcardArraysListComponent } from './selection-view/selection-view.component';
+import { CollectionMetadata } from './collections-metadata';
+import { CollectionsComponent } from './collections/collections.component';
 import { StudyView } from './study-view/study-view';
 
 @Component({
@@ -10,15 +10,13 @@ import { StudyView } from './study-view/study-view';
   templateUrl: './spaced-repetition.component.html',
   styleUrls: ['./spaced-repetition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ReactiveFormsModule, FlashcardArraysListComponent, StudyView],
+  imports: [CommonModule, ReactiveFormsModule, CollectionsComponent, StudyView],
 })
 export class SpacedRepetitionComponent {
   currentView = signal<'study' | 'arraysList'>('arraysList');
-  selectedFlashcards = signal<FlashcardArrayMetadata>(null as any);
+  selectedFlashcards = signal<CollectionMetadata>(null as any);
 
-  onArraySelected(selectedArray: FlashcardArrayMetadata): void {
-    console.log('Array selected in parent component:', selectedArray);
-    // Update the selected flashcards array
+  onArraySelected(selectedArray: CollectionMetadata): void {
     this.selectedFlashcards.set(selectedArray);
 
     // Load the new cards and switch to study view

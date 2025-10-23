@@ -1,5 +1,5 @@
 import { Component, computed, inject, input, OnInit, PLATFORM_ID, signal } from '@angular/core';
-import { FlashcardArrayMetadata } from '../flashcard-metadata';
+import { CollectionMetadata } from '../collections-metadata';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Card, createEmptyCard, FSRS, Grade, Rating, State } from 'ts-fsrs';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -32,7 +32,7 @@ export class StudyView implements OnInit {
 
   private readonly http = inject(HttpClient);
 
-  selectedFlashcards = input.required<FlashcardArrayMetadata>();
+  selectedFlashcards = input.required<CollectionMetadata>();
 
   // Form for adding new cards
   cardForm = this.fb.nonNullable.group({

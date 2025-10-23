@@ -1,4 +1,4 @@
-export interface FlashcardArrayMetadata {
+export interface CollectionMetadata {
   path: string;
   filename: string;
   arrayNumber: number;
