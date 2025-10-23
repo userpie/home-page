@@ -1,6 +1,7 @@
-import { Component, signal, output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { flashcardArraysMetadata, FlashcardArrayMetadata } from '../flashcard-metadata';
+import { Component, signal, output, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { FlashcardArrayMetadata } from '../flashcard-metadata';
 
 @Component({
   selector: 'app-flashcard-arrays-list',
@@ -8,12 +9,59 @@ import { flashcardArraysMetadata, FlashcardArrayMetadata } from '../flashcard-me
   styleUrls: ['./selection-view.component.scss'],
   imports: [CommonModule],
 })
-export class FlashcardArraysListComponent {
-  flashcardArrays = signal<FlashcardArrayMetadata[]>(flashcardArraysMetadata);
-  selectedArrayNumber = signal<number | null>(null);
+export class FlashcardArraysListComponent implements OnInit {
+  private readonly http = inject(HttpClient);
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
 
-  // Output to emit when an array is selected
+  flashcardArrays = signal<FlashcardArrayMetadata[]>([]);
+  selectedArrayNumber = signal<number | null>(null);
+  isLoading = signal(true);
+
   arraySelected = output<FlashcardArrayMetadata>();
+
+  ngOnInit(): void {
+    this.loadCollections();
+  }
+
+  loadCollections() {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    const savedData = localStorage.getItem('collection-metadata');
+    if (savedData) {
+      try {
+        const cardsData = JSON.parse(savedData);
+        this.flashcardArrays.set(cardsData);
+      } catch (error) {
+        console.error('Error loading cards:', error);
+        this.loadDefaultCollection();
+      }
+    } else {
+      this.loadDefaultCollection();
+    }
+
+    this.isLoading.set(false);
+  }
+
+  loadDefaultCollection(): void {
+    this.http.get<FlashcardArrayMetadata[]>('/assets/collection-metadata.json').subscribe({
+      next: (cardsData) => {
+        this.flashcardArrays.set(cardsData);
+        this.saveCollectionMetadata();
+      },
+      error: (error) => {
+        console.error('Error loading flashcards:', error);
+      },
+    });
+  }
+
+  saveCollectionMetadata() {
+    if (this.flashcardArrays()) {
+      localStorage.setItem('collection-metadata', JSON.stringify(this.flashcardArrays()));
+    }
+  }
 
   getLengthDistributionEntries(distribution: Record<string, number>) {
     return Object.entries(distribution)

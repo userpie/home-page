@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FlashcardArrayMetadata, flashcardArraysMetadata } from './flashcard-metadata';
+import { FlashcardArrayMetadata } from './flashcard-metadata';
 import { FlashcardArraysListComponent } from './selection-view/selection-view.component';
 import { StudyView } from './study-view/study-view';
 
