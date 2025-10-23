@@ -4,34 +4,34 @@
     <p class="subtitle">Overview of all available flashcard collections</p>
   </div>
   <div class="arrays-list">
-    @for (array of flashcardArrays(); track array.arrayNumber) {
+    @for (collectionMetadata of collectionsMetadata(); track collectionMetadata.arrayNumber) {
     <div
       class="array-card"
-      [class.selected]="isSelected(array.arrayNumber)"
-      (click)="selectArray(array.arrayNumber)"
+      [class.selected]="isSelected(collectionMetadata.arrayNumber)"
+      (click)="selectArray(collectionMetadata.arrayNumber)"
     >
       <div class="array-header">
         <div class="title-section">
-          <h3>Array {{ array.arrayNumber }}</h3>
-          @if (isSelected(array.arrayNumber)) {
+          <h3>Array {{ collectionMetadata.arrayNumber }}</h3>
+          @if (isSelected(collectionMetadata.arrayNumber)) {
           <span class="selected-badge">Selected</span>
           }
         </div>
-        <span class="total-cards">{{ array.totalCards }} cards</span>
+        <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
       </div>
 
         <div class="array-details">
-          <p class="description">{{ array.description }}</p>
+          <p class="description">{{ collectionMetadata.description }}</p>
 
           <div class="statistics">
             <div class="stat-item">
               <span class="label">Average length:</span>
-              <span class="value">{{ array.statistics.averageBackLength }}</span>
+              <span class="value">{{ collectionMetadata.statistics.averageBackLength }}</span>
             </div>
             <div class="stat-item">
               <span class="label">Range:</span>
               <span class="value"
-              >{{ array.statistics.minBackLength }} - {{ array.statistics.maxBackLength }}</span
+              >{{ collectionMetadata.statistics.minBackLength }} - {{ collectionMetadata.statistics.maxBackLength }}</span
               >
             </div>
           </div>
@@ -39,15 +39,15 @@
           <div class="length-distribution">
             <h4>Length Distribution:</h4>
             <div class="distribution-items">
-              @for (item of getLengthDistributionEntries(array.lengthDistribution); track item.length) {
+              @for (item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
                 <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
               }
             </div>
           </div>
 
-          @if (isSelected(array.arrayNumber)) {
+          @if (isSelected(collectionMetadata.arrayNumber)) {
             <div class="action-section">
-              <button type="button" class="start-study-btn" (click)="startStudying($event, array)">
+              <button type="button" class="start-study-btn" (click)="startStudying($event, collectionMetadata)">
                 Start Studying This Array
               </button>
             </div>

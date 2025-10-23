@@ -2,6 +2,7 @@ import { Component, signal, output, inject, OnInit, PLATFORM_ID } from '@angular
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { CollectionMetadata } from '../collections-metadata';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-flashcard-arrays-list',
@@ -46,7 +47,7 @@ export class CollectionsComponent implements OnInit {
   }
 
   loadDefaultCollection(): void {
-    this.http.get<CollectionMetadata[]>('/assets/collection-metadata.json').subscribe({
+    this.http.get<CollectionMetadata[]>(environment.firstPath + '/assets/collection-metadata.json').subscribe({
       next: (cardsData) => {
         this.collectionsMetadata.set(cardsData);
         this.saveCollectionMetadata();
