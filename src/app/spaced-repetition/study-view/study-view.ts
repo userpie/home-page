@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Card, createEmptyCard, FSRS, Grade, Rating, State } from 'ts-fsrs';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface StudyCard {
   id: string;
@@ -260,7 +261,7 @@ export class StudyView implements OnInit {
   }
 
   private initializeSampleCards(): void {
-    this.http.get<StudyCard[]>('/home-page' + this.selectedFlashcards().path).subscribe({
+    this.http.get<StudyCard[]>(environment.firstPath + this.selectedFlashcards().path).subscribe({
       next: (data) => {
         const cards: StudyCard[] = data.map((data: any) => ({
           id: crypto.randomUUID(),
