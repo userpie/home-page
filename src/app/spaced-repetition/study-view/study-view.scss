@@ -1,13 +1,14 @@
 .stats {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
 
   span {
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     background: #f8f9fa;
-    border-radius: 0.5rem;
+    border-radius: 0.4rem;
     font-weight: 500;
+    font-size: 0.9rem;
 
     &.current-array {
       background: #007bff;
@@ -19,31 +20,33 @@
 
 .no-cards {
   text-align: center;
-  padding: 3rem;
+  padding: 2rem;
 
   h2 {
     color: #6c757d;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
   }
 }
 
 .study-area {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   .card-counter {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     font-weight: 600;
     color: #6c757d;
+    font-size: 0.9rem;
   }
 }
 
 .flashcard {
   background: white;
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  min-height: 200px;
+  padding: 1.5rem;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,32 +63,33 @@
     width: 100%;
 
     h3 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       color: #2c3e50;
+      font-size: 1.2rem;
     }
 
     p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
     }
   }
 
   .card-stats {
-    margin: 1rem 0;
+    margin: 0.8rem 0;
     text-align: center;
 
     small {
       color: #6c757d;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
   }
 }
 
 .rating-buttons {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
 
@@ -96,9 +100,9 @@
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -106,6 +110,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.85rem;
 
   &:disabled {
     opacity: 0.6;
@@ -211,14 +216,15 @@
 
 .add-card-form {
   background: white;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.6rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: #2c3e50;
+    font-size: 1.2rem;
   }
 }
 

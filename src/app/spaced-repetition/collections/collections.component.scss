@@ -1,37 +1,37 @@
 .flashcard-arrays-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 .header-section {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   h2 {
     color: #333;
-    margin-bottom: 8px;
-    font-size: 2rem;
+    margin-bottom: 4px;
+    font-size: 1.6rem;
   }
 
   .subtitle {
     color: #666;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0;
   }
 }
 
 .arrays-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 15px;
 }
 
 .array-card {
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 6px;
+  padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
@@ -53,98 +53,99 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 
   .title-section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 
     h3 {
       margin: 0;
       color: #2c5aa0;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
 
     .selected-badge {
       background: #007bff;
       color: white;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 0.65rem;
       font-weight: bold;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
     }
   }
 
   .total-cards {
     background: #e3f2fd;
     color: #1976d2;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 0.8rem;
     font-weight: 600;
   }
 }
 
 .array-details {
   .description {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #666;
-    margin-bottom: 15px;
-    line-height: 1.4;
+    margin-bottom: 12px;
+    line-height: 1.3;
   }
 }
 
 .statistics {
   display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 12px;
+  margin-bottom: 10px;
 
   .stat-item {
     display: flex;
     flex-direction: column;
 
     .label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #888;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
     }
 
     .value {
       font-weight: 600;
       color: #333;
-      margin-top: 2px;
+      margin-top: 1px;
+      font-size: 0.9rem;
     }
   }
 }
 
 .length-distribution {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 
   h4 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #333;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
   }
 
   .distribution-items {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
 
   .distribution-item {
     background: #f5f5f5;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.85rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8rem;
     color: #555;
     border: 1px solid #ddd;
   }
@@ -152,21 +153,21 @@
 
 .metadata {
   border-top: 1px solid #eee;
-  padding-top: 12px;
+  padding-top: 8px;
 
   .meta-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 
     .label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #666;
       font-weight: 500;
     }
 
     .value {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #333;
       text-align: right;
       word-break: break-all;
@@ -176,8 +177,8 @@
 }
 
 .action-section {
-  margin-top: 15px;
-  padding-top: 15px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid #e9ecef;
   text-align: center;
 
@@ -185,14 +186,14 @@
     background: #28a745;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 8px 16px;
+    border-radius: 4px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 
     &:hover {
       background: #218838;
@@ -240,7 +241,7 @@
 
 .header-section {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   .header-content {
     display: flex;
@@ -257,13 +258,13 @@
 
   h2 {
     color: #333;
-    margin-bottom: 8px;
-    font-size: 2rem;
+    margin-bottom: 4px;
+    font-size: 1.6rem;
   }
 
   .subtitle {
     color: #666;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0;
   }
 
@@ -328,35 +329,37 @@
 // Form styling (matching study-view form)
 .add-array-form {
   background: white;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.6rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
+  max-width: 500px;
+  margin: 0 auto 1.5rem auto;
 
   h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: #2c3e50;
+    font-size: 1.2rem;
   }
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     font-weight: 600;
     color: #495057;
+    font-size: 0.9rem;
   }
 
   textarea,
   input {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.6rem;
     border: 2px solid #dee2e6;
-    border-radius: 0.5rem;
-    font-size: 1rem;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
     transition: border-color 0.2s ease;
 
     &:focus {
@@ -377,7 +380,7 @@
 
 .form-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -385,9 +388,9 @@
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -395,6 +398,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.85rem;
 
   &:disabled {
     opacity: 0.6;
