@@ -18,8 +18,6 @@
 </div>
 } @else {
 <div class="study-area">
-  <div class="card-counter">{{ currentCardIndex() + 1 }} / {{ dueCards().length }}</div>
-
   <div class="flashcard" [class.revealed]="currentCard().isRevealed">
     <div class="card-front">
       <h3>{{ currentCard().front }}</h3>
