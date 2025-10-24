@@ -1,7 +1,7 @@
 export interface CollectionMetadata {
-  path: string;
-  filename: string;
-  arrayNumber: number;
+  path?: string;
+  name: string;
+  id: uuid;
   localStorageKey: string;
   totalCards: number;
   lengthDistribution: Record<string, number>;
@@ -13,3 +13,5 @@ export interface CollectionMetadata {
   createdAt: string;
   description: string;
 }
+
+export type uuid = `${string}-${string}-${string}-${string}-${string}`;

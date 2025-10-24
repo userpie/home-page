@@ -2,7 +2,7 @@
 <div class="stats">
   <span>Cards due: {{ dueCards().length }}</span>
   <span>Total cards: {{ allCards().length }}</span>
-  <span class="current-array">Array {{ selectedFlashcards().arrayNumber }}</span>
+  <span class="current-array">{{ selectedFlashcards().name }}</span>
 </div>
 } @if (isLoading()) {
 <div class="loading">

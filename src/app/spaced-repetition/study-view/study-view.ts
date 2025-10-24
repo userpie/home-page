@@ -72,7 +72,6 @@ export class StudyView implements OnInit {
     };
   });
 
-  constructor() {}
   ngOnInit(): void {
     this.loadCards();
   }

@@ -1,25 +1,33 @@
 import { Component, signal, output, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { CollectionMetadata } from '../collections-metadata';
+import {CollectionMetadata, uuid} from '../collections-metadata';
 import { environment } from '../../../environments/environment';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-flashcard-arrays-list',
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class CollectionsComponent implements OnInit {
+  private fb = inject(FormBuilder);
   private readonly http = inject(HttpClient);
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
 
   collectionsMetadata = signal<CollectionMetadata[]>([]);
-  selectedCollectionNumber = signal<number | null>(null);
+  selectedCollectionNumber = signal<uuid | null>(null);
   isLoading = signal(true);
+  showAddForm = signal(false);
 
   collectionSelected = output<CollectionMetadata>();
+
+  collectionForm = this.fb.group({
+    name: ['', [Validators.required, Validators.maxLength(20)]],
+    description: ['', [Validators.required, Validators.maxLength(200)]],
+  });
 
   ngOnInit(): void {
     this.loadCollections();
@@ -85,7 +93,7 @@ export class CollectionsComponent implements OnInit {
     );
   }
 
-  selectArray(arrayNumber: number): void {
+  selectArray(arrayNumber: uuid): void {
     this.selectedCollectionNumber.set(arrayNumber);
   }
 
@@ -97,7 +105,40 @@ export class CollectionsComponent implements OnInit {
     this.collectionSelected.emit(array);
   }
 
-  isSelected(arrayNumber: number): boolean {
+  isSelected(arrayNumber: uuid): boolean {
     return this.selectedCollectionNumber() === arrayNumber;
+  }
+
+  cancelAddCollection(): void {
+    this.showAddForm.set(false);
+    this.collectionForm.reset();
+  }
+
+  addCollection() {
+    console.log('addCollection called');
+    if (this.collectionForm.valid) {
+      const formValue = this.collectionForm.getRawValue();
+
+      const uuid = crypto.randomUUID();
+      const newCollection: CollectionMetadata = {
+        id: uuid,
+        name: formValue.name || 'Untitled Collection',
+        description: formValue.description || '',
+        localStorageKey: `collection-${uuid}`,
+        totalCards: 0,
+        lengthDistribution: {},
+        statistics: {
+          averageBackLength: 0,
+          minBackLength: 0,
+          maxBackLength: 0,
+        },
+        createdAt: new Date().toISOString(),
+      };
+
+      this.collectionsMetadata.update((cards) => [...cards, newCollection]);
+      this.saveCollectionMetadata();
+      this.cancelAddCollection();
+    }
+
   }
 }
