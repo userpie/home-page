@@ -1,4 +1,4 @@
-import { Component, signal, output, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, signal, computed, output, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {CollectionMetadata, uuid} from '../collections-metadata';
@@ -21,8 +21,20 @@ export class CollectionsComponent implements OnInit {
   selectedCollectionNumber = signal<uuid | null>(null);
   isLoading = signal(true);
   showAddForm = signal(false);
+  searchQuery = signal('');
 
   collectionSelected = output<CollectionMetadata>();
+
+  filteredCollections = computed(() => {
+    const query = this.searchQuery().toLowerCase().trim();
+    if (!query) {
+      return this.collectionsMetadata();
+    }
+    return this.collectionsMetadata().filter(collection =>
+      collection.name.toLowerCase().includes(query) ||
+      collection.description.toLowerCase().includes(query)
+    );
+  });
 
   collectionForm = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(20)]],
@@ -124,5 +136,10 @@ export class CollectionsComponent implements OnInit {
       this.saveCollectionMetadata();
       this.cancelAddCollection();
     }
+  }
+
+  onSearchChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery.set(target.value);
   }
 }

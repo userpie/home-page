@@ -11,10 +11,23 @@
       </button>
     </div>
   </div>
-  <!-- Rest of your existing content remains the same -->
-  @if (!showAddForm()){
+
+  @if (!showAddForm() && !isLoading()){
+  <div class="search-section">
+    <div class="search-input-container">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search collections by name or description..."
+        [value]="searchQuery()"
+        (input)="onSearchChange($event)"
+      />
+      <div class="search-icon">🔍</div>
+    </div>
+  </div>
+
   <div class="arrays-list">
-    @for (collectionMetadata of collectionsMetadata(); track collectionMetadata.id) {
+    @for (collectionMetadata of filteredCollections(); track collectionMetadata.id) {
       <div
         class="array-card"
         [class.selected]="isSelected(collectionMetadata.id)"
