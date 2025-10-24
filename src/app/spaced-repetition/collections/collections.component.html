@@ -12,21 +12,36 @@
     </div>
   </div>
 
-  @if (!showAddForm() && !isLoading()){
-  <div class="search-section">
-    <div class="search-input-container">
-      <input
-        type="text"
-        class="search-input"
-        placeholder="Search collections by name or description..."
-        [value]="searchQuery()"
-        (input)="onSearchChange($event)"
-      />
-      <div class="search-icon">🔍</div>
-    </div>
-  </div>
+  @if (!showAddForm() && !isLoading()) {
+    <div class="search-section">
+      <div class="search-and-sort-container">
+        <div class="search-input-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search collections by name or description..."
+            [value]="searchQuery()"
+            (input)="onSearchChange($event)"
+          />
+          <div class="search-icon">🔍</div>
+        </div>
 
-  <div class="arrays-list">
+        <div class="sort-container">
+          <label for="sort-select" class="sort-label">Sort by:</label>
+          <select
+            id="sort-select"
+            class="sort-select"
+            [value]="sortOrder()"
+            (change)="onSortChange($event)"
+          >
+            <option value="desc">Newest First</option>
+            <option value="asc">Oldest First</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrays-list">
     @for (collectionMetadata of filteredCollections(); track collectionMetadata.id) {
       <div
         class="array-card"
@@ -78,7 +93,7 @@
         </div>
       </div>
     }
-  </div>
+    </div>
   } @else {
   <div class="add-array-form">
     <h3>Add New Collection</h3>

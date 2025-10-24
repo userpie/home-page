@@ -22,18 +22,38 @@ export class CollectionsComponent implements OnInit {
   isLoading = signal(true);
   showAddForm = signal(false);
   searchQuery = signal('');
+  sortBy = signal<'createdAt'>('createdAt');
+  sortOrder = signal<'asc' | 'desc'>('desc'); // Default to newest first
 
   collectionSelected = output<CollectionMetadata>();
 
   filteredCollections = computed(() => {
+    let collections = this.collectionsMetadata();
+
+    // Apply search filter
     const query = this.searchQuery().toLowerCase().trim();
-    if (!query) {
-      return this.collectionsMetadata();
+    if (query) {
+      collections = collections.filter(collection =>
+        collection.name.toLowerCase().includes(query) ||
+        collection.description.toLowerCase().includes(query)
+      );
     }
-    return this.collectionsMetadata().filter(collection =>
-      collection.name.toLowerCase().includes(query) ||
-      collection.description.toLowerCase().includes(query)
-    );
+
+    // Apply sorting
+    const sortBy = this.sortBy();
+    const sortOrder = this.sortOrder();
+
+    return [...collections].sort((a, b) => {
+      let comparison = 0;
+
+      if (sortBy === 'createdAt') {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        comparison = dateA - dateB;
+      }
+
+      return sortOrder === 'asc' ? comparison : -comparison;
+    });
   });
 
   collectionForm = this.fb.group({
@@ -141,5 +161,10 @@ export class CollectionsComponent implements OnInit {
   onSearchChange(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.searchQuery.set(target.value);
+  }
+
+  onSortChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.sortOrder.set(target.value as 'asc' | 'desc');
   }
 }
