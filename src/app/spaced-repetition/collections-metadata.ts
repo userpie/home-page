@@ -2,7 +2,6 @@ export interface CollectionMetadata {
   path?: string;
   name: string;
   id: uuid;
-  localStorageKey: string;
   totalCards: number;
   lengthDistribution: Record<string, number>;
   statistics: {

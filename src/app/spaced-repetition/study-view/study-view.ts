@@ -220,7 +220,7 @@ export class StudyView implements OnInit {
       },
     }));
 
-    localStorage.setItem(this.selectedFlashcards().localStorageKey, JSON.stringify(cardsData));
+    localStorage.setItem(this.selectedFlashcards().id, JSON.stringify(cardsData));
   }
 
   private loadCards(): void {
@@ -228,7 +228,7 @@ export class StudyView implements OnInit {
       return;
     }
 
-    const savedData = localStorage.getItem(this.selectedFlashcards().localStorageKey);
+    const savedData = localStorage.getItem(this.selectedFlashcards().id);
     if (savedData) {
       try {
         const cardsData = JSON.parse(savedData);

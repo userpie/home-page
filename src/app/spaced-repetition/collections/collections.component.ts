@@ -81,18 +81,6 @@ export class CollectionsComponent implements OnInit {
       .sort((a, b) => a.length - b.length);
   }
 
-  formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    return (
-      date.toLocaleDateString() +
-      ' ' +
-      date.toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      })
-    );
-  }
-
   selectArray(arrayNumber: uuid): void {
     this.selectedCollectionNumber.set(arrayNumber);
   }
@@ -115,16 +103,13 @@ export class CollectionsComponent implements OnInit {
   }
 
   addCollection() {
-    console.log('addCollection called');
     if (this.collectionForm.valid) {
       const formValue = this.collectionForm.getRawValue();
 
-      const uuid = crypto.randomUUID();
       const newCollection: CollectionMetadata = {
-        id: uuid,
+        id: crypto.randomUUID(),
         name: formValue.name || 'Untitled Collection',
         description: formValue.description || '',
-        localStorageKey: `collection-${uuid}`,
         totalCards: 0,
         lengthDistribution: {},
         statistics: {
@@ -139,6 +124,5 @@ export class CollectionsComponent implements OnInit {
       this.saveCollectionMetadata();
       this.cancelAddCollection();
     }
-
   }
 }
