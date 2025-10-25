@@ -1,7 +1,7 @@
 [
   {
     "path": "/assets/spaced-repetition/flashcards-array-01.json",
-    "name": "flashcards-array-01.json",
+    "name": "Quick Bytes",
     "id": 1,
     "totalCards": 20,
     "lengthDistribution": { "1": 1, "2": 17, "3": 2 },
@@ -11,7 +11,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-02.json",
-    "name": "flashcards-array-02.json",
+    "name": "Triple Threat",
     "id": 2,
     "totalCards": 20,
     "lengthDistribution": { "3": 20 },
@@ -21,7 +21,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-03.json",
-    "name": "flashcards-array-03.json",
+    "name": "Power Pack",
     "id": 3,
     "totalCards": 20,
     "lengthDistribution": { "3": 20 },
@@ -31,7 +31,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-04.json",
-    "name": "flashcards-array-04.json",
+    "name": "Swift Shots",
     "id": 4,
     "totalCards": 20,
     "lengthDistribution": { "3": 20 },
@@ -41,7 +41,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-05.json",
-    "name": "flashcards-array-05.json",
+    "name": "Mini Masters",
     "id": 5,
     "totalCards": 20,
     "lengthDistribution": { "3": 20 },
@@ -51,7 +51,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-06.json",
-    "name": "flashcards-array-06.json",
+    "name": "Snap Focus",
     "id": 6,
     "totalCards": 20,
     "lengthDistribution": { "3": 20 },
@@ -61,7 +61,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-07.json",
-    "name": "flashcards-array-07.json",
+    "name": "Flex Zone",
     "id": 7,
     "totalCards": 20,
     "lengthDistribution": { "3": 4, "4": 16 },
@@ -71,7 +71,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-08.json",
-    "name": "flashcards-array-08.json",
+    "name": "Core Four",
     "id": 8,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -81,7 +81,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-09.json",
-    "name": "flashcards-array-09.json",
+    "name": "Quad Squad",
     "id": 9,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -91,7 +91,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-10.json",
-    "name": "flashcards-array-10.json",
+    "name": "Solid Base",
     "id": 10,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -101,7 +101,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-11.json",
-    "name": "flashcards-array-11.json",
+    "name": "Brain Boost",
     "id": 11,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -111,7 +111,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-12.json",
-    "name": "flashcards-array-12.json",
+    "name": "Mind Meld",
     "id": 12,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -121,7 +121,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-13.json",
-    "name": "flashcards-array-13.json",
+    "name": "Ace Block",
     "id": 13,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -131,7 +131,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-14.json",
-    "name": "flashcards-array-14.json",
+    "name": "Smart Set",
     "id": 14,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -141,7 +141,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-15.json",
-    "name": "flashcards-array-15.json",
+    "name": "Peak Pack",
     "id": 15,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -151,7 +151,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-16.json",
-    "name": "flashcards-array-16.json",
+    "name": "Flash Fire",
     "id": 16,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -161,7 +161,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-17.json",
-    "name": "flashcards-array-17.json",
+    "name": "Rapid Run",
     "id": 17,
     "totalCards": 20,
     "lengthDistribution": { "4": 20 },
@@ -171,7 +171,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-18.json",
-    "name": "flashcards-array-18.json",
+    "name": "Level Up",
     "id": 18,
     "totalCards": 20,
     "lengthDistribution": { "4": 17, "5": 3 },
@@ -181,7 +181,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-19.json",
-    "name": "flashcards-array-19.json",
+    "name": "High Five",
     "id": 19,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -191,7 +191,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-20.json",
-    "name": "flashcards-array-20.json",
+    "name": "Power Five",
     "id": 20,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -201,7 +201,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-21.json",
-    "name": "flashcards-array-21.json",
+    "name": "Cinco Boek",
     "id": 21,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -211,7 +211,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-22.json",
-    "name": "flashcards-array-22.json",
+    "name": "Vijf Sabor",
     "id": 22,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -221,7 +221,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-23.json",
-    "name": "flashcards-array-23.json",
+    "name": "Leren Doce",
     "id": 23,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -231,7 +231,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-24.json",
-    "name": "flashcards-array-24.json",
+    "name": "Vlotte Rápido",
     "id": 24,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -241,7 +241,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-25.json",
-    "name": "flashcards-array-25.json",
+    "name": "Kaart Forte",
     "id": 25,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -251,7 +251,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-26.json",
-    "name": "flashcards-array-26.json",
+    "name": "Slim Fogo",
     "id": 26,
     "totalCards": 20,
     "lengthDistribution": { "5": 20 },
@@ -261,7 +261,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-27.json",
-    "name": "flashcards-array-27.json",
+    "name": "Groei Mais",
     "id": 27,
     "totalCards": 20,
     "lengthDistribution": { "5": 14, "6": 6 },
@@ -271,7 +271,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-28.json",
-    "name": "flashcards-array-28.json",
+    "name": "Zes Brilho",
     "id": 28,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -281,7 +281,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-29.json",
-    "name": "flashcards-array-29.json",
+    "name": "Mooi Sonho",
     "id": 29,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -291,7 +291,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-30.json",
-    "name": "flashcards-array-30.json",
+    "name": "Denken Verde",
     "id": 30,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -301,7 +301,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-31.json",
-    "name": "flashcards-array-31.json",
+    "name": "Groot Azul",
     "id": 31,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -311,7 +311,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-32.json",
-    "name": "flashcards-array-32.json",
+    "name": "Kracht Luz",
     "id": 32,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -321,7 +321,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-33.json",
-    "name": "flashcards-array-33.json",
+    "name": "Winnen Ouro",
     "id": 33,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -331,7 +331,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-34.json",
-    "name": "flashcards-array-34.json",
+    "name": "Sterk Prata",
     "id": 34,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -341,7 +341,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-35.json",
-    "name": "flashcards-array-35.json",
+    "name": "Wijs Céu",
     "id": 35,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -351,7 +351,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-36.json",
-    "name": "flashcards-array-36.json",
+    "name": "Vuur Mar",
     "id": 36,
     "totalCards": 20,
     "lengthDistribution": { "6": 20 },
@@ -361,7 +361,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-37.json",
-    "name": "flashcards-array-37.json",
+    "name": "Groeien Sol",
     "id": 37,
     "totalCards": 20,
     "lengthDistribution": { "6": 3, "7": 17 },
@@ -371,7 +371,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-38.json",
-    "name": "flashcards-array-38.json",
+    "name": "Zeven Noite",
     "id": 38,
     "totalCards": 20,
     "lengthDistribution": { "7": 20 },
@@ -381,7 +381,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-39.json",
-    "name": "flashcards-array-39.json",
+    "name": "Prachtig Rio",
     "id": 39,
     "totalCards": 20,
     "lengthDistribution": { "7": 20 },
@@ -391,7 +391,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-40.json",
-    "name": "flashcards-array-40.json",
+    "name": "Echt Vida",
     "id": 40,
     "totalCards": 20,
     "lengthDistribution": { "7": 20 },
@@ -401,7 +401,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-41.json",
-    "name": "flashcards-array-41.json",
+    "name": "Vlieg Tempo",
     "id": 41,
     "totalCards": 20,
     "lengthDistribution": { "7": 19, "8": 1 },
@@ -411,7 +411,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-42.json",
-    "name": "flashcards-array-42.json",
+    "name": "Acht Estrela",
     "id": 42,
     "totalCards": 20,
     "lengthDistribution": { "8": 20 },
@@ -421,7 +421,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-43.json",
-    "name": "flashcards-array-43.json",
+    "name": "Hoog Lua",
     "id": 43,
     "totalCards": 20,
     "lengthDistribution": { "8": 20 },
@@ -431,7 +431,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-44.json",
-    "name": "flashcards-array-44.json",
+    "name": "Diep Vento",
     "id": 44,
     "totalCards": 20,
     "lengthDistribution": { "8": 20 },
@@ -441,7 +441,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-45.json",
-    "name": "flashcards-array-45.json",
+    "name": "Breed Flor",
     "id": 45,
     "totalCards": 20,
     "lengthDistribution": { "8": 11, "9": 9 },
@@ -451,7 +451,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-46.json",
-    "name": "flashcards-array-46.json",
+    "name": "Negen Chuva",
     "id": 46,
     "totalCards": 20,
     "lengthDistribution": { "9": 20 },
@@ -461,7 +461,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-47.json",
-    "name": "flashcards-array-47.json",
+    "name": "Boven Neve",
     "id": 47,
     "totalCards": 20,
     "lengthDistribution": { "9": 18, "10": 2 },
@@ -471,7 +471,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-48.json",
-    "name": "flashcards-array-48.json",
+    "name": "Tien Praia",
     "id": 48,
     "totalCards": 20,
     "lengthDistribution": { "10": 20 },
@@ -481,7 +481,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-49.json",
-    "name": "flashcards-array-49.json",
+    "name": "Vallen Sonho",
     "id": 49,
     "totalCards": 20,
     "lengthDistribution": { "10": 9, "11": 11 },
@@ -491,7 +491,7 @@
   },
   {
     "path": "/assets/spaced-repetition/flashcards-array-50.json",
-    "name": "flashcards-array-50.json",
+    "name": "Groot Alegria",
     "id": 50,
     "totalCards": 20,
     "lengthDistribution": { "11": 11, "12": 6, "13": 1, "14": 1, "15": 1 },
