@@ -215,28 +215,31 @@
         }
 
         &.edit-btn {
-          background: #d4edda;
+          background-color: #d4edda;
+          background-image: url(/assets/edit-icon.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 16px 16px;
+
           color: #155724;
 
           &:hover {
-            background: #c3e6cb;
-          }
-
-          img {
-            filter: brightness(0) saturate(100%) invert(22%) sepia(18%) saturate(1847%) hue-rotate(88deg) brightness(96%) contrast(89%);
+            background-color: #c3e6cb;
+            background-image: url(/assets/edit-icon.svg);
           }
         }
 
         &.delete-btn {
-          background: #f8d7da;
+          background-color: #f8d7da;
+          background-image: url(/assets/delete-icon.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 16px 16px;
+
           color: #721c24;
 
           &:hover {
-            background: #f5c6cb;
-          }
-
-          img {
-            filter: brightness(0) saturate(100%) invert(12%) sepia(45%) saturate(1654%) hue-rotate(320deg) brightness(93%) contrast(98%);
+            background-color: #f5c6cb;
           }
         }
       }

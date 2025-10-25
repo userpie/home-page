@@ -59,10 +59,8 @@
             @if (isSelected(collectionMetadata.id)) {
               <div class="action-buttons">
                 <button type="button" class="round-btn edit-btn" (click)="editCollection($event, collectionMetadata)" title="Edit Collection">
-                  <img src="assets/edit-icon.svg" alt="Edit" width="16" height="16">
                 </button>
                 <button type="button" class="round-btn delete-btn" (click)="deleteCollection($event, collectionMetadata)" title="Delete Collection">
-                  <img src="assets/delete-icon.svg" alt="Delete" width="16" height="16">
                 </button>
               </div>
             }
