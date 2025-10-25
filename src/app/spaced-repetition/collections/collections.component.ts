@@ -21,6 +21,7 @@ export class CollectionsComponent implements OnInit {
   selectedCollectionNumber = signal<uuid | null>(null);
   isLoading = signal(true);
   showAddForm = signal(false);
+  showResetModal = signal(false);
   searchQuery = signal('');
   sortBy = signal<'createdAt'>('createdAt');
   sortOrder = signal<'asc' | 'desc'>('desc'); // Default to newest first
@@ -226,5 +227,43 @@ export class CollectionsComponent implements OnInit {
       // Save the updated metadata
       this.saveCollectionMetadata();
     }
+  }
+
+  openResetModal(): void {
+    this.showResetModal.set(true);
+  }
+
+  hideResetModal(): void {
+    this.showResetModal.set(false);
+  }
+
+  resetToDefaults(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    // Clear all collection metadata from localStorage
+    localStorage.removeItem('collection-metadata');
+
+    // Clear all individual collection flashcard data
+    const currentCollections = this.collectionsMetadata();
+    currentCollections.forEach(collection => {
+      localStorage.removeItem(collection.id);
+    });
+
+    // Clear any other spaced repetition related data
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const key = localStorage.key(i);
+      if (key && (key.startsWith('flashcards-') || key.includes('collection'))) {
+        localStorage.removeItem(key);
+      }
+    }
+
+    // Reset state
+    this.selectedCollectionNumber.set(null);
+    this.hideResetModal();
+
+    // Load default collections
+    this.loadDefaultCollection();
   }
 }
