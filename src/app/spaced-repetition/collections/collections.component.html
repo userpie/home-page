@@ -54,7 +54,19 @@
               <span class="selected-badge">Selected</span>
             }
           </div>
-          <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
+          <div class="header-right">
+            <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
+            @if (isSelected(collectionMetadata.id)) {
+              <div class="action-buttons">
+                <button type="button" class="round-btn edit-btn" (click)="editCollection($event, collectionMetadata)" title="Edit Collection">
+                  <img src="assets/edit-icon.svg" alt="Edit" width="16" height="16">
+                </button>
+                <button type="button" class="round-btn delete-btn" (click)="deleteCollection($event, collectionMetadata)" title="Delete Collection">
+                  <img src="assets/delete-icon.svg" alt="Delete" width="16" height="16">
+                </button>
+              </div>
+            }
+          </div>
         </div>
 
         <div class="array-details">
@@ -95,7 +107,7 @@
     </div>
   } @else {
   <div class="add-array-form">
-    <h3>Add New Collection</h3>
+    <h3>{{ editingCollectionId() ? 'Edit Collection' : 'Add New Collection' }}</h3>
     <form [formGroup]="collectionForm" (ngSubmit)="addCollection()">
       <div class="form-group">
         <label for="name">Collection name:</label>
@@ -119,7 +131,9 @@
       </div>
 
       <div class="form-actions">
-        <button type="submit" [disabled]="collectionForm.invalid" class="btn btn-primary">Add Collection</button>
+        <button type="submit" [disabled]="collectionForm.invalid" class="btn btn-primary">
+          {{ editingCollectionId() ? 'Update Collection' : 'Add Collection' }}
+        </button>
         <button type="button" (click)="cancelAddCollection()" class="btn btn-secondary">Cancel</button>
       </div>
     </form>

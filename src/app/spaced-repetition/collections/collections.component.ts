@@ -24,6 +24,7 @@ export class CollectionsComponent implements OnInit {
   searchQuery = signal('');
   sortBy = signal<'createdAt'>('createdAt');
   sortOrder = signal<'asc' | 'desc'>('desc'); // Default to newest first
+  editingCollectionId = signal<uuid | null>(null);
 
   collectionSelected = output<CollectionMetadata>();
 
@@ -132,27 +133,46 @@ export class CollectionsComponent implements OnInit {
   cancelAddCollection(): void {
     this.showAddForm.set(false);
     this.collectionForm.reset();
+    this.editingCollectionId.set(null);
   }
 
   addCollection() {
     if (this.collectionForm.valid) {
       const formValue = this.collectionForm.getRawValue();
+      const editingId = this.editingCollectionId();
 
-      const newCollection: CollectionMetadata = {
-        id: crypto.randomUUID(),
-        name: formValue.name || 'Untitled Collection',
-        description: formValue.description || '',
-        totalCards: 0,
-        lengthDistribution: {},
-        statistics: {
-          averageBackLength: 0,
-          minBackLength: 0,
-          maxBackLength: 0,
-        },
-        createdAt: new Date().toISOString(),
-      };
+      if (editingId) {
+        // Update existing collection
+        this.collectionsMetadata.update(collections =>
+          collections.map(collection =>
+            collection.id === editingId
+              ? {
+                  ...collection,
+                  name: formValue.name || 'Untitled Collection',
+                  description: formValue.description || ''
+                }
+              : collection
+          )
+        );
+      } else {
+        // Create new collection
+        const newCollection: CollectionMetadata = {
+          id: crypto.randomUUID(),
+          name: formValue.name || 'Untitled Collection',
+          description: formValue.description || '',
+          totalCards: 0,
+          lengthDistribution: {},
+          statistics: {
+            averageBackLength: 0,
+            minBackLength: 0,
+            maxBackLength: 0,
+          },
+          createdAt: new Date().toISOString(),
+        };
 
-      this.collectionsMetadata.update((cards) => [...cards, newCollection]);
+        this.collectionsMetadata.update((cards) => [...cards, newCollection]);
+      }
+
       this.saveCollectionMetadata();
       this.cancelAddCollection();
     }
@@ -166,5 +186,45 @@ export class CollectionsComponent implements OnInit {
   onSortChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     this.sortOrder.set(target.value as 'asc' | 'desc');
+  }
+
+  editCollection(event: Event, collection: CollectionMetadata): void {
+    // Prevent the card click event from being triggered
+    event.stopPropagation();
+
+    // Pre-fill the form with the selected collection's data
+    this.collectionForm.patchValue({
+      name: collection.name,
+      description: collection.description
+    });
+
+    // Store the collection being edited
+    this.editingCollectionId = signal(collection.id);
+    this.showAddForm.set(true);
+  }
+
+  deleteCollection(event: Event, collection: CollectionMetadata): void {
+    // Prevent the card click event from being triggered
+    event.stopPropagation();
+
+    if (confirm(`Are you sure you want to delete "${collection.name}"? This action cannot be undone.`)) {
+      // Remove the collection from the list
+      this.collectionsMetadata.update(collections =>
+        collections.filter(c => c.id !== collection.id)
+      );
+
+      // Clear selection if the deleted collection was selected
+      if (this.selectedCollectionNumber() === collection.id) {
+        this.selectedCollectionNumber.set(null);
+      }
+
+      // Remove the associated flashcard data from localStorage
+      if (this.isBrowser) {
+        localStorage.removeItem(collection.id);
+      }
+
+      // Save the updated metadata
+      this.saveCollectionMetadata();
+    }
   }
 }
