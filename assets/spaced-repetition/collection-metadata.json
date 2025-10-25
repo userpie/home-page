@@ -1,0 +1,816 @@
+[
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-01.json",
+    "name": "Quick Bytes",
+    "id": "b5169ebf-b082-458a-95d4-601a8854348f",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "1": 1,
+      "2": 17,
+      "3": 2
+    },
+    "statistics": {
+      "averageBackLength": 2.05,
+      "minBackLength": 1,
+      "maxBackLength": 3
+    },
+    "createdAt": "2025-10-25T19:35:49.443Z",
+    "description": "Snelle leerkaarten collectie met 20 kaarten, perfect voor beginners die korte antwoorden willen oefenen"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-02.json",
+    "name": "Triple Threat",
+    "id": "712f94f4-595c-49f9-ad2e-e63b0d43137f",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "3": 20
+    },
+    "statistics": {
+      "averageBackLength": 3,
+      "minBackLength": 3,
+      "maxBackLength": 3
+    },
+    "createdAt": "2025-10-25T19:35:49.444Z",
+    "description": "Coleção de flashcards com 20 cartas, todas com respostas de exatamente 3 caracteres para prática consistente"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-03.json",
+    "name": "Power Pack",
+    "id": "0705c0dd-fc9e-4e7a-af8a-6247d63aa07f",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "3": 20
+    },
+    "statistics": {
+      "averageBackLength": 3,
+      "minBackLength": 3,
+      "maxBackLength": 3
+    },
+    "createdAt": "2025-10-25T19:35:49.445Z",
+    "description": "Krachtige verzameling van 20 flashcards met uniforme antwoordlengte van 3 tekens voor efficiënt leren"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-04.json",
+    "name": "Swift Shots",
+    "id": "c16b5b70-1d6a-4fc1-be89-e191fc07907b",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "3": 20
+    },
+    "statistics": {
+      "averageBackLength": 3,
+      "minBackLength": 3,
+      "maxBackLength": 3
+    },
+    "createdAt": "2025-10-25T19:35:49.446Z",
+    "description": "Conjunto rápido de 20 flashcards com respostas curtas e diretas de 3 caracteres cada"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-05.json",
+    "name": "Mini Masters",
+    "id": "d3d5df1e-1a82-4416-b952-507b83dee446",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "3": 20
+    },
+    "statistics": {
+      "averageBackLength": 3,
+      "minBackLength": 3,
+      "maxBackLength": 3
+    },
+    "createdAt": "2025-10-25T19:35:49.447Z",
+    "description": "Mini collectie van 20 leerkaarten met korte, krachtige antwoorden van precies 3 karakters"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-06.json",
+    "name": "Snap Focus",
+    "id": "e63e43aa-5832-43bc-b597-45f99fad60a1",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "3": 20
+    },
+    "statistics": {
+      "averageBackLength": 3,
+      "minBackLength": 3,
+      "maxBackLength": 3
+    },
+    "createdAt": "2025-10-25T19:35:49.448Z",
+    "description": "Coleção focada com 20 flashcards de tamanho uniforme, ideal para sessões de estudo rápidas"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-07.json",
+    "name": "Flex Zone",
+    "id": "a5ba15fc-aee8-4a72-a0df-cd91c5e6c171",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "3": 4,
+      "4": 16
+    },
+    "statistics": {
+      "averageBackLength": 3.8,
+      "minBackLength": 3,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.449Z",
+    "description": "Flexibele verzameling van 20 kaarten met variabele antwoordlengtes tussen 3 en 4 karakters"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-08.json",
+    "name": "Core Four",
+    "id": "c10d76bb-6f47-46f2-bdb2-8e7bc89600a7",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.450Z",
+    "description": "Coleção principal com 20 flashcards, todas com respostas de 4 caracteres para estudo sistemático"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-09.json",
+    "name": "Quad Squad",
+    "id": "92a0297f-820c-4165-8256-819e1dac0240",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.451Z",
+    "description": "Groep van 20 leerkaarten met consistente antwoorden van 4 tekens voor gestructureerd leren"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-10.json",
+    "name": "Solid Base",
+    "id": "f4d24f33-dcc0-47a3-8899-80f3635df36d",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.452Z",
+    "description": "Base sólida de 20 flashcards com respostas uniformes de 4 caracteres para construir conhecimento"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-11.json",
+    "name": "Brain Boost",
+    "id": "7ba6a553-dcfe-469c-8d1e-c83b91c1fd51",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.453Z",
+    "description": "Breinversterkende collectie met 20 flashcards die je mentale capaciteiten verbeteren met 4-karakter antwoorden"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-12.json",
+    "name": "Mind Meld",
+    "id": "28ac42a7-b1cc-454d-9a3f-75492611a5a1",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.454Z",
+    "description": "Fusão mental com 20 flashcards de tamanho médio para desenvolver conexões cognitivas eficazes"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-13.json",
+    "name": "Ace Block",
+    "id": "d2751dda-c2d8-44d1-a172-ea8796a419f6",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.455Z",
+    "description": "Top-tier blok van 20 leerkaarten met perfecte balans tussen uitdaging en beheersbaarheid"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-14.json",
+    "name": "Smart Set",
+    "id": "fff969ab-aef2-478c-abad-55f35a4c9912",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.456Z",
+    "description": "Conjunto inteligente de 20 flashcards projetado para otimizar seu processo de aprendizagem"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-15.json",
+    "name": "Peak Pack",
+    "id": "a454dc40-480c-4870-9e42-ee2d2d519f2f",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.457Z",
+    "description": "Toppakket van 20 kaarten om je studieresultaten naar het hoogste niveau te tillen"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-16.json",
+    "name": "Flash Fire",
+    "id": "60b78a31-c8a2-4757-9f53-74d30b5c35a9",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.458Z",
+    "description": "Fogo rápido de 20 flashcards para acelerar seu domínio do conteúdo com precisão"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-17.json",
+    "name": "Rapid Run",
+    "id": "b3fdfb8b-10fd-486c-bc8f-31670b708255",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 20
+    },
+    "statistics": {
+      "averageBackLength": 4,
+      "minBackLength": 4,
+      "maxBackLength": 4
+    },
+    "createdAt": "2025-10-25T19:35:49.459Z",
+    "description": "Snelle doorloop van 20 leerkaarten voor intensieve studie-sessies met maximale efficiëntie"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-18.json",
+    "name": "Level Up",
+    "id": "3343de59-1920-498c-aaf1-0289d3e8ded3",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "4": 17,
+      "5": 3
+    },
+    "statistics": {
+      "averageBackLength": 4.15,
+      "minBackLength": 4,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.460Z",
+    "description": "Subida de nível com 20 flashcards de complexidade progressiva para avançar suas habilidades"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-19.json",
+    "name": "High Five",
+    "id": "04435e22-89f4-4793-915c-dd75e39f7eca",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.461Z",
+    "description": "High-five collectie van 20 kaarten met vijf-karakter antwoorden voor gevorderde leerlingen"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-20.json",
+    "name": "Power Five",
+    "id": "b76b1c2c-3cfa-47a7-ba6c-105fe69c40ac",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.462Z",
+    "description": "Poderosa coleção de 20 flashcards com respostas de 5 caracteres para estudo aprofundado"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-21.json",
+    "name": "Cinco Boek",
+    "id": "cd338a8b-41e0-479b-8ea0-5df2b7825cf9",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.463Z",
+    "description": "Vijf-sterren leerboek met 20 kaarten voor diepgaande kennisopbouw en begrip"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-22.json",
+    "name": "Vijf Sabor",
+    "id": "81815f77-1fe9-48d9-bff2-9c46226b0bff",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.464Z",
+    "description": "Cinco sabores de aprendizado em 20 flashcards com respostas equilibradas de 5 caracteres"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-23.json",
+    "name": "Leren Doce",
+    "id": "5a490a30-6b78-467d-85e3-74842fcb8434",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.465Z",
+    "description": "Zoete leerervaring met 20 flashcards die kennis op een aangename manier overdragen"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-24.json",
+    "name": "Vlotte Rápido",
+    "id": "f299b7cd-6811-4e9b-b230-ec12b4ff42cb",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.466Z",
+    "description": "Fluência rápida com 20 flashcards projetados para acelerar sua compreensão"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-25.json",
+    "name": "Kaart Forte",
+    "id": "c6341e18-5a0a-473c-8941-11ec2254379e",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.467Z",
+    "description": "Sterke kaartencollectie met 20 robuuste leerkaarten voor stevige kennisfundamenten"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-26.json",
+    "name": "Slim Fogo",
+    "id": "3721d299-de84-4734-8830-4601bd409f47",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 20
+    },
+    "statistics": {
+      "averageBackLength": 5,
+      "minBackLength": 5,
+      "maxBackLength": 5
+    },
+    "createdAt": "2025-10-25T19:35:49.468Z",
+    "description": "Fogo inteligente de 20 flashcards que acendem sua paixão pelo aprendizado"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-27.json",
+    "name": "Groei Mais",
+    "id": "ff3e044b-0fa0-411d-98f2-f6cf502f7b52",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "5": 14,
+      "6": 6
+    },
+    "statistics": {
+      "averageBackLength": 5.3,
+      "minBackLength": 5,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.469Z",
+    "description": "Groeiende collectie van 20 kaarten die je meer uitdaging biedt naarmate je vordert"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-28.json",
+    "name": "Zes Brilho",
+    "id": "8136c63c-a09e-4fec-ae02-eae341f494d0",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.470Z",
+    "description": "Seis brilhos de conhecimento em 20 flashcards com respostas de tamanho médio"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-29.json",
+    "name": "Mooi Sonho",
+    "id": "e1bceabc-b284-4395-a10c-13e8a416a839",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.471Z",
+    "description": "Mooie droom-collectie van 20 kaarten die leren tot een aangename ervaring maken"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-30.json",
+    "name": "Denken Verde",
+    "id": "c19482c2-e5a1-46e9-aadb-80049e536735",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.472Z",
+    "description": "Pensamento verde com 20 flashcards sustentáveis para crescimento intelectual duradouro"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-31.json",
+    "name": "Groot Azul",
+    "id": "960ff189-8a38-4511-956f-f3914af1bf6a",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.473Z",
+    "description": "Grote blauwe collectie met 20 kaarten die diepte en rust brengen in je leerproces"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-32.json",
+    "name": "Kracht Luz",
+    "id": "6791bfc4-6b41-4110-aa4e-0f70430a9376",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.474Z",
+    "description": "Força da luz em 20 flashcards que iluminam seu caminho de aprendizado"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-33.json",
+    "name": "Winnen Ouro",
+    "id": "d2219487-d37f-425e-918f-b9ff23c79d2b",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.475Z",
+    "description": "Winnende gouden collectie van 20 kaarten die je naar de top van je kunnen brengen"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-34.json",
+    "name": "Sterk Prata",
+    "id": "b1fa7151-3201-44ac-a5b7-9fd30be8d2e5",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.476Z",
+    "description": "Prata forte com 20 flashcards de qualidade premium para resultados duradouros"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-35.json",
+    "name": "Wijs Céu",
+    "id": "3f3111d5-8345-4985-8869-2231773251e2",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.477Z",
+    "description": "Wijze hemel-collectie met 20 kaarten die je gedachten naar hogere niveaus tillen"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-36.json",
+    "name": "Vuur Mar",
+    "id": "7ce8faaa-0f46-43de-93b0-9a6bca7bddb0",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 20
+    },
+    "statistics": {
+      "averageBackLength": 6,
+      "minBackLength": 6,
+      "maxBackLength": 6
+    },
+    "createdAt": "2025-10-25T19:35:49.478Z",
+    "description": "Fogo do mar em 20 flashcards que combinam paixão e fluidez no aprendizado"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-37.json",
+    "name": "Groeien Sol",
+    "id": "a41fa90c-5e52-4f24-b881-748038879f3f",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "6": 3,
+      "7": 17
+    },
+    "statistics": {
+      "averageBackLength": 6.85,
+      "minBackLength": 6,
+      "maxBackLength": 7
+    },
+    "createdAt": "2025-10-25T19:35:49.479Z",
+    "description": "Groeiende zon-collectie van 20 kaarten die je kennis laat opbloeien met warmte en energie"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-38.json",
+    "name": "Zeven Noite",
+    "id": "624ac08e-d1cc-4e80-9f46-d64266bc420a",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "7": 20
+    },
+    "statistics": {
+      "averageBackLength": 7,
+      "minBackLength": 7,
+      "maxBackLength": 7
+    },
+    "createdAt": "2025-10-25T19:35:49.480Z",
+    "description": "Sete noites de sabedoria em 20 flashcards para estudos profundos e reflexivos"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-39.json",
+    "name": "Prachtig Rio",
+    "id": "4ef18a92-95de-4927-869b-d81d9bd2473c",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "7": 20
+    },
+    "statistics": {
+      "averageBackLength": 7,
+      "minBackLength": 7,
+      "maxBackLength": 7
+    },
+    "createdAt": "2025-10-25T19:35:49.481Z",
+    "description": "Prachtige rivier-collectie van 20 kaarten die je kennis laat stromen als helder water"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-40.json",
+    "name": "Echt Vida",
+    "id": "b19a5157-886a-41b8-871f-7884d7c0eb97",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "7": 20
+    },
+    "statistics": {
+      "averageBackLength": 7,
+      "minBackLength": 7,
+      "maxBackLength": 7
+    },
+    "createdAt": "2025-10-25T19:35:49.482Z",
+    "description": "Vida real em 20 flashcards que conectam o aprendizado com experiências autênticas"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-41.json",
+    "name": "Vlieg Tempo",
+    "id": "0c81ea84-839e-409f-8363-821c036f4e46",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "7": 19,
+      "8": 1
+    },
+    "statistics": {
+      "averageBackLength": 7.05,
+      "minBackLength": 7,
+      "maxBackLength": 8
+    },
+    "createdAt": "2025-10-25T19:35:49.483Z",
+    "description": "Vlieg-tempo collectie van 20 kaarten die je snel door verschillende leerniveaus loodst"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-42.json",
+    "name": "Acht Estrela",
+    "id": "69f56026-38cb-4f82-9c76-ae4eabcb909e",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "8": 20
+    },
+    "statistics": {
+      "averageBackLength": 8,
+      "minBackLength": 8,
+      "maxBackLength": 8
+    },
+    "createdAt": "2025-10-25T19:35:49.484Z",
+    "description": "Oito estrelas brilhantes em 20 flashcards que guiam seu aprendizado com excelência"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-43.json",
+    "name": "Hoog Lua",
+    "id": "d67e64d9-c9b2-4066-92fe-6092ed2dd517",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "8": 20
+    },
+    "statistics": {
+      "averageBackLength": 8,
+      "minBackLength": 8,
+      "maxBackLength": 8
+    },
+    "createdAt": "2025-10-25T19:35:49.485Z",
+    "description": "Hoge maan-collectie van 20 kaarten die je 's nachts vergezellen tijdens intensieve studie"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-44.json",
+    "name": "Diep Vento",
+    "id": "630ae665-8e55-423a-8818-3ffc7dc6f069",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "8": 20
+    },
+    "statistics": {
+      "averageBackLength": 8,
+      "minBackLength": 8,
+      "maxBackLength": 8
+    },
+    "createdAt": "2025-10-25T19:35:49.486Z",
+    "description": "Vento profundo com 20 flashcards que trazem ar fresco às suas sessões de estudo"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-45.json",
+    "name": "Breed Flor",
+    "id": "6a9f7bda-1bf2-4f73-b10a-5d3859848fc7",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "8": 11,
+      "9": 9
+    },
+    "statistics": {
+      "averageBackLength": 8.45,
+      "minBackLength": 8,
+      "maxBackLength": 9
+    },
+    "createdAt": "2025-10-25T19:35:49.487Z",
+    "description": "Brede bloem-collectie van 20 kaarten die je kennis laat bloeien in volle pracht"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-46.json",
+    "name": "Negen Chuva",
+    "id": "ad87af55-191b-49af-8dea-42c5c45ca4bd",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "9": 20
+    },
+    "statistics": {
+      "averageBackLength": 9,
+      "minBackLength": 9,
+      "maxBackLength": 9
+    },
+    "createdAt": "2025-10-25T19:35:49.488Z",
+    "description": "Nove chuvas refrescantes em 20 flashcards que nutrem seu crescimento intelectual"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-47.json",
+    "name": "Boven Neve",
+    "id": "b1766ce5-31a8-46e2-96d8-af22ecd7a217",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "9": 18,
+      "10": 2
+    },
+    "statistics": {
+      "averageBackLength": 9.1,
+      "minBackLength": 9,
+      "maxBackLength": 10
+    },
+    "createdAt": "2025-10-25T19:35:49.489Z",
+    "description": "Boven-sneeuw collectie van 20 kaarten die helderheid brengen in complexe onderwerpen"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-48.json",
+    "name": "Tien Praia",
+    "id": "ef7fecf7-ed07-4ff3-a3a0-c0600f63f2b4",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "10": 20
+    },
+    "statistics": {
+      "averageBackLength": 10,
+      "minBackLength": 10,
+      "maxBackLength": 10
+    },
+    "createdAt": "2025-10-25T19:35:49.490Z",
+    "description": "Dez praias serenas em 20 flashcards para momentos relaxantes e produtivos de aprendizado"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-49.json",
+    "name": "Vallen Sonho",
+    "id": "59834ba6-cdc9-4054-9789-a5e1a6b55b0a",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "10": 9,
+      "11": 11
+    },
+    "statistics": {
+      "averageBackLength": 10.55,
+      "minBackLength": 10,
+      "maxBackLength": 11
+    },
+    "createdAt": "2025-10-25T19:35:49.491Z",
+    "description": "Vallende droom-collectie van 20 kaarten die je naar diepere begripslagen leiden"
+  },
+  {
+    "path": "/assets/spaced-repetition/flashcards-array-50.json",
+    "name": "Groot Alegria",
+    "id": "3d3e3b8f-b68a-4198-9ac8-60f5a2c5e562",
+    "totalCards": 20,
+    "lengthDistribution": {
+      "11": 11,
+      "12": 6,
+      "13": 1,
+      "14": 1,
+      "15": 1
+    },
+    "statistics": {
+      "averageBackLength": 11.75,
+      "minBackLength": 11,
+      "maxBackLength": 15
+    },
+    "createdAt": "2025-10-25T19:35:49.492Z",
+    "description": "Grande alegria em 20 flashcards avançados que celebram sua jornada de aprendizado completa"
+  }
+]
