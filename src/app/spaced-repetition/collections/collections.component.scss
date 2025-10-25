@@ -102,6 +102,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: #6c757d;
 
     &:focus {
       outline: none;
@@ -111,6 +112,10 @@
 
     &:hover {
       border-color: #c6d0dc;
+    }
+
+    option {
+      color: #6c757d;
     }
   }
 }
