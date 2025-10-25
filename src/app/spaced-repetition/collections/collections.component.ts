@@ -4,16 +4,25 @@ import { HttpClient } from '@angular/common/http';
 import {CollectionMetadata, uuid} from '../collections-metadata';
 import { environment } from '../../../environments/environment';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import { AssetUrlService } from '../../services/asset-url.service';
 
 @Component({
   selector: 'app-flashcard-arrays-list',
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss'],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  host: {
+    '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
+    '[style.--edit-icon-url]': 'assetUrlService.getEditIconUrl()',
+    '[style.--delete-icon-url]': 'assetUrlService.getDeleteIconUrl()',
+    '[style.--reset-icon-url]': 'assetUrlService.getResetIconUrl()',
+    '[style.--add-icon-url]': 'assetUrlService.getAddIconUrl()'
+  }
 })
 export class CollectionsComponent implements OnInit {
   private fb = inject(FormBuilder);
   private readonly http = inject(HttpClient);
+  protected assetUrlService = inject(AssetUrlService);
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
 
