@@ -53,7 +53,7 @@
     width: 100%;
     box-sizing: border-box;
     background-color: white;
-    background-image: url('/assets/searchicon.png');
+    background-image: url('/assets/icons/searchicon.png');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
@@ -216,7 +216,7 @@
 
         &.edit-btn {
           background-color: #d4edda;
-          background-image: url(/assets/edit-icon.svg);
+          background-image: url(/assets/icons/edit-icon.svg);
           background-repeat: no-repeat;
           background-position: center;
           background-size: 16px 16px;
@@ -225,13 +225,13 @@
 
           &:hover {
             background-color: #c3e6cb;
-            background-image: url(/assets/edit-icon.svg);
+            background-image: url(/assets/icons/edit-icon.svg);
           }
         }
 
         &.delete-btn {
           background-color: #f8d7da;
-          background-image: url(/assets/delete-icon.svg);
+          background-image: url(/assets/icons/delete-icon.svg);
           background-repeat: no-repeat;
           background-position: center;
           background-size: 16px 16px;

@@ -88,7 +88,7 @@ export class CollectionsComponent implements OnInit {
   }
 
   loadDefaultCollection(): void {
-    this.http.get<CollectionMetadata[]>(environment.firstPath + '/assets/collection-metadata.json').subscribe({
+    this.http.get<CollectionMetadata[]>(environment.firstPath + '/assets/spaced-repetition/collection-metadata.json').subscribe({
       next: (cardsData) => {
         this.collectionsMetadata.set(cardsData);
         this.saveCollectionMetadata();
