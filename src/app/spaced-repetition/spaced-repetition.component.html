@@ -8,24 +8,24 @@
     <nav class="view-navigation">
       <button
         type="button"
-        (click)="toggleToArraysList()"
+        (click)="toggleToCollections()"
         class="btn btn-nav"
-        [class.active]="currentView() === 'arraysList'"
+        [class.active]="currentView() === 'collections'"
       >
         Collections
       </button>
       <button
         type="button"
-        (click)="toggleToStudyView()"
+        (click)="toggleToFlashcards()"
         class="btn btn-nav"
-        [class.active]="currentView() === 'study'"
+        [class.active]="currentView() === 'flashcards'"
       >
         Flashcards
       </button>
     </nav>
   </header>
 
-  @if (currentView() === 'arraysList') {
+  @if (currentView() === 'collections') {
   <app-flashcard-arrays-list (collectionSelected)="onArraySelected($event)"></app-flashcard-arrays-list>
   } @else if(selectedFlashcards()) {
   <app-study-view [selectedFlashcards]="selectedFlashcards()"></app-study-view>

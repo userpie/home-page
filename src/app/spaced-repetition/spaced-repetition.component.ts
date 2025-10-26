@@ -14,21 +14,21 @@ import {LanguageSwitcherComponent} from '../components/language-selector/languag
   imports: [CommonModule, ReactiveFormsModule, CollectionsComponent, StudyView, LanguageSwitcherComponent],
 })
 export class SpacedRepetitionComponent {
-  currentView = signal<'study' | 'arraysList'>('arraysList');
+  currentView = signal<'flashcards' | 'collections'>('collections');
   selectedFlashcards = signal<CollectionMetadata>(null as any);
 
   onArraySelected(selectedArray: CollectionMetadata): void {
     this.selectedFlashcards.set(selectedArray);
 
     // Load the new cards and switch to study view
-    this.currentView.set('study');
+    this.currentView.set('flashcards');
   }
 
-  toggleToArraysList(): void {
-    this.currentView.set('arraysList');
+  toggleToCollections(): void {
+    this.currentView.set('collections');
   }
 
-  toggleToStudyView(): void {
-    this.currentView.set('study');
+  toggleToFlashcards(): void {
+    this.currentView.set('flashcards');
   }
 }
