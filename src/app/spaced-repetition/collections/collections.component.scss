@@ -196,53 +196,6 @@
     .action-buttons {
       display: flex;
       gap: 6px;
-
-      .round-btn {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-        &:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        &:active {
-          transform: translateY(0);
-        }
-
-        &.edit-btn {
-          background-color: #d4edda;
-          background-image: var(--edit-icon-url);
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 16px 16px;
-
-          &:hover {
-            background-color: #c3e6cb;
-          }
-        }
-
-        &.delete-btn {
-          background-color: #f8d7da;
-          background-image: var(--delete-icon-url);
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 16px 16px;
-
-          &:hover {
-            background-color: #f5c6cb;
-          }
-        }
-      }
     }
   }
 }

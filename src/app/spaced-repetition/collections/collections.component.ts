@@ -1,11 +1,11 @@
-import { Component, signal, computed, output, inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import {Component, signal, computed, output, inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {CommonModule, isPlatformBrowser} from '@angular/common';
+import {HttpClient} from '@angular/common/http';
 import {CollectionMetadata, uuid} from '../collections-metadata';
-import { environment } from '../../../environments/environment';
+import {environment} from '../../../environments/environment';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import { AssetUrlService } from '../../services/asset-url.service';
-import {Button} from '../../components/button/button';
+import {AssetUrlService} from '../../services/asset-url.service';
+import {Button, ButtonSize} from '../../components/button/button';
 
 @Component({
   selector: 'app-flashcard-arrays-list',
@@ -14,11 +14,11 @@ import {Button} from '../../components/button/button';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, Button],
   host: {
     '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
-    '[style.--edit-icon-url]': 'assetUrlService.getEditIconUrl()',
-    '[style.--delete-icon-url]': 'assetUrlService.getDeleteIconUrl()',
   }
 })
 export class CollectionsComponent implements OnInit {
+  protected readonly ButtonSize = ButtonSize;
+
   private fb = inject(FormBuilder);
   private readonly http = inject(HttpClient);
   protected assetUrlService = inject(AssetUrlService);
@@ -156,10 +156,10 @@ export class CollectionsComponent implements OnInit {
           collections.map(collection =>
             collection.id === editingId
               ? {
-                  ...collection,
-                  name: formValue.name || 'Untitled Collection',
-                  description: formValue.description || ''
-                }
+                ...collection,
+                name: formValue.name || 'Untitled Collection',
+                description: formValue.description || ''
+              }
               : collection
           )
         );
@@ -197,10 +197,7 @@ export class CollectionsComponent implements OnInit {
     this.sortOrder.set(target.value as 'asc' | 'desc');
   }
 
-  editCollection(event: Event, collection: CollectionMetadata): void {
-    // Prevent the card click event from being triggered
-    event.stopPropagation();
-
+  editCollection(collection: CollectionMetadata): void {
     // Pre-fill the form with the selected collection's data
     this.collectionForm.patchValue({
       name: collection.name,
@@ -212,10 +209,7 @@ export class CollectionsComponent implements OnInit {
     this.showAddForm.set(true);
   }
 
-  deleteCollection(event: Event, collection: CollectionMetadata): void {
-    // Prevent the card click event from being triggered
-    event.stopPropagation();
-
+  deleteCollection(collection: CollectionMetadata): void {
     if (confirm(`Are you sure you want to delete "${collection.name}"? This action cannot be undone.`)) {
       // Remove the collection from the list
       this.collectionsMetadata.update(collections =>

@@ -67,10 +67,22 @@
             <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
             @if (isSelected(collectionMetadata.id)) {
               <div class="action-buttons">
-                <button type="button" class="round-btn edit-btn" (click)="editCollection($event, collectionMetadata)" title="Edit Collection">
-                </button>
-                <button type="button" class="round-btn delete-btn" (click)="deleteCollection($event, collectionMetadata)" title="Delete Collection">
-                </button>
+                <app-button
+                  [title]="'Edit Collection'"
+                  [size]="ButtonSize.SMALL"
+                  [icon]="assetUrlService.getEditIconUrl()"
+                  [backgroundColor]="'#d4edda'"
+                  [hoverColor]="'#c3e6cb'"
+                  (click)="editCollection(collectionMetadata)"
+                ></app-button>
+                <app-button
+                  [title]="'Deleting Collection'"
+                  [size]="ButtonSize.SMALL"
+                  [icon]="assetUrlService.getDeleteIconUrl()"
+                  [backgroundColor]="'#f8d7da'"
+                  [hoverColor]="'#f5c6cb'"
+                  (click)="deleteCollection(collectionMetadata)"
+                ></app-button>
               </div>
             }
           </div>

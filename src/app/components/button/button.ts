@@ -1,6 +1,6 @@
 import {Component, input, output} from '@angular/core';
 
-enum ButtonSize {
+export enum ButtonSize {
   BIG,
   SMALL
 }
@@ -27,4 +27,9 @@ export class Button {
   click = output();
 
   protected readonly ButtonSize = ButtonSize;
+
+  handleClick($event: PointerEvent) {
+    $event.stopPropagation();
+    this.click.emit();
+  }
 }
