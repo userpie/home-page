@@ -1,5 +1,74 @@
 {
+  "common": {
+    "cancel": "Cancel"
+  },
   "spaced-repetition": {
-    "title": "Spaced Repetition"
+    "title": "Spaced Repetition",
+    "collections": "Collections",
+    "flashcards": "Flashcards",
+    "search-input-placeholder": "Search by name or description...",
+    "sort-select": "Sort by",
+    "sort-select-newest": "Newest First",
+    "sort-select-oldest": "Oldest First",
+    "average-length": "Average length",
+    "range": "Range",
+    "length-distribution": "Length Distribution",
+    "start": "Start",
+    "collection-name": "Collection name",
+    "name-input-placeholder": "Enter a name for the collection",
+    "description": "Description",
+    "desc-input-placeholder": "Enter a description for the collection",
+    "edit-collection": "Edit Collection",
+    "add-collection": "Add New Collection",
+    "confirm-edit-collection": "Update Collection",
+    "confirm-add-collection": "Add Collection",
+    "reset-modal": {
+      "title": "Reset Collections",
+      "message": "Warning: This action will permanently delete all your custom collections and flashcards and restore the default collections.",
+      "ask-confirm": "This action cannot be undone. Are you sure you want to continue?",
+      "confirm-button": "Reset Everything"
+    },
+    "delete-modal": {
+      "message": "Are you sure you want to delete the collection \"{{collectionName}}\"? This action cannot be undone."
+    },
+    "reset-cards-modal": {
+      "message": "Are you sure you want to reset all cards? This will clear all progress."
+    },
+    "new-card": "New card",
+    "reviews": "reviews",
+    "lapses": "lapses",
+    "difficulty": "difficulty",
+    "loading-cards": "Loading cards...",
+    "no-cards": {
+      "title": "No cards to review!",
+      "message": "Great job! All cards have been reviewed.",
+      "button": "Add New Card"
+    },
+    "card": {
+      "show-answer": "Show Answer",
+      "answer": "Answer",
+      "rating": {
+        "again": "Again",
+        "hard": "Hard",
+        "good": "Good",
+        "easy": "Easy"
+      },
+      "add-card": "Add New Card",
+      "front": "Front (Question)",
+      "back": "Back (Answer)",
+      "front-input-placeholder": "Enter the question or prompt",
+      "back-input-placeholder": "Enter the answer",
+      "confirm-add-card": "Add Card",
+      "reset-cards": "Reset All",
+
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "edit-card": "Edit Card",
+      "front-placeholder": "Enter the front side of the flashcard",
+      "back-placeholder": "Enter the back side of the flashcard",
+      "confirm-edit-card": "Update Card"
+    },
+    "due-cards": "Due Cards:",
+    "total-cards": "Total Cards:"
   }
 }

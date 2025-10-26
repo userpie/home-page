@@ -1,5 +1,73 @@
 {
+  "common": {
+    "cancel": "Annuleren"
+  },
   "spaced-repetition": {
-    "title": "Gespreide Herhaling"
+    "title": "Gespreide Herhaling",
+    "collections": "Collecties",
+    "flashcards": "Flashcards",
+    "search-input-placeholder": "Zoek op naam of beschrijving...",
+    "sort-select": "Sorteren op",
+    "sort-select-newest": "Nieuwste Eerst",
+    "sort-select-oldest": "Oudste Eerst",
+    "average-length": "Gemiddelde lengte",
+    "range": "Bereik",
+    "length-distribution": "Lengteverdeling",
+    "start": "Starten",
+    "collection-name": "Naam van de Collectie",
+    "name-input-placeholder": "Voer een naam in voor de collectie",
+    "description": "Beschrijving",
+    "desc-input-placeholder": "Voer een beschrijving in voor de collectie",
+    "edit-collection": "Collectie Bewerken",
+    "add-collection": "Nieuwe Collectie Toevoegen",
+    "confirm-edit-collection": "Collectie Bijwerken",
+    "confirm-add-collection": "Collectie Toevoegen",
+    "reset-modal": {
+      "title": "Collecties Resetten",
+      "message": "Waarschuwing: Deze actie verwijdert al je aangepaste collecties en flashcards permanent en herstelt de standaardcollecties.",
+      "ask-confirm": "Deze actie kan niet ongedaan worden gemaakt. Weet je zeker dat je wilt doorgaan?",
+      "confirm-button": "Alles Resetten"
+    },
+    "delete-modal": {
+      "message": "Weet je zeker dat je de collectie \"{{collectionName}}\" wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt."
+    },
+    "reset-cards-modal": {
+      "message": "Weet je zeker dat je alle kaarten wilt resetten? Dit zal alle voortgang wissen."
+    },
+    "new-card": "Nieuwe Kaart",
+    "reviews": "herzieningen",
+    "lapses": "fouten",
+    "difficulty": "moeilijkheid",
+    "loading-cards": "Kaarten laden...",
+    "no-cards": {
+      "title": "Geen kaarten om te herzien!",
+      "message": "Goed gedaan! Alle kaarten zijn herzien.",
+      "button": "Nieuwe Kaart Toevoegen"
+    },
+    "card": {
+      "show-answer": "Antwoord Tonen",
+      "answer": "Antwoord",
+      "rating": {
+        "again": "Opnieuw",
+        "hard": "Moeilijk",
+        "good": "Goed",
+        "easy": "Makkelijk"
+      },
+      "add-card": "Nieuwe Kaart Toevoegen",
+      "front": "Voorkant (Vraag)",
+      "back": "Achterkant (Antwoord)",
+      "front-input-placeholder": "Voer de vraag of prompt in",
+      "back-input-placeholder": "Voer het antwoord in",
+      "confirm-add-card": "Kaart Toevoegen",
+      "reset-cards": "Alles Resetten",
+      "correct": "Correct",
+      "incorrect": "Onjuist",
+      "edit-card": "Kaart Bewerken",
+      "front-placeholder": "Voer de voorkant van de flashcard in",
+      "back-placeholder": "Voer de achterkant van de flashcard in",
+      "confirm-edit-card": "Kaart Bijwerken"
+    },
+    "due-cards": "Openstaande Kaarten:",
+    "total-cards": "Totaal Aantal Kaarten:"
   }
 }

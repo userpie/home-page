@@ -1,5 +1,73 @@
 {
+  "common": {
+    "cancel": "Cancelar"
+  },
   "spaced-repetition": {
-    "title": "Repetição Espaçada"
+    "title": "Repetição Espaçada",
+    "collections": "Coleções",
+    "flashcards": "Cartões de Memorização",
+    "search-input-placeholder": "Pesquisar por nome ou descrição...",
+    "sort-select": "Ordenar por",
+    "sort-select-newest": "Mais Recentes Primeiro",
+    "sort-select-oldest": "Mais Antigos Primeiro",
+    "average-length": "Comprimento médio",
+    "range": "Intervalo",
+    "length-distribution": "Distribuição de Comprimento",
+    "start": "Iniciar",
+    "collection-name": "Nome da Coleção",
+    "name-input-placeholder": "Digite um nome para a coleção",
+    "description": "Descrição",
+    "desc-input-placeholder": "Digite uma descrição para a coleção",
+    "edit-collection": "Editar Coleção",
+    "add-collection": "Adicionar Nova Coleção",
+    "confirm-edit-collection": "Atualizar Coleção",
+    "confirm-add-collection": "Adicionar Coleção",
+    "reset-modal": {
+      "title": "Redefinir Coleções",
+      "message": "Aviso: Esta ação excluirá permanentemente todas as suas coleções e cartões personalizados e restaurará as coleções padrão.",
+      "ask-confirm": "Esta ação não pode ser desfeita. Tem certeza de que deseja continuar?",
+      "confirm-button": "Redefinir Tudo"
+    },
+    "delete-modal": {
+      "message": "Tem certeza de que deseja excluir a coleção \"{{collectionName}}\"? Esta ação não pode ser desfeita."
+    },
+    "reset-cards-modal": {
+      "message": "Tem certeza de que deseja redefinir todos os cartões? Isso apagará todo o progresso."
+    },
+    "new-card": "Novo Cartão",
+    "reviews": "revisões",
+    "lapses": "falhas",
+    "difficulty": "dificuldade",
+    "loading-cards": "Carregando cartões...",
+    "no-cards": {
+      "title": "Nenhum cartão para revisar!",
+      "message": "Ótimo trabalho! Todos os cartões foram revisados.",
+      "button": "Adicionar Novo Cartão"
+    },
+    "card": {
+      "show-answer": "Mostrar Resposta",
+      "answer": "Resposta",
+      "rating": {
+        "again": "Novamente",
+        "hard": "Difícil",
+        "good": "Bom",
+        "easy": "Fácil"
+      },
+      "add-card": "Adicionar Novo Cartão",
+      "front": "Frente (Pergunta)",
+      "back": "Verso (Resposta)",
+      "front-input-placeholder": "Digite a pergunta ou o enunciado",
+      "back-input-placeholder": "Digite a resposta",
+      "confirm-add-card": "Adicionar Cartão",
+      "reset-cards": "Redefinir Tudo",
+      "correct": "Correto",
+      "incorrect": "Incorreto",
+      "edit-card": "Editar Cartão",
+      "front-placeholder": "Digite o lado da frente do cartão",
+      "back-placeholder": "Digite o verso do cartão",
+      "confirm-edit-card": "Atualizar Cartão"
+    },
+    "due-cards": "Cartões Pendentes:",
+    "total-cards": "Total de Cartões:"
   }
 }
