@@ -1,7 +1,7 @@
 <div class="spaced-repetition-container">
   <header class="header">
     <div class="header-top">
-      <h1>Spaced Repetition Study</h1>
+      <h1>{{ 'spaced-repetition.title' | translate }}</h1>
       <app-language-switcher></app-language-switcher>
     </div>
 
@@ -12,7 +12,7 @@
         class="btn btn-nav"
         [class.active]="currentView() === 'collections'"
       >
-        Collections
+        {{ 'spaced-repetition.collections' | translate }}
       </button>
       <button
         type="button"
@@ -20,14 +20,14 @@
         class="btn btn-nav"
         [class.active]="currentView() === 'flashcards'"
       >
-        Flashcards
+        {{ 'spaced-repetition.flashcards' | translate }}
       </button>
     </nav>
   </header>
 
   @if (currentView() === 'collections') {
-  <app-flashcard-arrays-list (collectionSelected)="onArraySelected($event)"></app-flashcard-arrays-list>
-  } @else if(selectedFlashcards()) {
-  <app-study-view [selectedFlashcards]="selectedFlashcards()"></app-study-view>
+    <app-flashcard-arrays-list (collectionSelected)="onArraySelected($event)"></app-flashcard-arrays-list>
+  } @else if (selectedFlashcards()) {
+    <app-study-view [selectedFlashcards]="selectedFlashcards()"></app-study-view>
   }
 </div>

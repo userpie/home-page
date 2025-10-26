@@ -6,12 +6,13 @@ import {environment} from '../../../environments/environment';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AssetUrlService} from '../../services/asset-url.service';
 import {Button, ButtonSize} from '../../components/button/button';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-flashcard-arrays-list',
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, Button],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Button, TranslatePipe],
   host: {
     '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
   }
@@ -24,6 +25,7 @@ export class CollectionsComponent implements OnInit {
   protected assetUrlService = inject(AssetUrlService);
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
+  translate = inject(TranslateService);
 
   collectionsMetadata = signal<CollectionMetadata[]>([]);
   selectedCollectionNumber = signal<uuid | null>(null);
@@ -210,7 +212,7 @@ export class CollectionsComponent implements OnInit {
   }
 
   deleteCollection(collection: CollectionMetadata): void {
-    if (confirm(`Are you sure you want to delete "${collection.name}"? This action cannot be undone.`)) {
+    if (confirm(this.translate.instant('spaced-repetition.delete-modal.message', {collectionName: collection.name}))) {
       // Remove the collection from the list
       this.collectionsMetadata.update(collections =>
         collections.filter(c => c.id !== collection.id)
@@ -244,16 +246,16 @@ export class CollectionsComponent implements OnInit {
       return;
     }
 
-    // Clear all collection metadata from localStorage
+// Clear all collection metadata from localStorage
     localStorage.removeItem('collection-metadata');
 
-    // Clear all individual collection flashcard data
+// Clear all individual collection flashcard data
     const currentCollections = this.collectionsMetadata();
     currentCollections.forEach(collection => {
       localStorage.removeItem(collection.id);
     });
 
-    // Clear any other spaced repetition related data
+// Clear any other spaced repetition related data
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const key = localStorage.key(i);
       if (key && (key.startsWith('flashcards-') || key.includes('collection'))) {
@@ -261,11 +263,11 @@ export class CollectionsComponent implements OnInit {
       }
     }
 
-    // Reset state
+// Reset state
     this.selectedCollectionNumber.set(null);
     this.hideResetModal();
 
-    // Load default collections
+// Load default collections
     this.loadDefaultCollection();
   }
 }

@@ -1,96 +1,107 @@
 @if (!isLoading()) {
-<div class="stats">
-  <span>Cards due: {{ dueCards().length }}</span>
-  <span>Total cards: {{ allCards().length }}</span>
-  <span class="current-array">{{ selectedFlashcards().name }}</span>
-</div>
-} @if (isLoading()) {
-<div class="loading">
-  <p>Loading cards...</p>
-</div>
+  <div class="stats">
+    <span>{{ 'spaced-repetition.due-cards' | translate }} {{ dueCards().length }}</span>
+    <span>{{ 'spaced-repetition.total-cards' | translate }} {{ allCards().length }}</span>
+    <span class="current-array">{{ selectedFlashcards().name }}</span>
+  </div>
+}
+@if (isLoading()) {
+  <div class="loading">
+    <p>{{ 'spaced-repetition.loading-cards' | translate }}</p>
+  </div>
 } @else if (!currentCard()) {
-<div class="no-cards">
-  <h2>No cards to review!</h2>
-  <p>Great job! All cards have been reviewed.</p>
-  <button type="button" (click)="showAddForm.set(true)" class="btn btn-primary">
-    Add New Card
-  </button>
-</div>
+  <div class="no-cards">
+    <h2>{{ 'spaced-repetition.no-cards.title' | translate }}</h2>
+    <p>{{ 'spaced-repetition.no-cards.message' | translate }}</p>
+    <button type="button" (click)="showAddForm.set(true)" class="btn btn-primary">
+      {{ 'spaced-repetition.no-cards.button' | translate }}
+    </button>
+  </div>
 } @else {
-<div class="study-area">
-  <div class="flashcard" [class.revealed]="currentCard().isRevealed">
-    <div class="card-front">
-      <h3>{{ currentCard().front }}</h3>
-      @if (!currentCard().isRevealed) {
-      <button type="button" (click)="revealCard()" class="btn btn-secondary">Show Answer</button>
-      }
-    </div>
-
-    @if (currentCard().isRevealed) {
-    <div class="card-back">
-      <p>Answer:</p>
-      <h3>{{ currentCard().back }}</h3>
-
-      <div class="card-stats">
-        <small>{{ getCardStats(currentCard()) }}</small>
-      </div>
-
-      <div class="rating-buttons">
-        @if (getSchedulingPreview(); as preview) {
-        <button type="button" (click)="rateCard(1)" class="btn btn-rating btn-again">
-          <span class="rating-label">Again</span>
-          <span class="rating-time">{{ formatTimeUntil(preview.again) }}</span>
-        </button>
-        <button type="button" (click)="rateCard(2)" class="btn btn-rating btn-hard">
-          <span class="rating-label">Hard</span>
-          <span class="rating-time">{{ formatTimeUntil(preview.hard) }}</span>
-        </button>
-        <button type="button" (click)="rateCard(3)" class="btn btn-rating btn-good">
-          <span class="rating-label">Good</span>
-          <span class="rating-time">{{ formatTimeUntil(preview.good) }}</span>
-        </button>
-        <button type="button" (click)="rateCard(4)" class="btn btn-rating btn-easy">
-          <span class="rating-label">Easy</span>
-          <span class="rating-time">{{ formatTimeUntil(preview.easy) }}</span>
-        </button>
+  <div class="study-area">
+    <div class="flashcard" [class.revealed]="currentCard().isRevealed">
+      <div class="card-front">
+        <h3>{{ currentCard().front }}</h3>
+        @if (!currentCard().isRevealed) {
+          <button type="button" (click)="revealCard()"
+                  class="btn btn-secondary">{{ 'spaced-repetition.card.show-answer' | translate }}
+          </button>
         }
       </div>
+
+      @if (currentCard().isRevealed) {
+        <div class="card-back">
+          <p>{{ 'spaced-repetition.card.answer' | translate }}</p>
+          <h3>{{ currentCard().back }}</h3>
+
+          <div class="card-stats">
+            <small>{{ getCardStats(currentCard()) }}</small>
+          </div>
+
+          <div class="rating-buttons">
+            @if (getSchedulingPreview(); as preview) {
+              <button type="button" (click)="rateCard(1)" class="btn btn-rating btn-again">
+                <span class="rating-label">{{ 'spaced-repetition.card.rating.again' | translate }}</span>
+                <span class="rating-time">{{ formatTimeUntil(preview.again) }}</span>
+              </button>
+              <button type="button" (click)="rateCard(2)" class="btn btn-rating btn-hard">
+                <span class="rating-label">{{ 'spaced-repetition.card.rating.hard' | translate }}</span>
+                <span class="rating-time">{{ formatTimeUntil(preview.hard) }}</span>
+              </button>
+              <button type="button" (click)="rateCard(3)" class="btn btn-rating btn-good">
+                <span class="rating-label">{{ 'spaced-repetition.card.rating.good' | translate }}</span>
+                <span class="rating-time">{{ formatTimeUntil(preview.good) }}</span>
+              </button>
+              <button type="button" (click)="rateCard(4)" class="btn btn-rating btn-easy">
+                <span class="rating-label">{{ 'spaced-repetition.card.rating.easy' | translate }}</span>
+                <span class="rating-time">{{ formatTimeUntil(preview.easy) }}</span>
+              </button>
+            }
+          </div>
+        </div>
+      }
     </div>
-    }
   </div>
-</div>
-} @if (showAddForm()) {
-<div class="add-card-form">
-  <h3>Add New Card</h3>
-  <form [formGroup]="cardForm" (ngSubmit)="addCard()">
-    <div class="form-group">
-      <label for="front">Front (Question):</label>
-      <textarea
-        id="front"
-        formControlName="front"
-        placeholder="Enter the question or prompt"
-        rows="3"
-      >
+}
+@if (showAddForm()) {
+  <div class="add-card-form">
+    <h3>{{ 'spaced-repetition.card.add-card' | translate }}</h3>
+    <form [formGroup]="cardForm" (ngSubmit)="addCard()">
+      <div class="form-group">
+        <label for="front">{{ 'spaced-repetition.card.front' | translate }}</label>
+        <textarea
+          id="front"
+          formControlName="front"
+          [placeholder]="'spaced-repetition.card.front-input-placeholder' | translate "
+          rows="3"
+        >
       </textarea>
-    </div>
+      </div>
 
-    <div class="form-group">
-      <label for="back">Back (Answer):</label>
-      <textarea id="back" formControlName="back" placeholder="Enter the answer" rows="3">
+      <div class="form-group">
+        <label for="back">{{ 'spaced-repetition.card.back' | translate }}</label>
+        <textarea id="back" formControlName="back"
+                  [placeholder]="'spaced-repetition.card.back-input-placeholder' | translate" rows="3">
       </textarea>
-    </div>
+      </div>
 
-    <div class="form-actions">
-      <button type="submit" [disabled]="cardForm.invalid" class="btn btn-primary">Add Card</button>
-      <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">Cancel</button>
-    </div>
-  </form>
-</div>
+      <div class="form-actions">
+        <button type="submit" [disabled]="cardForm.invalid"
+                class="btn btn-primary">{{ 'spaced-repetition.card.confirm-add-card' | translate }}
+        </button>
+        <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">{{ 'common.cancel' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
 }
 
 <div class="controls">
-  <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">Add Card</button>
+  <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">{{
+      'spaced-repetition.card.confirm-add-card' | translate
+    }}
+  </button>
   <button type="button" (click)="resetAllCards()" class="btn btn-outline btn-danger">
-    Reset All
+    {{ 'spaced-repetition.card.reset-cards' | translate }}
   </button>
 </div>

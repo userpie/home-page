@@ -1,10 +1,11 @@
-import { Component, computed, inject, input, OnInit, PLATFORM_ID, signal } from '@angular/core';
-import { CollectionMetadata } from '../collections-metadata';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Card, createEmptyCard, FSRS, Grade, Rating, State } from 'ts-fsrs';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import {Component, computed, inject, input, OnInit, PLATFORM_ID, signal} from '@angular/core';
+import {CollectionMetadata} from '../collections-metadata';
+import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Card, createEmptyCard, FSRS, Grade, Rating, State} from 'ts-fsrs';
+import {CommonModule, isPlatformBrowser} from '@angular/common';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 interface StudyCard {
   id: string;
@@ -18,7 +19,7 @@ interface StudyCard {
   selector: 'app-study-view',
   templateUrl: './study-view.html',
   styleUrl: './study-view.scss',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
 })
 export class StudyView implements OnInit {
   private fb = inject(FormBuilder);
@@ -28,6 +29,8 @@ export class StudyView implements OnInit {
   allCards = signal<StudyCard[]>([]);
   currentCardIndex = signal(0);
   showAddForm = signal(false);
+
+  private translate = inject(TranslateService);
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
 
@@ -80,7 +83,7 @@ export class StudyView implements OnInit {
     const current = this.currentCard();
     if (current) {
       const updatedCards = this.allCards().map((card) =>
-        card.id === current.id ? { ...card, isRevealed: true } : card
+        card.id === current.id ? {...card, isRevealed: true} : card
       );
       this.allCards.set(updatedCards);
     }
@@ -95,10 +98,10 @@ export class StudyView implements OnInit {
       grade === 1
         ? Rating.Again
         : grade === 2
-        ? Rating.Hard
-        : grade === 3
-        ? Rating.Good
-        : Rating.Easy;
+          ? Rating.Hard
+          : grade === 3
+            ? Rating.Good
+            : Rating.Easy;
 
     // Schedule the card with FSRS
     const schedulingCards = this.fsrs.repeat(current.fsrsCard, new Date());
@@ -108,10 +111,10 @@ export class StudyView implements OnInit {
     const updatedCards = this.allCards().map((card) =>
       card.id === current.id
         ? {
-            ...card,
-            fsrsCard: updatedFsrsCard,
-            isRevealed: false,
-          }
+          ...card,
+          fsrsCard: updatedFsrsCard,
+          isRevealed: false,
+        }
         : card
     );
 
@@ -154,7 +157,7 @@ export class StudyView implements OnInit {
   }
 
   resetAllCards(): void {
-    if (confirm('Are you sure you want to reset all cards? This will clear all progress.')) {
+    if (confirm(this.translate.instant('spaced-repetition.reset-cards-modal.message'))) {
       const resetCards = this.allCards().map((card) => ({
         ...card,
         fsrsCard: createEmptyCard(),
@@ -190,14 +193,14 @@ export class StudyView implements OnInit {
   getCardStats(card: StudyCard): string {
     const fsrsCard = card.fsrsCard;
     if (fsrsCard.state === State.New) {
-      return 'New card';
+      return this.translate.instant('spaced-repetition.new-card');
     }
 
     const reviews = fsrsCard.reps;
     const lapses = fsrsCard.lapses;
     const difficulty = Math.round(fsrsCard.difficulty * 10) / 10;
 
-    return `${reviews} reviews, ${lapses} lapses, difficulty: ${difficulty}`;
+    return `${reviews} ${this.translate.instant('spaced-repetition.reviews')}, ${lapses} ${this.translate.instant('spaced-repetition.lapses')}, ${this.translate.instant('spaced-repetition.difficulty')}: ${difficulty}`;
   }
 
   private saveCards(): void {

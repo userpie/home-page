@@ -2,7 +2,7 @@
   <div class="header-section">
     <div class="header-content">
       <div class="title-group">
-        <h2>Collections</h2>
+        <h2>{{ 'spaced-repetition.collections' | translate }}</h2>
       </div>
       <div class="header-buttons">
         <app-button [title]="'Create New Collection'"
@@ -28,153 +28,153 @@
           <input
             type="text"
             class="search-input"
-            placeholder="Search by name or description..."
+            [placeholder]="'spaced-repetition.search-input-placeholder' | translate"
             [value]="searchQuery()"
             (input)="onSearchChange($event)"
           />
         </div>
 
         <div class="sort-container">
-          <label for="sort-select" class="sort-label">Sort by:</label>
+          <label for="sort-select" class="sort-label">{{ 'spaced-repetition.sort-select' | translate }}</label>
           <select
             id="sort-select"
             class="sort-select"
             [value]="sortOrder()"
             (change)="onSortChange($event)"
           >
-            <option value="desc">Newest First</option>
-            <option value="asc">Oldest First</option>
+            <option value="desc">{{ 'spaced-repetition.sort-select-newest' | translate }}</option>
+            <option value="asc">{{ 'spaced-repetition.sort-select-oldest' | translate }}</option>
           </select>
         </div>
       </div>
     </div>
 
     <div class="arrays-list">
-    @for (collectionMetadata of filteredCollections(); track collectionMetadata.id) {
-      <div
-        class="array-card"
-        [class.selected]="isSelected(collectionMetadata.id)"
-        (click)="selectArray(collectionMetadata.id)"
-      >
-        <div class="array-header">
-          <div class="title-section">
-            <h3>{{ collectionMetadata.name }}</h3>
-            @if (isSelected(collectionMetadata.id)) {
-              <span class="selected-badge">Selected</span>
-            }
-          </div>
-          <div class="header-right">
-            <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
-            @if (isSelected(collectionMetadata.id)) {
-              <div class="action-buttons">
-                <app-button
-                  [title]="'Edit Collection'"
-                  [size]="ButtonSize.SMALL"
-                  [icon]="assetUrlService.getEditIconUrl()"
-                  [backgroundColor]="'#d4edda'"
-                  [hoverColor]="'#c3e6cb'"
-                  (click)="editCollection(collectionMetadata)"
-                ></app-button>
-                <app-button
-                  [title]="'Deleting Collection'"
-                  [size]="ButtonSize.SMALL"
-                  [icon]="assetUrlService.getDeleteIconUrl()"
-                  [backgroundColor]="'#f8d7da'"
-                  [hoverColor]="'#f5c6cb'"
-                  (click)="deleteCollection(collectionMetadata)"
-                ></app-button>
-              </div>
-            }
-          </div>
-        </div>
-
-        <div class="array-details">
-          <p class="description">{{ collectionMetadata.description }}</p>
-
-          <div class="statistics">
-            <div class="stat-item">
-              <span class="label">Average length:</span>
-              <span class="value">{{ collectionMetadata.statistics.averageBackLength }}</span>
+      @for (collectionMetadata of filteredCollections(); track collectionMetadata.id) {
+        <div
+          class="array-card"
+          [class.selected]="isSelected(collectionMetadata.id)"
+          (click)="selectArray(collectionMetadata.id)"
+        >
+          <div class="array-header">
+            <div class="title-section">
+              <h3>{{ collectionMetadata.name }}</h3>
             </div>
-            <div class="stat-item">
-              <span class="label">Range:</span>
-              <span class="value"
-              >{{ collectionMetadata.statistics.minBackLength }} - {{ collectionMetadata.statistics.maxBackLength }}</span
-              >
-            </div>
-          </div>
-
-          <div class="length-distribution">
-            <h4>Length Distribution:</h4>
-            <div class="distribution-items">
-              @for (item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
-                <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
+            <div class="header-right">
+              <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
+              @if (isSelected(collectionMetadata.id)) {
+                <div class="action-buttons">
+                  <app-button
+                    [title]="'Edit Collection'"
+                    [size]="ButtonSize.SMALL"
+                    [icon]="assetUrlService.getEditIconUrl()"
+                    [backgroundColor]="'#d4edda'"
+                    [hoverColor]="'#c3e6cb'"
+                    (click)="editCollection(collectionMetadata)"
+                  ></app-button>
+                  <app-button
+                    [title]="'Deleting Collection'"
+                    [size]="ButtonSize.SMALL"
+                    [icon]="assetUrlService.getDeleteIconUrl()"
+                    [backgroundColor]="'#f8d7da'"
+                    [hoverColor]="'#f5c6cb'"
+                    (click)="deleteCollection(collectionMetadata)"
+                  ></app-button>
+                </div>
               }
             </div>
           </div>
 
-          @if (isSelected(collectionMetadata.id)) {
-            <div class="action-section">
-              <button type="button" class="start-study-btn" (click)="startStudying($event, collectionMetadata)">
-                Start Studying This Array
-              </button>
+          <div class="array-details">
+            <p class="description">{{ collectionMetadata.description }}</p>
+
+            <div class="statistics">
+              <div class="stat-item">
+                <span class="label">{{ 'spaced-repetition.average-length' | translate }}</span>
+                <span class="value">{{ collectionMetadata.statistics.averageBackLength }}</span>
+              </div>
+              <div class="stat-item">
+                <span class="label">{{ 'spaced-repetition.range' | translate }}</span>
+                <span class="value"
+                >{{ collectionMetadata.statistics.minBackLength }}
+                  - {{ collectionMetadata.statistics.maxBackLength }}</span
+                >
+              </div>
             </div>
-          }
+
+            <div class="length-distribution">
+              <h4>{{ 'spaced-repetition.length-distribution' | translate }}</h4>
+              <div class="distribution-items">
+                @for (item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
+                  <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
+                }
+              </div>
+            </div>
+
+            @if (isSelected(collectionMetadata.id)) {
+              <div class="action-section">
+                <button type="button" class="start-study-btn" (click)="startStudying($event, collectionMetadata)">
+                  {{ 'spaced-repetition.start' | translate }}
+                </button>
+              </div>
+            }
+          </div>
         </div>
-      </div>
-    }
+      }
     </div>
   } @else {
-  <div class="add-array-form">
-    <h3>{{ editingCollectionId() ? 'Edit Collection' : 'Add New Collection' }}</h3>
-    <form [formGroup]="collectionForm" (ngSubmit)="addCollection()">
-      <div class="form-group">
-        <label for="name">Collection name:</label>
-        <input
-          id="name"
-          formControlName="name"
-          placeholder="Enter a name for the collection"
-          type="text"
-        />
-      </div>
+    <div class="add-array-form">
+      <h3>{{ (editingCollectionId() ? 'spaced-repetition.edit-collection' : 'spaced-repetition.add-collection') | translate }}</h3>
+      <form [formGroup]="collectionForm" (ngSubmit)="addCollection()">
+        <div class="form-group">
+          <label for="name">{{ 'spaced-repetition.collection-name' | translate }}</label>
+          <input
+            id="name"
+            formControlName="name"
+            [placeholder]="'spaced-repetition.name-input-placeholder' | translate"
+            type="text"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea
-          id="description"
-          formControlName="description"
-          placeholder="Enter a description for the collection"
-          rows="3"
-        >
+        <div class="form-group">
+          <label for="description">{{ 'spaced-repetition.description' | translate }}</label>
+          <textarea
+            id="description"
+            formControlName="description"
+            [placeholder]="'spaced-repetition.desc-input-placeholder' | translate"
+            rows="3"
+          >
         </textarea>
-      </div>
+        </div>
 
-      <div class="form-actions">
-        <button type="submit" [disabled]="collectionForm.invalid" class="btn btn-primary">
-          {{ editingCollectionId() ? 'Update Collection' : 'Add Collection' }}
-        </button>
-        <button type="button" (click)="cancelAddCollection()" class="btn btn-secondary">Cancel</button>
-      </div>
-    </form>
-  </div>
+        <div class="form-actions">
+          <button type="submit" [disabled]="collectionForm.invalid" class="btn btn-primary">
+            {{ (editingCollectionId() ? 'spaced-repetition.confirm-edit-collection' : 'spaced-repetition.confirm-add-collection') | translate }}
+          </button>
+          <button type="button" (click)="cancelAddCollection()"
+                  class="btn btn-secondary">{{ 'common.cancel' | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
   }
 
   @if (showResetModal()) {
     <div class="modal-overlay" (click)="hideResetModal()">
       <div class="modal-content" (click)="$event.stopPropagation()">
         <div class="modal-header">
-          <h3>Reset Collections</h3>
+          <h3>{{ 'spaced-repetition.reset-modal.title' | translate }}</h3>
         </div>
         <div class="modal-body">
-          <p><strong>Warning:</strong> This action will permanently delete all your custom collections and flashcards, and restore the default collections.</p>
-          <p>This action cannot be undone. Are you sure you want to continue?</p>
+          <p>{{ 'spaced-repetition.reset-modal.message' | translate }}</p>
+          <p>{{ 'spaced-repetition.reset-modal.ask-confirm' | translate }}</p>
         </div>
         <div class="modal-actions">
           <button type="button" class="btn btn-danger" (click)="resetToDefaults()">
-            Reset Everything
+            {{ 'spaced-repetition.reset-modal.confirm-button' | translate }}
           </button>
           <button type="button" class="btn btn-secondary" (click)="hideResetModal()">
-            Cancel
+            {{ 'common.cancel' | translate }}
           </button>
         </div>
       </div>
