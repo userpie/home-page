@@ -65,14 +65,6 @@
               @if (isSelected(collectionMetadata.id)) {
                 <div class="action-buttons">
                   <app-button
-                    [title]="'Edit Collection'"
-                    [size]="ButtonSize.SMALL"
-                    [icon]="assetUrlService.getEditIconUrl()"
-                    [backgroundColor]="'#d4edda'"
-                    [hoverColor]="'#c3e6cb'"
-                    (click)="editCollection(collectionMetadata)"
-                  ></app-button>
-                  <app-button
                     [title]="'Deleting Collection'"
                     [size]="ButtonSize.SMALL"
                     [icon]="assetUrlService.getDeleteIconUrl()"
@@ -80,6 +72,30 @@
                     [hoverColor]="'#f5c6cb'"
                     (click)="deleteCollection(collectionMetadata)"
                   ></app-button>
+                  <app-button
+                    [title]="'Edit Collection'"
+                    [size]="ButtonSize.SMALL"
+                    [icon]="assetUrlService.getEditIconUrl()"
+                    [backgroundColor]="'#fff3cd'"
+                    [hoverColor]="'#ffeaa7'"
+                    (click)="editCollection(collectionMetadata)"
+                  ></app-button>
+                  <app-button
+                    [title]="'Start'"
+                    [size]="ButtonSize.SMALL"
+                    [icon]="assetUrlService.getStartIconUrl()"
+                    [backgroundColor]="'#d4edda'"
+                    [hoverColor]="'#c3e6cb'"
+                    (click)="startStudying(collectionMetadata)"
+                  ></app-button>
+<!--                  <app-button-->
+<!--                    [title]="'Deleting Collection'"-->
+<!--                    [size]="ButtonSize.SMALL"-->
+<!--                    [icon]="assetUrlService.getStartAllIconUrl()"-->
+<!--                    [backgroundColor]="'#d4edda'"-->
+<!--                    [hoverColor]="'#c3e6cb'"-->
+<!--                    (click)="startStudying(collectionMetadata)"-->
+<!--                  ></app-button>-->
                 </div>
               }
             </div>
@@ -111,13 +127,13 @@
               </div>
             </div>
 
-            @if (isSelected(collectionMetadata.id)) {
-              <div class="action-section">
-                <button type="button" class="start-study-btn" (click)="startStudying($event, collectionMetadata)">
-                  {{ 'spaced-repetition.start' | translate }}
-                </button>
-              </div>
-            }
+            <!--            @if (isSelected(collectionMetadata.id)) {-->
+            <!--              <div class="action-section">-->
+            <!--                <button type="button" class="start-study-btn" (click)="startStudying($event, collectionMetadata)">-->
+            <!--                  {{ 'spaced-repetition.start' | translate }}-->
+            <!--                </button>-->
+            <!--              </div>-->
+            <!--            }-->
           </div>
         </div>
       }

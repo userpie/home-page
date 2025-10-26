@@ -19,7 +19,7 @@ export class AssetUrlService {
 
   // Specific methods for your icons
   getSearchIconUrl(): string {
-    return this.getBackgroundImageUrl('assets/icons/searchicon.png');
+    return this.getBackgroundImageUrl('assets/icons/searchicon.svg');
   }
 
   getEditIconUrl(): string {
@@ -48,5 +48,13 @@ export class AssetUrlService {
 
   getJamaicanFlagIconUrl() {
     return 'assets/flags/jamaica.svg';
+  }
+
+  getStartIconUrl() {
+    return this.getBackgroundImageUrl('assets/icons/start-icon.svg');
+  }
+
+  getStartAllIconUrl() {
+    return this.getBackgroundImageUrl('assets/icons/start-all-icon.svg');
   }
 }

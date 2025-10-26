@@ -129,10 +129,7 @@ export class CollectionsComponent implements OnInit {
     this.selectedCollectionNumber.set(arrayNumber);
   }
 
-  startStudying(event: Event, array: CollectionMetadata): void {
-    // Prevent the card click event from being triggered
-    event.stopPropagation();
-
+  startStudying( array: CollectionMetadata): void {
     // Emit the selected array to switch to study mode
     this.collectionSelected.emit(array);
   }
