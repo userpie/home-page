@@ -1,0 +1,17 @@
+<svg width="40" height="40" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <defs>
+    <clipPath id="circle-clip">
+      <circle cx="18" cy="18" r="18"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#circle-clip)">
+    <!-- Green background -->
+    <rect x="0" y="0" width="36" height="36" fill="#007847"/>
+    <!-- Gold saltire (X) -->
+    <polygon fill="#FED100" points="0,0 7,0 36,29 36,36 29,36 0,7"/>
+    <polygon fill="#FED100" points="36,0 29,0 0,29 0,36 7,36 36,7"/>
+    <!-- Black triangles -->
+    <polygon fill="#000" points="0,0 14,18 0,36"/>
+    <polygon fill="#000" points="36,0 22,18 36,36"/>
+  </g>
+</svg>

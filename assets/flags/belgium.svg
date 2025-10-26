@@ -1,2 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet"><path fill="#141414" d="M4 5a4 4 0 0 0-4 4v18a4 4 0 0 0 4 4h8V5H4z"></path><path fill="#FEE833" d="M12 5h12v26H12z"></path><path fill="#EE232C" d="M32 5h-8v26h8a4 4 0 0 0 4-4V9a4 4 0 0 0-4-4z"></path></svg>
+<svg width="40" height="40" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <defs>
+    <clipPath id="circle-clip">
+      <circle cx="18" cy="18" r="18"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#circle-clip)">
+    <rect x="0" y="0" width="12" height="36" fill="#141414"/>
+    <rect x="12" y="0" width="12" height="36" fill="#FEE833"/>
+    <rect x="24" y="0" width="12" height="36" fill="#EE232C"/>
+  </g>
+</svg>
