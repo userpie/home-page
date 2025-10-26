@@ -9,7 +9,7 @@ import {Button, ButtonSize} from '../../components/button/button';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-flashcard-arrays-list',
+  selector: 'app-collections',
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss'],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, Button, TranslatePipe],

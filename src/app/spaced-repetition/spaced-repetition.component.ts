@@ -1,5 +1,5 @@
-import {Component, ChangeDetectionStrategy, signal} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {Component, ChangeDetectionStrategy, signal, inject, PLATFORM_ID} from '@angular/core';
+import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CollectionMetadata} from './collections-metadata';
 import {CollectionsComponent} from './collections/collections.component';
@@ -17,6 +17,9 @@ import {TranslatePipe} from '@ngx-translate/core';
 export class SpacedRepetitionComponent {
   currentView = signal<'flashcards' | 'collections'>('collections');
   selectedFlashcards = signal<CollectionMetadata>(null as any);
+
+  private platformId = inject(PLATFORM_ID);
+  protected isBrowser = isPlatformBrowser(this.platformId);
 
   onArraySelected(selectedArray: CollectionMetadata): void {
     this.selectedFlashcards.set(selectedArray);

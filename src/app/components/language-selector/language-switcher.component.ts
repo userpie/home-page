@@ -15,7 +15,7 @@ const languages: Language[] = [
   {code: 'en', name: 'English', flag: environment.firstPath + '/assets/flags/jamaica.svg'}
 ];
 
-export const defaultLanguage = languages[0];
+export const defaultLanguage = languages[1]; // Portuguese
 
 @Component({
   selector: 'app-language-switcher',

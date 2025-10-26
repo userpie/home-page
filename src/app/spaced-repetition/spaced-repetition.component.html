@@ -1,4 +1,16 @@
 <div class="spaced-repetition-container">
+  @if (!isBrowser){
+    <div class="loading-overlay">
+      <div class="loading-content">
+        <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="20" stroke="#1976d2" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="31.4 31.4" stroke-dashoffset="0">
+            <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="1s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+        <div style="font-size: 1.2rem; color: #444;">Loading...</div>
+      </div>
+    </div>
+  }
   <header class="header">
     <div class="header-top">
       <h1>{{ 'spaced-repetition.title' | translate }}</h1>
@@ -26,8 +38,8 @@
   </header>
 
   @if (currentView() === 'collections') {
-    <app-flashcard-arrays-list (collectionSelected)="onArraySelected($event)"></app-flashcard-arrays-list>
+    <app-collections (collectionSelected)="onArraySelected($event)"></app-collections>
   } @else if (selectedFlashcards()) {
-    <app-study-view [selectedFlashcards]="selectedFlashcards()"></app-study-view>
+    <app-flashcards [selectedFlashcards]="selectedFlashcards()"></app-flashcards>
   }
 </div>

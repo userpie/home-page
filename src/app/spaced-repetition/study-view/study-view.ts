@@ -16,7 +16,7 @@ interface StudyCard {
 }
 
 @Component({
-  selector: 'app-study-view',
+  selector: 'app-flashcards',
   templateUrl: './study-view.html',
   styleUrl: './study-view.scss',
   imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
