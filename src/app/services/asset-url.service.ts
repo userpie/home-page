@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +36,17 @@ export class AssetUrlService {
 
   getAddIconUrl(): string {
     return this.getBackgroundImageUrl('assets/icons/add-icon.svg');
+  }
+
+  getBelgiumFlagIconUrl(): string {
+    return 'assets/flags/belgium.svg';
+  }
+
+  getBrazilianFlagIconUrl() {
+    return 'assets/flags/brazil.svg';
+  }
+
+  getJamaicanFlagIconUrl() {
+    return 'assets/flags/jamaica.svg';
   }
 }

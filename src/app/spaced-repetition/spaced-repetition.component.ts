@@ -1,16 +1,17 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CollectionMetadata } from './collections-metadata';
-import { CollectionsComponent } from './collections/collections.component';
-import { StudyView } from './study-view/study-view';
+import {Component, ChangeDetectionStrategy, signal} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
+import {CollectionMetadata} from './collections-metadata';
+import {CollectionsComponent} from './collections/collections.component';
+import {StudyView} from './study-view/study-view';
+import {LanguageSwitcherComponent} from '../components/language-selector/language-switcher.component';
 
 @Component({
   selector: 'app-spaced-repetition',
   templateUrl: './spaced-repetition.component.html',
   styleUrls: ['./spaced-repetition.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ReactiveFormsModule, CollectionsComponent, StudyView],
+  imports: [CommonModule, ReactiveFormsModule, CollectionsComponent, StudyView, LanguageSwitcherComponent],
 })
 export class SpacedRepetitionComponent {
   currentView = signal<'study' | 'arraysList'>('arraysList');
