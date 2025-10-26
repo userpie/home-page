@@ -5,18 +5,17 @@ import {CollectionMetadata, uuid} from '../collections-metadata';
 import { environment } from '../../../environments/environment';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { AssetUrlService } from '../../services/asset-url.service';
+import {Button} from '../../components/button/button';
 
 @Component({
   selector: 'app-flashcard-arrays-list',
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Button],
   host: {
     '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
     '[style.--edit-icon-url]': 'assetUrlService.getEditIconUrl()',
     '[style.--delete-icon-url]': 'assetUrlService.getDeleteIconUrl()',
-    '[style.--reset-icon-url]': 'assetUrlService.getResetIconUrl()',
-    '[style.--add-icon-url]': 'assetUrlService.getAddIconUrl()'
   }
 })
 export class CollectionsComponent implements OnInit {

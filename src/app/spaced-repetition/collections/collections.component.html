@@ -5,12 +5,18 @@
         <h2>Collections</h2>
       </div>
       <div class="header-buttons">
-        <button type="button" class="round-btn create-btn" (click)="showAddForm.set(true)" title="Create New Collection">
-          <span class="sr-only">New</span>
-        </button>
-        <button type="button" class="round-btn reset-btn" (click)="openResetModal()" title="Reset to Default Collections">
-          <span class="sr-only">Reset</span>
-        </button>
+        <app-button [title]="'Create New Collection'"
+                    [icon]="assetUrlService.getAddIconUrl()"
+                    [backgroundColor]="'#d4edda'"
+                    [hoverColor]="'#c3e6cb'"
+                    (click)="showAddForm.set(true)"
+        ></app-button>
+        <app-button [title]="'Reset to Default Collections'"
+                    [icon]="assetUrlService.getResetIconUrl()"
+                    [backgroundColor]="'#fff3cd'"
+                    [hoverColor]="'#ffeaa7'"
+                    (click)="openResetModal()"
+        ></app-button>
       </div>
     </div>
   </div>

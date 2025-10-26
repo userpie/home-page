@@ -1,0 +1,10 @@
+
+<button type="button" class="button"
+        (click)="click.emit()"
+        [title]="title()"
+        [class.has-icon]="icon()"
+        [class.small]="size()===ButtonSize.SMALL"
+        [class.hover-color]="hoverColor()"
+>
+  <span [class.sr-only]="icon()">{{title()}}</span>
+</button>
