@@ -91,10 +91,12 @@
       <div class="form-group">
         <label for="collection">{{ 'spaced-repetition.card.select-collection' | translate }}</label>
         <select id="collection" formControlName="collection" class="form-control">
-          <option *ngFor="let collection of selectedFlashcards()" [value]="collection.id"
-                  [attr.selected]="selectedFlashcards().length === 1">
-            {{ collection.name }}
-          </option>
+          @for (collection of selectedFlashcards(); track collection.id) {
+            <option [value]="collection.id"
+                    [attr.selected]="selectedFlashcards().length === 1">
+              {{ collection.name }}
+            </option>
+          }
         </select>
       </div>
 
