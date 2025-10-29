@@ -16,12 +16,12 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class SpacedRepetitionComponent {
   currentView = signal<'flashcards' | 'collections'>('collections');
-  selectedFlashcards = signal<CollectionMetadata>(null as any);
+  selectedFlashcards = signal<CollectionMetadata[]>([]);
 
   private platformId = inject(PLATFORM_ID);
   protected isBrowser = isPlatformBrowser(this.platformId);
 
-  onArraySelected(selectedArray: CollectionMetadata): void {
+  onArraySelected(selectedArray: CollectionMetadata[]): void {
     this.selectedFlashcards.set(selectedArray);
 
     // Load the new cards and switch to study view

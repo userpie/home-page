@@ -2,7 +2,9 @@
   <div class="stats">
     <span>{{ 'spaced-repetition.due-cards' | translate }} {{ dueCards().length }}</span>
     <span>{{ 'spaced-repetition.total-cards' | translate }} {{ allCards().length }}</span>
-    <span class="current-array">{{ selectedFlashcards().name }}</span>
+    @if (currentCollection()) {
+      <span class="current-array">{{ currentCollection()!.name }}</span>
+    }
   </div>
 }
 @if (isLoading()) {
@@ -85,6 +87,17 @@
       </textarea>
       </div>
 
+      <!--      add a dropdown to select a collection-->
+      <div class="form-group">
+        <label for="collection">{{ 'spaced-repetition.card.select-collection' | translate }}</label>
+        <select id="collection" formControlName="collection" class="form-control">
+          <option *ngFor="let collection of selectedFlashcards()" [value]="collection.id"
+                  [attr.selected]="selectedFlashcards().length === 1">
+            {{ collection.name }}
+          </option>
+        </select>
+      </div>
+
       <div class="form-actions">
         <button type="submit" [disabled]="cardForm.invalid"
                 class="btn btn-primary">{{ 'spaced-repetition.card.confirm-add-card' | translate }}
@@ -92,16 +105,18 @@
         <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">{{ 'common.cancel' | translate }}
         </button>
       </div>
+
     </form>
+  </div>
+} @else {
+  <div class="controls">
+    <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">{{
+        'spaced-repetition.card.confirm-add-card' | translate
+      }}
+    </button>
+    <button type="button" (click)="resetAllCards()" class="btn btn-outline btn-danger">
+      {{ 'spaced-repetition.card.reset-cards' | translate }}
+    </button>
   </div>
 }
 
-<div class="controls">
-  <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">{{
-      'spaced-repetition.card.confirm-add-card' | translate
-    }}
-  </button>
-  <button type="button" (click)="resetAllCards()" class="btn btn-outline btn-danger">
-    {{ 'spaced-repetition.card.reset-cards' | translate }}
-  </button>
-</div>

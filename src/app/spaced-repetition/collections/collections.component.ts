@@ -28,7 +28,7 @@ export class CollectionsComponent implements OnInit {
   translate = inject(TranslateService);
 
   collectionsMetadata = signal<CollectionMetadata[]>([]);
-  selectedCollectionNumber = signal<uuid | null>(null);
+  selectedCollectionNumbers = signal<uuid[]>([]);
   isLoading = signal(true);
   showAddForm = signal(false);
   showResetModal = signal(false);
@@ -37,7 +37,8 @@ export class CollectionsComponent implements OnInit {
   sortOrder = signal<'asc' | 'desc'>('desc'); // Default to newest first
   editingCollectionId = signal<uuid | null>(null);
 
-  collectionSelected = output<CollectionMetadata>();
+  startStudyingCollection = output<CollectionMetadata[]>();
+  // selectedCollections = output<CollectionMetadata[]>();
 
   filteredCollections = computed(() => {
     let collections = this.collectionsMetadata();
@@ -125,17 +126,23 @@ export class CollectionsComponent implements OnInit {
       .sort((a, b) => a.length - b.length);
   }
 
-  selectArray(arrayNumber: uuid): void {
-    this.selectedCollectionNumber.set(arrayNumber);
+  toggleSelection(arrayNumber: uuid): void {
+    if (this.isSelected(arrayNumber)) {
+      this.selectedCollectionNumbers.update(numbers => numbers.filter(number => number !== arrayNumber));
+    } else {
+      this.selectedCollectionNumbers.update(numbers => [...numbers, arrayNumber]);
+    }
+    // const selectedCollections = this.collectionsMetadata().filter(collection => this.selectedCollectionNumbers().includes(collection.id));
+    // this.selectedCollections.emit(selectedCollections);
   }
 
-  startStudying( array: CollectionMetadata): void {
+  startStudying(array: CollectionMetadata): void {
     // Emit the selected array to switch to study mode
-    this.collectionSelected.emit(array);
+    this.startStudyingCollection.emit([array]);
   }
 
   isSelected(arrayNumber: uuid): boolean {
-    return this.selectedCollectionNumber() === arrayNumber;
+    return this.selectedCollectionNumbers().includes(arrayNumber);
   }
 
   cancelAddCollection(): void {
@@ -216,8 +223,8 @@ export class CollectionsComponent implements OnInit {
       );
 
       // Clear selection if the deleted collection was selected
-      if (this.selectedCollectionNumber() === collection.id) {
-        this.selectedCollectionNumber.set(null);
+      if (this.selectedCollectionNumbers().includes(collection.id)) {
+        this.selectedCollectionNumbers.update(numbers => numbers.filter(number => number !== collection.id));
       }
 
       // Remove the associated flashcard data from localStorage
@@ -261,10 +268,15 @@ export class CollectionsComponent implements OnInit {
     }
 
 // Reset state
-    this.selectedCollectionNumber.set(null);
+    this.selectedCollectionNumbers.set([]);
     this.hideResetModal();
 
 // Load default collections
     this.loadDefaultCollection();
+  }
+
+  protected startStudyingSelectedCollections() {
+    const selectedCollections = this.collectionsMetadata().filter(collection => this.selectedCollectionNumbers().includes(collection.id));
+    this.startStudyingCollection.emit(selectedCollections);
   }
 }

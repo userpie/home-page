@@ -5,17 +5,23 @@
         <h2>{{ 'spaced-repetition.collections' | translate }}</h2>
       </div>
       <div class="header-buttons">
-        <app-button [title]="'Create New Collection'"
-                    [icon]="assetUrlService.getAddIconUrl()"
-                    [backgroundColor]="'#d4edda'"
-                    [hoverColor]="'#c3e6cb'"
-                    (click)="showAddForm.set(true)"
-        ></app-button>
         <app-button [title]="'Reset to Default Collections'"
                     [icon]="assetUrlService.getResetIconUrl()"
+                    [backgroundColor]="'#f8d7da'"
+                    [hoverColor]="'#f5c6cb'"
+                    (click)="openResetModal()"
+        ></app-button>
+        <app-button [title]="'Create New Collection'"
+                    [icon]="assetUrlService.getAddIconUrl()"
                     [backgroundColor]="'#fff3cd'"
                     [hoverColor]="'#ffeaa7'"
-                    (click)="openResetModal()"
+                    (click)="showAddForm.set(true)"
+        ></app-button>
+        <app-button [title]="'Start Selected Collections'"
+                    [icon]="assetUrlService.getStartAllIconUrl()"
+                    [backgroundColor]="'#d4edda'"
+                    [hoverColor]="'#c3e6cb'"
+                    (click)="startStudyingSelectedCollections()"
         ></app-button>
       </div>
     </div>
@@ -54,7 +60,7 @@
         <div
           class="array-card"
           [class.selected]="isSelected(collectionMetadata.id)"
-          (click)="selectArray(collectionMetadata.id)"
+          (click)="toggleSelection(collectionMetadata.id)"
         >
           <div class="array-header">
             <div class="title-section">
@@ -88,14 +94,6 @@
                     [hoverColor]="'#c3e6cb'"
                     (click)="startStudying(collectionMetadata)"
                   ></app-button>
-<!--                  <app-button-->
-<!--                    [title]="'Deleting Collection'"-->
-<!--                    [size]="ButtonSize.SMALL"-->
-<!--                    [icon]="assetUrlService.getStartAllIconUrl()"-->
-<!--                    [backgroundColor]="'#d4edda'"-->
-<!--                    [hoverColor]="'#c3e6cb'"-->
-<!--                    (click)="startStudying(collectionMetadata)"-->
-<!--                  ></app-button>-->
                 </div>
               }
             </div>
@@ -126,14 +124,6 @@
                 }
               </div>
             </div>
-
-            <!--            @if (isSelected(collectionMetadata.id)) {-->
-            <!--              <div class="action-section">-->
-            <!--                <button type="button" class="start-study-btn" (click)="startStudying($event, collectionMetadata)">-->
-            <!--                  {{ 'spaced-repetition.start' | translate }}-->
-            <!--                </button>-->
-            <!--              </div>-->
-            <!--            }-->
           </div>
         </div>
       }

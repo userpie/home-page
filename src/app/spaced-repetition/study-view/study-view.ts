@@ -1,5 +1,5 @@
 import {Component, computed, inject, input, OnInit, PLATFORM_ID, signal} from '@angular/core';
-import {CollectionMetadata} from '../collections-metadata';
+import {CollectionMetadata, uuid} from '../collections-metadata';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Card, createEmptyCard, FSRS, Grade, Rating, State} from 'ts-fsrs';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
@@ -13,6 +13,7 @@ interface StudyCard {
   back: string;
   fsrsCard: Card;
   isRevealed: boolean;
+  collection: uuid;
 }
 
 @Component({
@@ -36,12 +37,13 @@ export class StudyView implements OnInit {
 
   private readonly http = inject(HttpClient);
 
-  selectedFlashcards = input.required<CollectionMetadata>();
+  selectedFlashcards = input.required<CollectionMetadata[]>();
 
   // Form for adding new cards
   cardForm = this.fb.nonNullable.group({
     front: ['', [Validators.required]],
     back: ['', [Validators.required]],
+    collection: ['' as uuid, [Validators.required]],
   });
 
   // Computed values
@@ -58,6 +60,12 @@ export class StudyView implements OnInit {
     const due = this.dueCards();
     const index = this.currentCardIndex();
     return due[index] || null;
+  });
+
+  currentCollection = computed(() => {
+    const current = this.currentCard();
+    if (!current) return null;
+    return this.selectedFlashcards().find(col => col.id === current.collection);
   });
 
   // Get scheduling preview for rating buttons
@@ -119,7 +127,7 @@ export class StudyView implements OnInit {
     );
 
     this.allCards.set(updatedCards);
-    this.saveCards();
+    this.saveCards(current.collection);
 
     // Move to next card or reset if no more due cards
     const newDueCards = this.dueCards();
@@ -143,10 +151,11 @@ export class StudyView implements OnInit {
         back: formValue.back,
         fsrsCard: createEmptyCard(),
         isRevealed: false,
+        collection: formValue.collection,
       };
 
       this.allCards.update((cards) => [...cards, newCard]);
-      this.saveCards();
+      this.saveCards(formValue.collection);
       this.cancelAddCard();
     }
   }
@@ -165,7 +174,10 @@ export class StudyView implements OnInit {
       }));
       this.allCards.set(resetCards);
       this.currentCardIndex.set(0);
-      this.saveCards();
+      // save all cards for each collection
+      this.selectedFlashcards().forEach((metadata) => {
+        this.saveCards(metadata.id);
+      });
     }
   }
 
@@ -203,27 +215,30 @@ export class StudyView implements OnInit {
     return `${reviews} ${this.translate.instant('spaced-repetition.reviews')}, ${lapses} ${this.translate.instant('spaced-repetition.lapses')}, ${this.translate.instant('spaced-repetition.difficulty')}: ${difficulty}`;
   }
 
-  private saveCards(): void {
+  private saveCards(id: uuid): void {
     if (!this.isBrowser) return;
 
-    const cardsData = this.allCards().map((card) => ({
-      id: card.id,
-      front: card.front,
-      back: card.back,
-      fsrsCard: {
-        due: card.fsrsCard.due.toISOString(),
-        stability: card.fsrsCard.stability,
-        difficulty: card.fsrsCard.difficulty,
-        elapsed_days: card.fsrsCard.elapsed_days,
-        scheduled_days: card.fsrsCard.scheduled_days,
-        reps: card.fsrsCard.reps,
-        lapses: card.fsrsCard.lapses,
-        state: card.fsrsCard.state,
-        last_review: card.fsrsCard.last_review?.toISOString(),
-      },
-    }));
+    const cardsData = this.allCards()
+      .filter(card => card.collection === id)
+      .map((card) => ({
+        collection: card.collection,
+        id: card.id,
+        front: card.front,
+        back: card.back,
+        fsrsCard: {
+          due: card.fsrsCard.due.toISOString(),
+          stability: card.fsrsCard.stability,
+          difficulty: card.fsrsCard.difficulty,
+          elapsed_days: card.fsrsCard.elapsed_days,
+          scheduled_days: card.fsrsCard.scheduled_days,
+          reps: card.fsrsCard.reps,
+          lapses: card.fsrsCard.lapses,
+          state: card.fsrsCard.state,
+          last_review: card.fsrsCard.last_review?.toISOString(),
+        },
+      }));
 
-    localStorage.setItem(this.selectedFlashcards().id, JSON.stringify(cardsData));
+    localStorage.setItem(id, JSON.stringify(cardsData));
   }
 
   private loadCards(): void {
@@ -231,41 +246,47 @@ export class StudyView implements OnInit {
       return;
     }
 
-    const savedData = localStorage.getItem(this.selectedFlashcards().id);
-    if (savedData) {
-      try {
-        const cardsData = JSON.parse(savedData);
-        const cards: StudyCard[] = cardsData.map((data: any) => ({
-          id: data.id,
-          front: data.front,
-          back: data.back,
-          isRevealed: false,
-          fsrsCard: {
-            ...data.fsrsCard,
-            due: new Date(data.fsrsCard.due),
-            last_review: data.fsrsCard.last_review
-              ? new Date(data.fsrsCard.last_review)
-              : undefined,
-          },
-        }));
-        this.allCards.set(cards);
-      } catch (error) {
-        console.error('Error loading cards:', error);
-        this.initializeSampleCards();
+    this.selectedFlashcards().forEach((metadata) => {
+      const savedData = localStorage.getItem(metadata.id);
+      if (savedData) {
+        try {
+          const cardsData = JSON.parse(savedData);
+          const cards: StudyCard[] = cardsData.map((data: any) => ({
+            collection: metadata.id,
+            id: data.id,
+            front: data.front,
+            back: data.back,
+            isRevealed: false,
+            fsrsCard: {
+              ...data.fsrsCard,
+              due: new Date(data.fsrsCard.due),
+              last_review: data.fsrsCard.last_review
+                ? new Date(data.fsrsCard.last_review)
+                : undefined,
+            },
+          }));
+          this.allCards.update(addedCards => ([...addedCards, ...cards])
+          );
+        } catch (error) {
+          console.error('Error loading cards:', error);
+          this.initializeSampleCards(metadata);
+        }
+      } else {
+        this.initializeSampleCards(metadata);
       }
-    } else {
-      this.initializeSampleCards();
-    }
+    });
 
     setTimeout(() => {
       this.isLoading.set(false);
     }, 200);
   }
 
-  private initializeSampleCards(): void {
-    this.http.get<StudyCard[]>(environment.firstPath + this.selectedFlashcards().path).subscribe({
+  private initializeSampleCards(collection: CollectionMetadata): void {
+    if (!collection.path) return;
+    this.http.get<StudyCard[]>(environment.firstPath + collection.path).subscribe({
       next: (data) => {
         const cards: StudyCard[] = data.map((data: any) => ({
+          collection: collection.id,
           id: crypto.randomUUID(),
           front: data.front,
           back: data.back,
@@ -278,8 +299,8 @@ export class StudyView implements OnInit {
               : undefined,
           },
         }));
-        this.allCards.set(cards);
-        this.saveCards();
+        this.allCards.update(addedCards => ([...addedCards, ...cards]));
+        this.saveCards(collection.id);
       },
       error: (error) => {
         console.error('Error loading flashcards:', error);
