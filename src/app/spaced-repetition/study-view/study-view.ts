@@ -85,6 +85,10 @@ export class StudyView implements OnInit {
 
   ngOnInit(): void {
     this.loadCards();
+    if (this.selectedFlashcards().length === 1) {
+      const onlyCollection = this.selectedFlashcards()[0];
+      this.cardForm.get('collection')?.setValue(onlyCollection.id);
+    }
   }
 
   revealCard(): void {

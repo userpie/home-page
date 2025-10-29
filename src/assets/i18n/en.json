@@ -60,13 +60,13 @@
       "back-input-placeholder": "Enter the answer",
       "confirm-add-card": "Add Card",
       "reset-cards": "Reset All",
-
       "correct": "Correct",
       "incorrect": "Incorrect",
       "edit-card": "Edit Card",
       "front-placeholder": "Enter the front side of the flashcard",
       "back-placeholder": "Enter the back side of the flashcard",
-      "confirm-edit-card": "Update Card"
+      "confirm-edit-card": "Update Card",
+      "select-collection": "Select Collection"
     },
     "due-cards": "Due Cards:",
     "total-cards": "Total Cards:"

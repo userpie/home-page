@@ -92,8 +92,7 @@
         <label for="collection">{{ 'spaced-repetition.card.select-collection' | translate }}</label>
         <select id="collection" formControlName="collection" class="form-control">
           @for (collection of selectedFlashcards(); track collection.id) {
-            <option [value]="collection.id"
-                    [attr.selected]="selectedFlashcards().length === 1">
+            <option [value]="collection.id">
               {{ collection.name }}
             </option>
           }
