@@ -65,7 +65,8 @@
       "edit-card": "Kaart Bewerken",
       "front-placeholder": "Voer de voorkant van de flashcard in",
       "back-placeholder": "Voer de achterkant van de flashcard in",
-      "confirm-edit-card": "Kaart Bijwerken"
+      "confirm-edit-card": "Kaart Bijwerken",
+      "select-collection": "Selecteer Collectie"
     },
     "due-cards": "Openstaande Kaarten:",
     "total-cards": "Totaal Aantal Kaarten:"

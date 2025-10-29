@@ -1,0 +1,6 @@
+<!-- src/assets/icons/searchicon.svg -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <title>Search</title>
+  <circle cx="10" cy="10" r="5" stroke="#6c757d" stroke-width="2" fill="none"/>
+  <line x1="15" y1="15" x2="22" y2="22" stroke="#6c757d" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -65,7 +65,8 @@
       "edit-card": "Editar Cartão",
       "front-placeholder": "Digite o lado da frente do cartão",
       "back-placeholder": "Digite o verso do cartão",
-      "confirm-edit-card": "Atualizar Cartão"
+      "confirm-edit-card": "Atualizar Cartão",
+      "select-collection": "Selecionar Coleção"
     },
     "due-cards": "Cartões Pendentes:",
     "total-cards": "Total de Cartões:"
