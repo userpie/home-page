@@ -24,17 +24,10 @@
         type="button"
         (click)="toggleToCollections()"
         class="btn btn-nav"
-        [class.active]="currentView() === 'collections'"
+        [class.active]="currentView() === 'flashcards'"
+        [disabled]="currentView() === 'collections'"
       >
         {{ 'flashcards.collections' | translate }}
-      </button>
-      <button
-        type="button"
-        (click)="toggleToFlashcards()"
-        class="btn btn-nav"
-        [class.active]="currentView() === 'flashcards'"
-      >
-        {{ 'flashcards.flashcards' | translate }}
       </button>
     </nav>
   </header>
