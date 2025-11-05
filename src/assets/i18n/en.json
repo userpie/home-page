@@ -2,8 +2,8 @@
   "common": {
     "cancel": "Cancel"
   },
-  "spaced-repetition": {
-    "title": "Spaced Repetition",
+  "flashcards": {
+    "title": "Flashcards",
     "collections": "Collections",
     "flashcards": "Flashcards",
     "search-input-placeholder": "Search by name or description...",

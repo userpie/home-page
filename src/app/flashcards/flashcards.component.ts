@@ -1,20 +1,20 @@
 import {Component, ChangeDetectionStrategy, signal, inject, PLATFORM_ID} from '@angular/core';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CollectionMetadata} from './collections-metadata';
+import {CollectionMetadata} from './flashcards-metadata';
 import {CollectionsComponent} from './collections/collections.component';
-import {StudyView} from './study-view/study-view';
+import {SelectionView} from './selection/selection-view.component';
 import {LanguageSwitcherComponent} from '../components/language-selector/language-switcher.component';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-spaced-repetition',
-  templateUrl: './spaced-repetition.component.html',
-  styleUrls: ['./spaced-repetition.component.scss'],
+  selector: 'app-flashcards',
+  templateUrl: './flashcards.component.html',
+  styleUrls: ['./flashcards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, ReactiveFormsModule, CollectionsComponent, StudyView, LanguageSwitcherComponent, TranslatePipe],
+  imports: [CommonModule, ReactiveFormsModule, CollectionsComponent, SelectionView, LanguageSwitcherComponent, TranslatePipe],
 })
-export class SpacedRepetitionComponent {
+export class FlashcardsComponent {
   currentView = signal<'flashcards' | 'collections'>('collections');
   selectedFlashcards = signal<CollectionMetadata[]>([]);
 

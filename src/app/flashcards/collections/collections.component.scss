@@ -134,6 +134,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent; /* Prevents mobile tap highlight */
+  -webkit-touch-callout: none; /* Prevents callout menu */
+  -webkit-user-select: none; /* Prevents text selection */
+  user-select: none;
 
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -376,7 +380,7 @@
 
 }
 
-// Form styling (matching study-view form)
+// Form styling (matching selection form)
 .add-array-form {
   background: white;
   padding: 1.5rem;

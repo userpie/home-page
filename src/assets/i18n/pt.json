@@ -2,10 +2,10 @@
   "common": {
     "cancel": "Cancelar"
   },
-  "spaced-repetition": {
-    "title": "Repetição Espaçada",
+  "flashcards": {
+    "title": "Cartões de memória",
     "collections": "Coleções",
-    "flashcards": "Cartões de Memorização",
+    "flashcards": "Selecionados",
     "search-input-placeholder": "Pesquisar por nome ou descrição...",
     "sort-select": "Ordenar por",
     "sort-select-newest": "Mais Recentes Primeiro",

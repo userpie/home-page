@@ -15,7 +15,7 @@
   }
   <header class="header">
     <div class="header-top">
-      <h1>{{ 'spaced-repetition.title' | translate }}</h1>
+      <h1>{{ 'flashcards.title' | translate }}</h1>
       <app-language-switcher></app-language-switcher>
     </div>
 
@@ -26,7 +26,7 @@
         class="btn btn-nav"
         [class.active]="currentView() === 'collections'"
       >
-        {{ 'spaced-repetition.collections' | translate }}
+        {{ 'flashcards.collections' | translate }}
       </button>
       <button
         type="button"
@@ -34,7 +34,7 @@
         class="btn btn-nav"
         [class.active]="currentView() === 'flashcards'"
       >
-        {{ 'spaced-repetition.flashcards' | translate }}
+        {{ 'flashcards.flashcards' | translate }}
       </button>
     </nav>
   </header>
@@ -42,6 +42,6 @@
   @if (currentView() === 'collections') {
     <app-collections (startStudyingCollection)="onArraySelected($event)"></app-collections>
   } @else if (selectedFlashcards()) {
-    <app-flashcards [selectedFlashcards]="selectedFlashcards()"></app-flashcards>
+    <app-selection [selectedFlashcards]="selectedFlashcards()"></app-selection>
   }
 </div>

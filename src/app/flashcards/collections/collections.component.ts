@@ -1,7 +1,7 @@
 import {Component, signal, computed, output, inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
-import {CollectionMetadata, uuid} from '../collections-metadata';
+import {CollectionMetadata, uuid} from '../flashcards-metadata';
 import {environment} from '../../../environments/environment';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AssetUrlService} from '../../services/asset-url.service';
@@ -216,7 +216,7 @@ export class CollectionsComponent implements OnInit {
   }
 
   deleteCollection(collection: CollectionMetadata): void {
-    if (confirm(this.translate.instant('spaced-repetition.delete-modal.message', {collectionName: collection.name}))) {
+    if (confirm(this.translate.instant('flashcards.delete-modal.message', {collectionName: collection.name}))) {
       // Remove the collection from the list
       this.collectionsMetadata.update(collections =>
         collections.filter(c => c.id !== collection.id)

@@ -2,7 +2,7 @@
   <div class="header-section">
     <div class="header-content">
       <div class="title-group">
-        <h2>{{ 'spaced-repetition.collections' | translate }}</h2>
+        <h2>{{ 'flashcards.collections' | translate }}</h2>
       </div>
       <div class="header-buttons">
         <app-button [title]="'Reset to Default Collections'"
@@ -34,22 +34,22 @@
           <input
             type="text"
             class="search-input"
-            [placeholder]="'spaced-repetition.search-input-placeholder' | translate"
+            [placeholder]="'flashcards.search-input-placeholder' | translate"
             [value]="searchQuery()"
             (input)="onSearchChange($event)"
           />
         </div>
 
         <div class="sort-container">
-          <label for="sort-select" class="sort-label">{{ 'spaced-repetition.sort-select' | translate }}</label>
+          <label for="sort-select" class="sort-label">{{ 'flashcards.sort-select' | translate }}</label>
           <select
             id="sort-select"
             class="sort-select"
             [value]="sortOrder()"
             (change)="onSortChange($event)"
           >
-            <option value="desc">{{ 'spaced-repetition.sort-select-newest' | translate }}</option>
-            <option value="asc">{{ 'spaced-repetition.sort-select-oldest' | translate }}</option>
+            <option value="desc">{{ 'flashcards.sort-select-newest' | translate }}</option>
+            <option value="asc">{{ 'flashcards.sort-select-oldest' | translate }}</option>
           </select>
         </div>
       </div>
@@ -104,11 +104,11 @@
 
             <div class="statistics">
               <div class="stat-item">
-                <span class="label">{{ 'spaced-repetition.average-length' | translate }}</span>
+                <span class="label">{{ 'flashcards.average-length' | translate }}</span>
                 <span class="value">{{ collectionMetadata.statistics.averageBackLength }}</span>
               </div>
               <div class="stat-item">
-                <span class="label">{{ 'spaced-repetition.range' | translate }}</span>
+                <span class="label">{{ 'flashcards.range' | translate }}</span>
                 <span class="value"
                 >{{ collectionMetadata.statistics.minBackLength }}
                   - {{ collectionMetadata.statistics.maxBackLength }}</span
@@ -117,7 +117,7 @@
             </div>
 
             <div class="length-distribution">
-              <h4>{{ 'spaced-repetition.length-distribution' | translate }}</h4>
+              <h4>{{ 'flashcards.length-distribution' | translate }}</h4>
               <div class="distribution-items">
                 @for (item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
                   <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
@@ -130,24 +130,24 @@
     </div>
   } @else {
     <div class="add-array-form">
-      <h3>{{ (editingCollectionId() ? 'spaced-repetition.edit-collection' : 'spaced-repetition.add-collection') | translate }}</h3>
+      <h3>{{ (editingCollectionId() ? 'flashcards.edit-collection' : 'flashcards.add-collection') | translate }}</h3>
       <form [formGroup]="collectionForm" (ngSubmit)="addCollection()">
         <div class="form-group">
-          <label for="name">{{ 'spaced-repetition.collection-name' | translate }}</label>
+          <label for="name">{{ 'flashcards.collection-name' | translate }}</label>
           <input
             id="name"
             formControlName="name"
-            [placeholder]="'spaced-repetition.name-input-placeholder' | translate"
+            [placeholder]="'flashcards.name-input-placeholder' | translate"
             type="text"
           />
         </div>
 
         <div class="form-group">
-          <label for="description">{{ 'spaced-repetition.description' | translate }}</label>
+          <label for="description">{{ 'flashcards.description' | translate }}</label>
           <textarea
             id="description"
             formControlName="description"
-            [placeholder]="'spaced-repetition.desc-input-placeholder' | translate"
+            [placeholder]="'flashcards.desc-input-placeholder' | translate"
             rows="3"
           >
         </textarea>
@@ -155,7 +155,7 @@
 
         <div class="form-actions">
           <button type="submit" [disabled]="collectionForm.invalid" class="btn btn-primary">
-            {{ (editingCollectionId() ? 'spaced-repetition.confirm-edit-collection' : 'spaced-repetition.confirm-add-collection') | translate }}
+            {{ (editingCollectionId() ? 'flashcards.confirm-edit-collection' : 'flashcards.confirm-add-collection') | translate }}
           </button>
           <button type="button" (click)="cancelAddCollection()"
                   class="btn btn-secondary">{{ 'common.cancel' | translate }}
@@ -169,15 +169,15 @@
     <div class="modal-overlay" (click)="hideResetModal()">
       <div class="modal-content" (click)="$event.stopPropagation()">
         <div class="modal-header">
-          <h3>{{ 'spaced-repetition.reset-modal.title' | translate }}</h3>
+          <h3>{{ 'flashcards.reset-modal.title' | translate }}</h3>
         </div>
         <div class="modal-body">
-          <p>{{ 'spaced-repetition.reset-modal.message' | translate }}</p>
-          <p>{{ 'spaced-repetition.reset-modal.ask-confirm' | translate }}</p>
+          <p>{{ 'flashcards.reset-modal.message' | translate }}</p>
+          <p>{{ 'flashcards.reset-modal.ask-confirm' | translate }}</p>
         </div>
         <div class="modal-actions">
           <button type="button" class="btn btn-danger" (click)="resetToDefaults()">
-            {{ 'spaced-repetition.reset-modal.confirm-button' | translate }}
+            {{ 'flashcards.reset-modal.confirm-button' | translate }}
           </button>
           <button type="button" class="btn btn-secondary" (click)="hideResetModal()">
             {{ 'common.cancel' | translate }}

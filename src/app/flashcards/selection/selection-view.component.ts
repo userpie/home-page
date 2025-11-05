@@ -1,5 +1,5 @@
 import {Component, computed, inject, input, OnInit, PLATFORM_ID, signal} from '@angular/core';
-import {CollectionMetadata, uuid} from '../collections-metadata';
+import {CollectionMetadata, uuid} from '../flashcards-metadata';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Card, createEmptyCard, FSRS, Grade, Rating, State} from 'ts-fsrs';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
@@ -17,12 +17,12 @@ interface StudyCard {
 }
 
 @Component({
-  selector: 'app-flashcards',
-  templateUrl: './study-view.html',
-  styleUrl: './study-view.scss',
+  selector: 'app-selection',
+  templateUrl: './selection-view.component.html',
+  styleUrl: './selection-view.component.scss',
   imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
 })
-export class StudyView implements OnInit {
+export class SelectionView implements OnInit {
   private fb = inject(FormBuilder);
   private fsrs = new FSRS({});
 
@@ -170,7 +170,7 @@ export class StudyView implements OnInit {
   }
 
   resetAllCards(): void {
-    if (confirm(this.translate.instant('spaced-repetition.reset-cards-modal.message'))) {
+    if (confirm(this.translate.instant('flashcards.reset-cards-modal.message'))) {
       const resetCards = this.allCards().map((card) => ({
         ...card,
         fsrsCard: createEmptyCard(),
@@ -209,14 +209,14 @@ export class StudyView implements OnInit {
   getCardStats(card: StudyCard): string {
     const fsrsCard = card.fsrsCard;
     if (fsrsCard.state === State.New) {
-      return this.translate.instant('spaced-repetition.new-card');
+      return this.translate.instant('flashcards.new-card');
     }
 
     const reviews = fsrsCard.reps;
     const lapses = fsrsCard.lapses;
     const difficulty = Math.round(fsrsCard.difficulty * 10) / 10;
 
-    return `${reviews} ${this.translate.instant('spaced-repetition.reviews')}, ${lapses} ${this.translate.instant('spaced-repetition.lapses')}, ${this.translate.instant('spaced-repetition.difficulty')}: ${difficulty}`;
+    return `${reviews} ${this.translate.instant('flashcards.reviews')}, ${lapses} ${this.translate.instant('flashcards.lapses')}, ${this.translate.instant('flashcards.difficulty')}: ${difficulty}`;
   }
 
   private saveCards(id: uuid): void {

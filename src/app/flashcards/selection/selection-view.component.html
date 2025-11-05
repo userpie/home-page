@@ -1,7 +1,7 @@
 @if (!isLoading()) {
   <div class="stats">
-    <span>{{ 'spaced-repetition.due-cards' | translate }} {{ dueCards().length }}</span>
-    <span>{{ 'spaced-repetition.total-cards' | translate }} {{ allCards().length }}</span>
+    <span>{{ 'flashcards.due-cards' | translate }} {{ dueCards().length }}</span>
+    <span>{{ 'flashcards.total-cards' | translate }} {{ allCards().length }}</span>
     @if (currentCollection()) {
       <span class="current-array">{{ currentCollection()!.name }}</span>
     }
@@ -9,14 +9,14 @@
 }
 @if (isLoading()) {
   <div class="loading">
-    <p>{{ 'spaced-repetition.loading-cards' | translate }}</p>
+    <p>{{ 'flashcards.loading-cards' | translate }}</p>
   </div>
 } @else if (!currentCard()) {
   <div class="no-cards">
-    <h2>{{ 'spaced-repetition.no-cards.title' | translate }}</h2>
-    <p>{{ 'spaced-repetition.no-cards.message' | translate }}</p>
+    <h2>{{ 'flashcards.no-cards.title' | translate }}</h2>
+    <p>{{ 'flashcards.no-cards.message' | translate }}</p>
     <button type="button" (click)="showAddForm.set(true)" class="btn btn-primary">
-      {{ 'spaced-repetition.no-cards.button' | translate }}
+      {{ 'flashcards.no-cards.button' | translate }}
     </button>
   </div>
 } @else {
@@ -26,14 +26,14 @@
         <h3>{{ currentCard().front }}</h3>
         @if (!currentCard().isRevealed) {
           <button type="button" (click)="revealCard()"
-                  class="btn btn-secondary">{{ 'spaced-repetition.card.show-answer' | translate }}
+                  class="btn btn-secondary">{{ 'flashcards.card.show-answer' | translate }}
           </button>
         }
       </div>
 
       @if (currentCard().isRevealed) {
         <div class="card-back">
-          <p>{{ 'spaced-repetition.card.answer' | translate }}</p>
+          <p>{{ 'flashcards.card.answer' | translate }}</p>
           <h3>{{ currentCard().back }}</h3>
 
           <div class="card-stats">
@@ -43,19 +43,19 @@
           <div class="rating-buttons">
             @if (getSchedulingPreview(); as preview) {
               <button type="button" (click)="rateCard(1)" class="btn btn-rating btn-again">
-                <span class="rating-label">{{ 'spaced-repetition.card.rating.again' | translate }}</span>
+                <span class="rating-label">{{ 'flashcards.card.rating.again' | translate }}</span>
                 <span class="rating-time">{{ formatTimeUntil(preview.again) }}</span>
               </button>
               <button type="button" (click)="rateCard(2)" class="btn btn-rating btn-hard">
-                <span class="rating-label">{{ 'spaced-repetition.card.rating.hard' | translate }}</span>
+                <span class="rating-label">{{ 'flashcards.card.rating.hard' | translate }}</span>
                 <span class="rating-time">{{ formatTimeUntil(preview.hard) }}</span>
               </button>
               <button type="button" (click)="rateCard(3)" class="btn btn-rating btn-good">
-                <span class="rating-label">{{ 'spaced-repetition.card.rating.good' | translate }}</span>
+                <span class="rating-label">{{ 'flashcards.card.rating.good' | translate }}</span>
                 <span class="rating-time">{{ formatTimeUntil(preview.good) }}</span>
               </button>
               <button type="button" (click)="rateCard(4)" class="btn btn-rating btn-easy">
-                <span class="rating-label">{{ 'spaced-repetition.card.rating.easy' | translate }}</span>
+                <span class="rating-label">{{ 'flashcards.card.rating.easy' | translate }}</span>
                 <span class="rating-time">{{ formatTimeUntil(preview.easy) }}</span>
               </button>
             }
@@ -67,29 +67,29 @@
 }
 @if (showAddForm()) {
   <div class="add-card-form">
-    <h3>{{ 'spaced-repetition.card.add-card' | translate }}</h3>
+    <h3>{{ 'flashcards.card.add-card' | translate }}</h3>
     <form [formGroup]="cardForm" (ngSubmit)="addCard()">
       <div class="form-group">
-        <label for="front">{{ 'spaced-repetition.card.front' | translate }}</label>
+        <label for="front">{{ 'flashcards.card.front' | translate }}</label>
         <textarea
           id="front"
           formControlName="front"
-          [placeholder]="'spaced-repetition.card.front-input-placeholder' | translate "
+          [placeholder]="'flashcards.card.front-input-placeholder' | translate "
           rows="3"
         >
       </textarea>
       </div>
 
       <div class="form-group">
-        <label for="back">{{ 'spaced-repetition.card.back' | translate }}</label>
+        <label for="back">{{ 'flashcards.card.back' | translate }}</label>
         <textarea id="back" formControlName="back"
-                  [placeholder]="'spaced-repetition.card.back-input-placeholder' | translate" rows="3">
+                  [placeholder]="'flashcards.card.back-input-placeholder' | translate" rows="3">
       </textarea>
       </div>
 
       <!--      add a dropdown to select a collection-->
       <div class="form-group">
-        <label for="collection">{{ 'spaced-repetition.card.select-collection' | translate }}</label>
+        <label for="collection">{{ 'flashcards.card.select-collection' | translate }}</label>
         <select id="collection" formControlName="collection" class="form-control">
           @for (collection of selectedFlashcards(); track collection.id) {
             <option [value]="collection.id">
@@ -101,7 +101,7 @@
 
       <div class="form-actions">
         <button type="submit" [disabled]="cardForm.invalid"
-                class="btn btn-primary">{{ 'spaced-repetition.card.confirm-add-card' | translate }}
+                class="btn btn-primary">{{ 'flashcards.card.confirm-add-card' | translate }}
         </button>
         <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">{{ 'common.cancel' | translate }}
         </button>
@@ -112,11 +112,11 @@
 } @else {
   <div class="controls">
     <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">{{
-        'spaced-repetition.card.confirm-add-card' | translate
+        'flashcards.card.confirm-add-card' | translate
       }}
     </button>
     <button type="button" (click)="resetAllCards()" class="btn btn-outline btn-danger">
-      {{ 'spaced-repetition.card.reset-cards' | translate }}
+      {{ 'flashcards.card.reset-cards' | translate }}
     </button>
   </div>
 }

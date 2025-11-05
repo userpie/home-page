@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -6,11 +6,15 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.component').then((m) => m.HomeComponent),
   },
   {
-    path: 'spaced-repetition',
+    path: 'flashcards',
     loadComponent: () =>
-      import('./spaced-repetition/spaced-repetition.component').then(
-        (m) => m.SpacedRepetitionComponent
+      import('./flashcards/flashcards.component').then(
+        (m) => m.FlashcardsComponent
       ),
+  },
+  {
+    path: 'spaced-repetition',
+    redirectTo: 'flashcards',
   },
   {
     path: '**',
