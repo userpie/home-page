@@ -67,7 +67,6 @@
               <h3>{{ collectionMetadata.name }}</h3>
             </div>
             <div class="header-right">
-              <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
               @if (isSelected(collectionMetadata.id)) {
                 <div class="action-buttons">
                   <app-button
@@ -96,6 +95,7 @@
                   ></app-button>
                 </div>
               }
+              <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
             </div>
           </div>
 
