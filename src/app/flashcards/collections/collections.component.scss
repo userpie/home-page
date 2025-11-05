@@ -218,7 +218,11 @@
 .statistics {
   display: flex;
   gap: 12px;
-  margin-bottom: 10px;
+
+  .stat-item-group {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .stat-item {
     display: flex;
@@ -237,88 +241,21 @@
       margin-top: 1px;
       font-size: 0.9rem;
     }
-  }
-}
 
-.length-distribution {
-  margin-bottom: 10px;
+    .distribution-items {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
 
-  h4 {
-    font-size: 0.8rem;
-    color: #333;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-
-  .distribution-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .distribution-item {
-    background: #f5f5f5;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    color: #555;
-    border: 1px solid #ddd;
-  }
-}
-
-.metadata {
-  border-top: 1px solid #eee;
-  padding-top: 8px;
-
-  .meta-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 3px;
-
-    .label {
+    .distribution-item {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
       font-size: 0.8rem;
-      color: #666;
-      font-weight: 500;
-    }
-
-    .value {
-      font-size: 0.8rem;
-      color: #333;
-      text-align: right;
-      word-break: break-all;
-      max-width: 60%;
-    }
-  }
-}
-
-.action-section {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #e9ecef;
-  text-align: center;
-
-  .start-study-btn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-
-    &:hover {
-      background: #218838;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
-    }
-
-    &:active {
-      transform: translateY(0);
+      color: #555;
+      border: 1px solid #ddd;
     }
   }
 }

@@ -107,23 +107,29 @@
                 <span class="label">{{ 'flashcards.average-length' | translate }}</span>
                 <span class="value">{{ collectionMetadata.statistics.averageBackLength }}</span>
               </div>
+              <div class="stat-item-group">
+                <div class="stat-item">
+                  <span class="label">{{ 'flashcards.range' | translate }}</span>
+                  <span class="value">{{ collectionMetadata.statistics.minBackLength }}
+                    - {{ collectionMetadata.statistics.maxBackLength }}</span>
+                </div>
+                <div class="stat-item">
+                  <span class="label">{{ 'flashcards.total' | translate }}</span>
+                  <span class="value">{{ collectionMetadata.totalCards }}
+                </span>
+                </div>
+              </div>
               <div class="stat-item">
-                <span class="label">{{ 'flashcards.range' | translate }}</span>
-                <span class="value"
-                >{{ collectionMetadata.statistics.minBackLength }}
-                  - {{ collectionMetadata.statistics.maxBackLength }}</span
-                >
+                <span class="label">{{ 'flashcards.length-distribution' | translate }}</span>
+                <div class="distribution-items">
+                  @for (
+                    item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
+                    <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
+                  }
+                </div>
               </div>
             </div>
 
-            <div class="length-distribution">
-              <h4>{{ 'flashcards.length-distribution' | translate }}</h4>
-              <div class="distribution-items">
-                @for (item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
-                  <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
-                }
-              </div>
-            </div>
           </div>
         </div>
       }
