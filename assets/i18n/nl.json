@@ -2,10 +2,10 @@
   "common": {
     "cancel": "Annuleren"
   },
-  "spaced-repetition": {
-    "title": "Gespreide Herhaling",
+  "flashcards": {
+    "title": "Flashkaarten",
     "collections": "Collecties",
-    "flashcards": "Flashcards",
+    "flashcards": "Geselecteerde Kaarten",
     "search-input-placeholder": "Zoek op naam of beschrijving...",
     "sort-select": "Sorteren op",
     "sort-select-newest": "Nieuwste Eerst",
