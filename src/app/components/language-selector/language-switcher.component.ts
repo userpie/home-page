@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, signal, inject} from '@angular/core';
+import {Component, ChangeDetectionStrategy, signal, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from '../../../environments/environment';
@@ -27,13 +27,21 @@ export const defaultLanguage = languages[1]; // Portuguese
     '(document:click)': 'onDocumentClick($event)'
   }
 })
-export class LanguageSwitcherComponent {
+export class LanguageSwitcherComponent implements OnInit {
   private translate = inject(TranslateService);
 
   isOpen = signal(false);
 
   currentLanguage = signal<Language>(defaultLanguage);
   languages = signal<Language[]>(languages);
+
+  ngOnInit(): void {
+    const lang = this.translate.getCurrentLang();
+    if (lang) {
+      const language = languages.find(language => language.code === lang) || defaultLanguage;
+      this.currentLanguage.set(language);
+    }
+  }
 
   toggleDropdown(): void {
     this.isOpen.update(open => !open);
