@@ -19,7 +19,7 @@
   </button>
 
   @if (isOpen()) {
-    <div class="dropdown">
+    <div class="dropdown" [animate.enter]="'enter-animation'" [animate.leave]="'leave-animation'">
       @for (language of languages(); track language.code) {
         <button
           type="button"
