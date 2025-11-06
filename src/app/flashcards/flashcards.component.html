@@ -23,8 +23,9 @@
       <button
         type="button"
         (click)="toggleToCollections()"
-        class="btn btn-nav"
+        class="btn-nav"
         [class.active]="currentView() === 'flashcards'"
+        [class.disabled]="currentView() === 'collections'"
         [disabled]="currentView() === 'collections'"
       >
         {{ 'flashcards.collections' | translate }}
