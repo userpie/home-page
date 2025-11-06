@@ -34,7 +34,7 @@ export class CollectionsComponent implements OnInit {
   showResetModal = signal(false);
   searchQuery = signal('');
   sortBy = signal<'createdAt'>('createdAt');
-  sortOrder = signal<'asc' | 'desc'>('desc'); // Default to newest first
+  sortOrder = signal<'asc' | 'desc'>('asc');
   editingCollectionId = signal<uuid | null>(null);
 
   startStudyingCollection = output<CollectionMetadata[]>();
