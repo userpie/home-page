@@ -65,59 +65,60 @@
     </div>
   </div>
 }
-@if (showAddForm()) {
-  <div class="add-card-form">
-    <h3>{{ 'flashcards.card.add-card' | translate }}</h3>
-    <form [formGroup]="cardForm" (ngSubmit)="addCard()">
-      <div class="form-group">
-        <label for="front">{{ 'flashcards.card.front' | translate }}</label>
-        <textarea
-          id="front"
-          formControlName="front"
-          [placeholder]="'flashcards.card.front-input-placeholder' | translate "
-          rows="3"
-        >
+@if (!isLoading()) {
+  @if (showAddForm()) {
+    <div class="add-card-form">
+      <h3>{{ 'flashcards.card.add-card' | translate }}</h3>
+      <form [formGroup]="cardForm" (ngSubmit)="addCard()">
+        <div class="form-group">
+          <label for="front">{{ 'flashcards.card.front' | translate }}</label>
+          <textarea
+            id="front"
+            formControlName="front"
+            [placeholder]="'flashcards.card.front-input-placeholder' | translate "
+            rows="3"
+          >
       </textarea>
-      </div>
+        </div>
 
-      <div class="form-group">
-        <label for="back">{{ 'flashcards.card.back' | translate }}</label>
-        <textarea id="back" formControlName="back"
-                  [placeholder]="'flashcards.card.back-input-placeholder' | translate" rows="3">
+        <div class="form-group">
+          <label for="back">{{ 'flashcards.card.back' | translate }}</label>
+          <textarea id="back" formControlName="back"
+                    [placeholder]="'flashcards.card.back-input-placeholder' | translate" rows="3">
       </textarea>
-      </div>
+        </div>
 
-      <!--      add a dropdown to select a collection-->
-      <div class="form-group">
-        <label for="collection">{{ 'flashcards.card.select-collection' | translate }}</label>
-        <select id="collection" formControlName="collection" class="form-control">
-          @for (collection of selectedCollectionMetadata(); track collection.id) {
-            <option [value]="collection.id">
-              {{ collection.name }}
-            </option>
-          }
-        </select>
-      </div>
+        <!--      add a dropdown to select a collection-->
+        <div class="form-group">
+          <label for="collection">{{ 'flashcards.card.select-collection' | translate }}</label>
+          <select id="collection" formControlName="collection" class="form-control">
+            @for (collection of selectedCollectionMetadata(); track collection.id) {
+              <option [value]="collection.id">
+                {{ collection.name }}
+              </option>
+            }
+          </select>
+        </div>
 
-      <div class="form-actions">
-        <button type="submit" [disabled]="cardForm.invalid"
-                class="btn btn-primary">{{ 'flashcards.card.confirm-add-card' | translate }}
-        </button>
-        <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">{{ 'common.cancel' | translate }}
-        </button>
-      </div>
+        <div class="form-actions">
+          <button type="submit" [disabled]="cardForm.invalid"
+                  class="btn btn-primary">{{ 'flashcards.card.confirm-add-card' | translate }}
+          </button>
+          <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">{{ 'common.cancel' | translate }}
+          </button>
+        </div>
 
-    </form>
-  </div>
-} @else {
-  <div class="controls">
-    <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">{{
-        'flashcards.card.confirm-add-card' | translate
-      }}
-    </button>
-    <button type="button" (click)="resetAllCards()" class="btn btn-outline btn-danger">
-      {{ 'flashcards.card.reset-cards' | translate }}
-    </button>
-  </div>
+      </form>
+    </div>
+  } @else {
+    <div class="controls">
+      <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">{{
+          'flashcards.card.confirm-add-card' | translate
+        }}
+      </button>
+      <button type="button" (click)="resetAllCards()" class="btn btn-outline btn-danger">
+        {{ 'flashcards.card.reset-cards' | translate }}
+      </button>
+    </div>
+  }
 }
-
