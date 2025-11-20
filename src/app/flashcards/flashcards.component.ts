@@ -1,7 +1,7 @@
 import {Component, ChangeDetectionStrategy, signal, inject, PLATFORM_ID} from '@angular/core';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CollectionMetadata} from './flashcards-metadata';
+import {uuid} from './flashcards-metadata';
 import {CollectionsComponent} from './collections/collections.component';
 import {SelectionView} from './selection/selection-view.component';
 import {LanguageSwitcherComponent} from '../components/language-selector/language-switcher.component';
@@ -16,12 +16,12 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class FlashcardsComponent {
   currentView = signal<'flashcards' | 'collections'>('collections');
-  selectedFlashcards = signal<CollectionMetadata[]>([]);
+  selectedFlashcards = signal<uuid[]>([]);
 
   private platformId = inject(PLATFORM_ID);
   protected isBrowser = isPlatformBrowser(this.platformId);
 
-  onArraySelected(selectedArray: CollectionMetadata[]): void {
+  onArraySelected(selectedArray: uuid[]): void {
     this.selectedFlashcards.set(selectedArray);
 
     // Load the new cards and switch to study view
@@ -30,9 +30,5 @@ export class FlashcardsComponent {
 
   toggleToCollections(): void {
     this.currentView.set('collections');
-  }
-
-  toggleToFlashcards(): void {
-    this.currentView.set('flashcards');
   }
 }

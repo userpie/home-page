@@ -91,7 +91,7 @@
       <div class="form-group">
         <label for="collection">{{ 'flashcards.card.select-collection' | translate }}</label>
         <select id="collection" formControlName="collection" class="form-control">
-          @for (collection of selectedFlashcards(); track collection.id) {
+          @for (collection of selectedCollectionMetadata(); track collection.id) {
             <option [value]="collection.id">
               {{ collection.name }}
             </option>

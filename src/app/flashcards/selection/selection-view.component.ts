@@ -1,20 +1,14 @@
 import {Component, computed, inject, input, OnInit, PLATFORM_ID, signal} from '@angular/core';
 import {CollectionMetadata, uuid} from '../flashcards-metadata';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Card, createEmptyCard, FSRS, Grade, Rating, State} from 'ts-fsrs';
+import {createEmptyCard, FSRS, Grade, Rating, State} from 'ts-fsrs';
 import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {CollectionsService, StudyCard} from '../services/collections.service';
 
-interface StudyCard {
-  id: string;
-  front: string;
-  back: string;
-  fsrsCard: Card;
-  isRevealed: boolean;
-  collection: uuid;
-}
+
 
 @Component({
   selector: 'app-selection',
@@ -25,6 +19,7 @@ interface StudyCard {
 export class SelectionView implements OnInit {
   private fb = inject(FormBuilder);
   private fsrs = new FSRS({});
+  private collectionsService = inject(CollectionsService);
 
   isLoading = signal(true);
   allCards = signal<StudyCard[]>([]);
@@ -37,7 +32,12 @@ export class SelectionView implements OnInit {
 
   private readonly http = inject(HttpClient);
 
-  selectedFlashcards = input.required<CollectionMetadata[]>();
+  selectedFlashcards = input.required<uuid[]>();
+
+  // Get collection metadata from the service
+  selectedCollectionMetadata = computed(() =>
+    this.collectionsService.getCollections(this.selectedFlashcards())
+  );
 
   // Form for adding new cards
   cardForm = this.fb.nonNullable.group({
@@ -65,7 +65,7 @@ export class SelectionView implements OnInit {
   currentCollection = computed(() => {
     const current = this.currentCard();
     if (!current) return null;
-    return this.selectedFlashcards().find(col => col.id === current.collection);
+    return this.collectionsService.getCollection(current.collection);
   });
 
   // Get scheduling preview for rating buttons
@@ -85,8 +85,9 @@ export class SelectionView implements OnInit {
 
   ngOnInit(): void {
     this.loadCards();
-    if (this.selectedFlashcards().length === 1) {
-      const onlyCollection = this.selectedFlashcards()[0];
+    const collections = this.selectedCollectionMetadata();
+    if (collections.length === 1) {
+      const onlyCollection = collections[0];
       this.cardForm.get('collection')?.setValue(onlyCollection.id);
     }
   }
@@ -179,7 +180,7 @@ export class SelectionView implements OnInit {
       this.allCards.set(resetCards);
       this.currentCardIndex.set(0);
       // save all cards for each collection
-      this.selectedFlashcards().forEach((metadata) => {
+      this.selectedCollectionMetadata().forEach((metadata) => {
         this.saveCards(metadata.id);
       });
     }
@@ -222,9 +223,9 @@ export class SelectionView implements OnInit {
   private saveCards(id: uuid): void {
     if (!this.isBrowser) return;
 
-    const cardsData = this.allCards()
-      .filter(card => card.collection === id)
-      .map((card) => ({
+    const cardsForCollection = this.allCards().filter(card => card.collection === id);
+
+    const cardsData = cardsForCollection.map((card) => ({
         collection: card.collection,
         id: card.id,
         front: card.front,
@@ -243,6 +244,9 @@ export class SelectionView implements OnInit {
       }));
 
     localStorage.setItem(id, JSON.stringify(cardsData));
+
+    // Update collection statistics through the service
+    this.collectionsService.updateCollectionStats(id, cardsForCollection);
   }
 
   private loadCards(): void {
@@ -250,7 +254,7 @@ export class SelectionView implements OnInit {
       return;
     }
 
-    this.selectedFlashcards().forEach((metadata) => {
+    this.selectedCollectionMetadata().forEach((metadata) => {
       const savedData = localStorage.getItem(metadata.id);
       if (savedData) {
         try {

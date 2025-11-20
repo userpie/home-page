@@ -1,12 +1,11 @@
-import {Component, signal, computed, output, inject, OnInit, PLATFORM_ID} from '@angular/core';
-import {CommonModule, isPlatformBrowser} from '@angular/common';
-import {HttpClient} from '@angular/common/http';
+import {Component, signal, computed, output, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {CollectionMetadata, uuid} from '../flashcards-metadata';
-import {environment} from '../../../environments/environment';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AssetUrlService} from '../../services/asset-url.service';
 import {Button, ButtonSize} from '../../components/button/button';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {CollectionsService} from '../services/collections.service';
 
 @Component({
   selector: 'app-collections',
@@ -17,105 +16,42 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
     '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
   }
 })
-export class CollectionsComponent implements OnInit {
+export class CollectionsComponent {
   protected readonly ButtonSize = ButtonSize;
 
   private fb = inject(FormBuilder);
-  private readonly http = inject(HttpClient);
   protected assetUrlService = inject(AssetUrlService);
-  private platformId = inject(PLATFORM_ID);
-  private isBrowser = isPlatformBrowser(this.platformId);
-  translate = inject(TranslateService);
+  private translate = inject(TranslateService);
+  private collectionsService = inject(CollectionsService);
 
-  collectionsMetadata = signal<CollectionMetadata[]>([]);
   selectedCollectionNumbers = signal<uuid[]>([]);
-  isLoading = signal(true);
   showAddForm = signal(false);
   showResetModal = signal(false);
   searchQuery = signal('');
-  sortBy = signal<'createdAt'>('createdAt');
+  sortBy = signal<'createdAt' | 'name' | 'totalCards'>('createdAt');
   sortOrder = signal<'asc' | 'desc'>('asc');
   editingCollectionId = signal<uuid | null>(null);
 
-  startStudyingCollection = output<CollectionMetadata[]>();
-  // selectedCollections = output<CollectionMetadata[]>();
+  // Use service signals
+  isLoading = this.collectionsService.isLoading;
+
+  startStudyingCollection = output<uuid[]>();
 
   filteredCollections = computed(() => {
-    let collections = this.collectionsMetadata();
+    const query = this.searchQuery();
+    const searchResults = this.collectionsService.searchCollections(query);
 
-    // Apply search filter
-    const query = this.searchQuery().toLowerCase().trim();
-    if (query) {
-      collections = collections.filter(collection =>
-        collection.name.toLowerCase().includes(query) ||
-        collection.description.toLowerCase().includes(query)
-      );
-    }
-
-    // Apply sorting
-    const sortBy = this.sortBy();
-    const sortOrder = this.sortOrder();
-
-    return [...collections].sort((a, b) => {
-      let comparison = 0;
-
-      if (sortBy === 'createdAt') {
-        const dateA = new Date(a.createdAt).getTime();
-        const dateB = new Date(b.createdAt).getTime();
-        comparison = dateA - dateB;
-      }
-
-      return sortOrder === 'asc' ? comparison : -comparison;
-    });
+    return this.collectionsService.sortCollections(
+      searchResults,
+      this.sortBy(),
+      this.sortOrder()
+    );
   });
 
   collectionForm = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(20)]],
     description: ['', [Validators.required, Validators.maxLength(200)]],
   });
-
-  ngOnInit(): void {
-    this.loadCollections();
-  }
-
-  loadCollections() {
-    if (!this.isBrowser) {
-      return;
-    }
-
-    const savedData = localStorage.getItem('collection-metadata');
-    if (savedData) {
-      try {
-        const collectionsMetadata = JSON.parse(savedData);
-        this.collectionsMetadata.set(collectionsMetadata);
-      } catch (error) {
-        console.error('Error loading cards:', error);
-        this.loadDefaultCollection();
-      }
-    } else {
-      this.loadDefaultCollection();
-    }
-
-    this.isLoading.set(false);
-  }
-
-  loadDefaultCollection(): void {
-    this.http.get<CollectionMetadata[]>(environment.firstPath + '/assets/spaced-repetition/collection-metadata.json').subscribe({
-      next: (cardsData) => {
-        this.collectionsMetadata.set(cardsData);
-        this.saveCollectionMetadata();
-      },
-      error: (error) => {
-        console.error('Error loading flashcards:', error);
-      },
-    });
-  }
-
-  saveCollectionMetadata() {
-    if (this.collectionsMetadata()) {
-      localStorage.setItem('collection-metadata', JSON.stringify(this.collectionsMetadata()));
-    }
-  }
 
   getLengthDistributionEntries(distribution: Record<string, number>) {
     return Object.entries(distribution)
@@ -132,13 +68,11 @@ export class CollectionsComponent implements OnInit {
     } else {
       this.selectedCollectionNumbers.update(numbers => [...numbers, arrayNumber]);
     }
-    // const selectedCollections = this.collectionsMetadata().filter(collection => this.selectedCollectionNumbers().includes(collection.id));
-    // this.selectedCollections.emit(selectedCollections);
   }
 
   startStudying(array: CollectionMetadata): void {
-    // Emit the selected array to switch to study mode
-    this.startStudyingCollection.emit([array]);
+    // Emit the selected array ID to switch to study mode
+    this.startStudyingCollection.emit([array.id]);
   }
 
   isSelected(arrayNumber: uuid): boolean {
@@ -158,21 +92,13 @@ export class CollectionsComponent implements OnInit {
 
       if (editingId) {
         // Update existing collection
-        this.collectionsMetadata.update(collections =>
-          collections.map(collection =>
-            collection.id === editingId
-              ? {
-                ...collection,
-                name: formValue.name || 'Untitled Collection',
-                description: formValue.description || ''
-              }
-              : collection
-          )
-        );
+        this.collectionsService.updateCollection(editingId, {
+          name: formValue.name || 'Untitled Collection',
+          description: formValue.description || ''
+        });
       } else {
         // Create new collection
-        const newCollection: CollectionMetadata = {
-          id: crypto.randomUUID(),
+        this.collectionsService.addCollection({
           name: formValue.name || 'Untitled Collection',
           description: formValue.description || '',
           totalCards: 0,
@@ -182,13 +108,9 @@ export class CollectionsComponent implements OnInit {
             minBackLength: 0,
             maxBackLength: 0,
           },
-          createdAt: new Date().toISOString(),
-        };
-
-        this.collectionsMetadata.update((cards) => [...cards, newCollection]);
+        });
       }
 
-      this.saveCollectionMetadata();
       this.cancelAddCollection();
     }
   }
@@ -211,29 +133,19 @@ export class CollectionsComponent implements OnInit {
     });
 
     // Store the collection being edited
-    this.editingCollectionId = signal(collection.id);
+    this.editingCollectionId.set(collection.id);
     this.showAddForm.set(true);
   }
 
   deleteCollection(collection: CollectionMetadata): void {
     if (confirm(this.translate.instant('flashcards.delete-modal.message', {collectionName: collection.name}))) {
-      // Remove the collection from the list
-      this.collectionsMetadata.update(collections =>
-        collections.filter(c => c.id !== collection.id)
-      );
+      // Delete the collection using the service
+      this.collectionsService.deleteCollection(collection.id);
 
       // Clear selection if the deleted collection was selected
       if (this.selectedCollectionNumbers().includes(collection.id)) {
         this.selectedCollectionNumbers.update(numbers => numbers.filter(number => number !== collection.id));
       }
-
-      // Remove the associated flashcard data from localStorage
-      if (this.isBrowser) {
-        localStorage.removeItem(collection.id);
-      }
-
-      // Save the updated metadata
-      this.saveCollectionMetadata();
     }
   }
 
@@ -246,37 +158,15 @@ export class CollectionsComponent implements OnInit {
   }
 
   resetToDefaults(): void {
-    if (!this.isBrowser) {
-      return;
-    }
-
-// Clear all collection metadata from localStorage
-    localStorage.removeItem('collection-metadata');
-
-// Clear all individual collection flashcard data
-    const currentCollections = this.collectionsMetadata();
-    currentCollections.forEach(collection => {
-      localStorage.removeItem(collection.id);
-    });
-
-// Clear any other spaced repetition related data
-    for (let i = localStorage.length - 1; i >= 0; i--) {
-      const key = localStorage.key(i);
-      if (key && (key.startsWith('flashcards-') || key.includes('collection'))) {
-        localStorage.removeItem(key);
-      }
-    }
-
-// Reset state
+    // Reset state
     this.selectedCollectionNumbers.set([]);
     this.hideResetModal();
 
-// Load default collections
-    this.loadDefaultCollection();
+    // Use service to reset to defaults
+    this.collectionsService.resetToDefaults();
   }
 
   protected startStudyingSelectedCollections() {
-    const selectedCollections = this.collectionsMetadata().filter(collection => this.selectedCollectionNumbers().includes(collection.id));
-    this.startStudyingCollection.emit(selectedCollections);
+    this.startStudyingCollection.emit(this.selectedCollectionNumbers());
   }
 }

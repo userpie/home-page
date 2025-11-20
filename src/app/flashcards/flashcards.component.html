@@ -35,7 +35,7 @@
 
   @if (currentView() === 'collections') {
     <app-collections (startStudyingCollection)="onArraySelected($event)"></app-collections>
-  } @else if (selectedFlashcards()) {
+  } @else {
     <app-selection [selectedFlashcards]="selectedFlashcards()"></app-selection>
   }
 </div>
