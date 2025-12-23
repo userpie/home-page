@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { CollectionMetadata, uuid } from '../flashcards-metadata';
 import { environment } from '../../../environments/environment';
+import { State } from 'ts-fsrs';
 
 export interface StudyCard {
   id: string;
@@ -49,6 +50,7 @@ export class CollectionsService {
       try {
         const collectionsMetadata = JSON.parse(savedData);
         this._collectionsMetadata.set(collectionsMetadata);
+        this.recalculateAllDueCards();
         this._isLoading.set(false);
       } catch (error) {
         console.error('Error loading collection metadata:', error);
@@ -69,6 +71,7 @@ export class CollectionsService {
       next: (collectionsData) => {
         this._collectionsMetadata.set(collectionsData);
         this.saveToLocalStorage();
+        this.recalculateAllDueCards();
         this._isLoading.set(false);
       },
       error: (error) => {
@@ -191,9 +194,13 @@ export class CollectionsService {
       lengthDistribution[key] = (lengthDistribution[key] || 0) + 1;
     });
 
+    // Calculate due cards for this collection
+    const dueCards = this.calculateDueCards(collectionId);
+
     // Update collection metadata
     this.updateCollection(collectionId, {
       totalCards,
+      dueCards,
       lengthDistribution,
       statistics: {
         averageBackLength: Math.round(averageBackLength * 100) / 100,
@@ -246,6 +253,62 @@ export class CollectionsService {
       collection.name.toLowerCase().includes(normalizedQuery) ||
       collection.description.toLowerCase().includes(normalizedQuery)
     );
+  }
+
+  /**
+   * Calculate due cards for a specific collection
+   */
+  calculateDueCards(collectionId: uuid): number {
+    if (!this.isBrowser) {
+      return 0;
+    }
+
+    const collection = this.getCollection(collectionId);
+    if (!collection) {
+      return 0;
+    }
+
+    const savedData = localStorage.getItem(collectionId);
+    if (savedData) {
+      try {
+        const now = new Date();
+        const cardsData = JSON.parse(savedData);
+        return cardsData
+          .map((data: any) => ({
+            fsrsCard: {
+              state: data.fsrsCard.state,
+              due: new Date(data.fsrsCard.due),
+            }
+          }))
+          .filter((card: Partial<StudyCard>) =>
+            card.fsrsCard.state === State.New || card.fsrsCard.due <= now
+          )
+          .length;
+      } catch (error) {
+        console.error('Error calculating due cards:', error);
+        return collection.totalCards;
+      }
+    } else {
+      return collection.totalCards;
+    }
+  }
+
+  /**
+   * Recalculate due cards for all collections and update metadata
+   */
+  recalculateAllDueCards(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    this._collectionsMetadata.update(collections =>
+      collections.map(collection => ({
+        ...collection,
+        dueCards: this.calculateDueCards(collection.id)
+      }))
+    );
+
+    this.saveToLocalStorage();
   }
 
   /**

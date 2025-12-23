@@ -3,6 +3,7 @@ export interface CollectionMetadata {
   name: string;
   id: uuid;
   totalCards: number;
+  dueCards?: number;
   lengthDistribution: Record<string, number>;
   statistics: {
     averageBackLength: number;

@@ -1,12 +1,11 @@
-import {Component, signal, computed, output, inject} from '@angular/core';
+import {Component, signal, computed, output, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CollectionMetadata, uuid} from '../flashcards-metadata';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AssetUrlService} from '../../services/asset-url.service';
 import {Button, ButtonSize} from '../../components/button/button';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {CollectionsService, StudyCard} from '../services/collections.service';
-import {State} from 'ts-fsrs';
+import {CollectionsService} from '../services/collections.service';
 
 @Component({
   selector: 'app-collections',
@@ -17,7 +16,7 @@ import {State} from 'ts-fsrs';
     '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
   }
 })
-export class CollectionsComponent {
+export class CollectionsComponent implements OnInit {
   protected readonly ButtonSize = ButtonSize;
 
   private fb = inject(FormBuilder);
@@ -53,6 +52,11 @@ export class CollectionsComponent {
     name: ['', [Validators.required, Validators.maxLength(20)]],
     description: ['', [Validators.required, Validators.maxLength(200)]],
   });
+
+  ngOnInit(): void {
+    // Recalculate due cards when the collections page is opened
+    this.collectionsService.recalculateAllDueCards();
+  }
 
   getLengthDistributionEntries(distribution: Record<string, number>) {
     return Object.entries(distribution)
@@ -172,27 +176,8 @@ export class CollectionsComponent {
   }
 
   protected getDueCards(collectionMetadata: CollectionMetadata): number {
-    const savedData = localStorage.getItem(collectionMetadata.id);
-    if (savedData) {
-      try {
-        const now = new Date();
-        const cardsData = JSON.parse(savedData);
-        return cardsData
-          .map((data: any) => ({
-            fsrsCard: {
-              state: data.fsrsCard.state,
-              due: new Date(data.fsrsCard.due),
-            }
-          }))
-          .filter((card: Partial<StudyCard>) => card.fsrsCard.state === State.New || card.fsrsCard.due <= now)
-          .length;
-      } catch (error) {
-        console.error('Error loading cards:', error);
-        return collectionMetadata.totalCards;
-      }
-    } else {
-      return collectionMetadata.totalCards;
-    }
-
+    // Use the pre-calculated dueCards value from the metadata
+    // If not available, fall back to totalCards
+    return collectionMetadata.dueCards ?? collectionMetadata.totalCards;
   }
 }
