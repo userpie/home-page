@@ -316,7 +316,7 @@ export class CollectionsService {
    */
   sortCollections(
     collections: CollectionMetadata[],
-    sortBy: 'createdAt' | 'name' | 'totalCards',
+    sortBy: 'createdAt' | 'name' | 'totalCards' | 'dueCards',
     sortOrder: 'asc' | 'desc'
   ): CollectionMetadata[] {
     return [...collections].sort((a, b) => {
@@ -333,6 +333,11 @@ export class CollectionsService {
           break;
         case 'totalCards':
           comparison = a.totalCards - b.totalCards;
+          break;
+        case 'dueCards':
+          const dueA = a.dueCards ?? a.totalCards;
+          const dueB = b.dueCards ?? b.totalCards;
+          comparison = dueA - dueB;
           break;
       }
 

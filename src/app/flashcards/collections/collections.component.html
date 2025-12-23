@@ -38,6 +38,21 @@
         </div>
 
         <div class="sort-container">
+          <label for="sort-by-select" class="sort-label">{{ 'flashcards.sort-by-select' | translate }}</label>
+          <select
+            id="sort-by-select"
+            class="sort-select"
+            [value]="sortBy()"
+            (change)="onSortByChange($event)"
+          >
+            <option value="createdAt">{{ 'flashcards.sort-by-created' | translate }}</option>
+            <option value="name">{{ 'flashcards.sort-by-name' | translate }}</option>
+            <option value="totalCards">{{ 'flashcards.sort-by-total' | translate }}</option>
+            <option value="dueCards">{{ 'flashcards.sort-by-due' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="sort-container">
           <label for="sort-select" class="sort-label">{{ 'flashcards.sort-select' | translate }}</label>
           <select
             id="sort-select"
@@ -45,8 +60,8 @@
             [value]="sortOrder()"
             (change)="onSortChange($event)"
           >
-            <option value="desc">{{ 'flashcards.sort-select-newest' | translate }}</option>
-            <option value="asc">{{ 'flashcards.sort-select-oldest' | translate }}</option>
+            <option value="desc">{{ 'flashcards.sort-desc' | translate }}</option>
+            <option value="asc">{{ 'flashcards.sort-asc' | translate }}</option>
           </select>
         </div>
       </div>

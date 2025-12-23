@@ -28,7 +28,7 @@ export class CollectionsComponent implements OnInit {
   showAddForm = signal(false);
   showResetModal = signal(false);
   searchQuery = signal('');
-  sortBy = signal<'createdAt' | 'name' | 'totalCards'>('createdAt');
+  sortBy = signal<'createdAt' | 'name' | 'totalCards' | 'dueCards'>('dueCards');
   sortOrder = signal<'asc' | 'desc'>('asc');
   editingCollectionId = signal<uuid | null>(null);
 
@@ -123,6 +123,11 @@ export class CollectionsComponent implements OnInit {
   onSearchChange(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.searchQuery.set(target.value);
+  }
+
+  onSortByChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.sortBy.set(target.value as 'createdAt' | 'name' | 'totalCards' | 'dueCards');
   }
 
   onSortChange(event: Event): void {
