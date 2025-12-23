@@ -92,7 +92,12 @@
                   ></app-button>
                 </div>
               }
-              <span class="total-cards">{{ collectionMetadata.totalCards }} cards</span>
+              @let dueCards = getDueCards(collectionMetadata);
+              <span class="total-cards"
+                    [class.all-done]="dueCards === 0"
+                    [class.none-done]="dueCards===collectionMetadata.totalCards">
+                {{ dueCards }} cards
+              </span>
             </div>
           </div>
 
@@ -117,8 +122,7 @@
               <div class="stat-item">
                 <span class="label">{{ 'flashcards.length-distribution' | translate }}</span>
                 <div class="distribution-items">
-                  @for (
-                    item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
+                  @for (item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
                     <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
                   }
                 </div>

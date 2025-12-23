@@ -5,7 +5,8 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {AssetUrlService} from '../../services/asset-url.service';
 import {Button, ButtonSize} from '../../components/button/button';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {CollectionsService} from '../services/collections.service';
+import {CollectionsService, StudyCard} from '../services/collections.service';
+import {State} from 'ts-fsrs';
 
 @Component({
   selector: 'app-collections',
@@ -168,5 +169,30 @@ export class CollectionsComponent {
 
   protected startStudyingSelectedCollections() {
     this.startStudyingCollection.emit(this.selectedCollectionNumbers());
+  }
+
+  protected getDueCards(collectionMetadata: CollectionMetadata): number {
+    const savedData = localStorage.getItem(collectionMetadata.id);
+    if (savedData) {
+      try {
+        const now = new Date();
+        const cardsData = JSON.parse(savedData);
+        return cardsData
+          .map((data: any) => ({
+            fsrsCard: {
+              state: data.fsrsCard.state,
+              due: new Date(data.fsrsCard.due),
+            }
+          }))
+          .filter((card: Partial<StudyCard>) => card.fsrsCard.state === State.New || card.fsrsCard.due <= now)
+          .length;
+      } catch (error) {
+        console.error('Error loading cards:', error);
+        return collectionMetadata.totalCards;
+      }
+    } else {
+      return collectionMetadata.totalCards;
+    }
+
   }
 }

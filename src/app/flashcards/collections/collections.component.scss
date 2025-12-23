@@ -197,6 +197,16 @@
       border-radius: 3px;
       font-size: 0.8rem;
       font-weight: 600;
+
+      &.all-done {
+        background-color: #d4edda;
+        color: #16a34a;
+      }
+
+      &.none-done {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
     }
 
     .action-buttons {
