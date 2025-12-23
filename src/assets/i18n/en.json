@@ -23,6 +23,7 @@
     "add-collection": "Add New Collection",
     "confirm-edit-collection": "Update Collection",
     "confirm-add-collection": "Add Collection",
+    "cards": "cards",
     "reset-modal": {
       "title": "Reset Collections",
       "message": "Warning: This action will permanently delete all your custom collections and flashcards and restore the default collections.",

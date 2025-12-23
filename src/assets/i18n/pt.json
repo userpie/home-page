@@ -23,6 +23,7 @@
     "add-collection": "Adicionar Nova Coleção",
     "confirm-edit-collection": "Atualizar Coleção",
     "confirm-add-collection": "Adicionar Coleção",
+    "cards": "cartões",
     "reset-modal": {
       "title": "Redefinir Coleções",
       "message": "Aviso: Esta ação excluirá permanentemente todas as suas coleções e cartões personalizados e restaurará as coleções padrão.",
