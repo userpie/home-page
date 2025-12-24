@@ -126,8 +126,13 @@
               </div>
               <div class="stat-item">
                 <span class="label">{{ 'flashcards.range' | translate }}</span>
-                <span class="value">{{ collectionMetadata.statistics.minBackLength }}
-                  - {{ collectionMetadata.statistics.maxBackLength }}</span>
+                <span class="value">
+                  {{
+                    collectionMetadata.statistics.minBackLength === collectionMetadata.statistics.maxBackLength
+                      ? collectionMetadata.statistics.minBackLength
+                      : collectionMetadata.statistics.minBackLength + ' - ' + collectionMetadata.statistics.maxBackLength
+                  }}
+                </span>
               </div>
               <div class="stat-item">
                 <span class="label">{{ 'flashcards.total' | translate }}</span>
