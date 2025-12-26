@@ -65,6 +65,13 @@
             <option value="asc">{{ 'flashcards.sort-asc' | translate }}</option>
           </select>
         </div>
+
+        <div class="starred-filter-container">
+          <app-star-button
+            [starred]="starredFirst()"
+            (toggle)="starredFirst.set(!starredFirst())"
+          />
+        </div>
       </div>
     </div>
 

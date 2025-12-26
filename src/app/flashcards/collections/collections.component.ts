@@ -31,6 +31,7 @@ export class CollectionsComponent implements OnInit {
   searchQuery = signal('');
   sortBy = signal<SortBy>('dueCards');
   sortOrder = signal<'asc' | 'desc'>('asc');
+  starredFirst = signal(true); // Default to showing starred first
   editingCollectionId = signal<uuid | null>(null);
 
   // Use service signals
@@ -45,7 +46,8 @@ export class CollectionsComponent implements OnInit {
     return this.collectionsService.sortCollections(
       searchResults,
       this.sortBy(),
-      this.sortOrder()
+      this.sortOrder(),
+      this.starredFirst()
     );
   });
 

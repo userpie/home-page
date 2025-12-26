@@ -329,9 +329,16 @@ export class CollectionsService {
   sortCollections(
     collections: CollectionMetadata[],
     sortBy: SortBy,
-    sortOrder: 'asc' | 'desc'
+    sortOrder: 'asc' | 'desc',
+    starredFirst: boolean = false
   ): CollectionMetadata[] {
     return [...collections].sort((a, b) => {
+      // If starredFirst is enabled, prioritize starred collections
+      if (starredFirst) {
+        if (a.starred && !b.starred) return -1;
+        if (!a.starred && b.starred) return 1;
+      }
+
       let comparison = 0;
 
       switch (sortBy) {
