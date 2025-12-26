@@ -1,7 +1,7 @@
 import {Component, signal, computed, output, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CollectionMetadata, uuid} from '../flashcards-metadata';
-import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators, FormArray} from '@angular/forms';
 import {AssetUrlService} from '../../services/asset-url.service';
 import {Button, ButtonSize} from '../../components/button/button';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
@@ -61,12 +61,47 @@ export class CollectionsComponent implements OnInit {
   collectionForm = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(20)]],
     description: ['', [Validators.maxLength(200)]],
-    labels: ['', [Validators.maxLength(200)]],
+    labels: this.fb.array([this.fb.control('', [Validators.maxLength(50)])]),
   });
 
   ngOnInit(): void {
     // Recalculate due cards when the collections page is opened
     this.collectionsService.recalculateAllDueCards();
+  }
+
+  get labelsArray(): FormArray {
+    return this.collectionForm.get('labels') as FormArray;
+  }
+
+  addLabelField(): void {
+    this.labelsArray.push(this.fb.control('', [Validators.maxLength(50)]));
+  }
+
+  removeLabelField(index: number): void {
+    if (this.labelsArray.length > 1) {
+      this.labelsArray.removeAt(index);
+    }
+  }
+
+  canAddLabel(): boolean {
+    // Can add a new label field if all current fields are filled in
+    return this.labelsArray.controls.every(control => control.value?.trim() !== '');
+  }
+
+  getLabelColor(index: number): string {
+    const colors = [
+      '#007bff', // Blue
+      '#28a745', // Green
+      '#dc3545', // Red
+      '#ffc107', // Yellow/Orange
+      '#17a2b8', // Cyan
+      '#6610f2', // Purple
+      '#e83e8c', // Pink
+      '#fd7e14', // Orange
+      '#20c997', // Teal
+      '#6f42c1', // Indigo
+    ];
+    return colors[index % colors.length];
   }
 
   getLengthDistributionEntries(distribution: Record<string, number>) {
@@ -116,6 +151,9 @@ export class CollectionsComponent implements OnInit {
   cancelAddCollection(): void {
     this.showAddForm.set(false);
     this.collectionForm.reset();
+    // Reset labels array to have just one empty field
+    this.labelsArray.clear();
+    this.labelsArray.push(this.fb.control('', [Validators.maxLength(50)]));
     this.editingCollectionId.set(null);
   }
 
@@ -124,12 +162,16 @@ export class CollectionsComponent implements OnInit {
       const formValue = this.collectionForm.getRawValue();
       const editingId = this.editingCollectionId();
 
+      // Filter out empty labels and handle null values
+      const labels = (formValue.labels || [])
+        .filter((label): label is string => label !== null && label.trim() !== '');
+
       if (editingId) {
         // Update existing collection
         this.collectionsService.updateCollection(editingId, {
           name: formValue.name || 'Untitled Collection',
           description: formValue.description || '',
-          labels: [formValue.labels || ''],
+          labels: labels,
         });
       } else {
         // Create new collection
@@ -144,7 +186,7 @@ export class CollectionsComponent implements OnInit {
             maxBackLength: 0,
           },
           starred: true,
-          labels: [formValue.labels || ''],
+          labels: labels,
         });
       }
 
@@ -172,8 +214,18 @@ export class CollectionsComponent implements OnInit {
     this.collectionForm.patchValue({
       name: collection.name,
       description: collection.description,
-      labels: collection.labels ? collection.labels.toString() : '',
     });
+
+    // Clear and rebuild the labels array
+    this.labelsArray.clear();
+    if (collection.labels && collection.labels.length > 0) {
+      collection.labels.forEach(label => {
+        this.labelsArray.push(this.fb.control(label, [Validators.maxLength(50)]));
+      });
+    } else {
+      // At least one empty field
+      this.labelsArray.push(this.fb.control('', [Validators.maxLength(50)]));
+    }
 
     // Store the collection being edited
     this.editingCollectionId.set(collection.id);

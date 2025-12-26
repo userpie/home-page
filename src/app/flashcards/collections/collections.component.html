@@ -130,10 +130,19 @@
 
           <div class="array-details">
             <p class="description">{{ collectionMetadata.description }}</p>
-            @if (collectionMetadata.labels && collectionMetadata.labels.length > 0) {
+            @if (collectionMetadata.path || collectionMetadata.labels && collectionMetadata.labels.length > 0) {
               <div class="labels-section">
                 <span class="labels-label">{{ 'flashcards.labels' | translate }}</span>
-                <p class="labels">{{ collectionMetadata.labels }}</p>
+                <div class="labels-list">
+                  @for (label of collectionMetadata.labels; track label; let i = $index) {
+                    <p class="labels" [style.border-left-color]="getLabelColor(i)">{{ label }}</p>
+                  }
+                  @if (collectionMetadata.path) {
+                    <p class="labels" [style.border-left-color]="getLabelColor(collectionMetadata.labels?.length || 0)">
+                      {{ 'flashcards.default-label' | translate }}
+                    </p>
+                  }
+                </div>
               </div>
             }
             <div class="statistics">
@@ -183,13 +192,37 @@
         </div>
 
         <div class="form-group">
-          <label for="labels">{{ 'flashcards.collection-labels' | translate }}</label>
-          <input
-            id="labels"
-            formControlName="labels"
-            [placeholder]="'flashcards.labels-input-placeholder' | translate"
-            type="text"
-          />
+          <label>{{ 'flashcards.collection-labels' | translate }}</label>
+          <div formArrayName="labels">
+            @for (control of labelsArray.controls; track control; let idx = $index) {
+              <div class="label-input-container">
+                <input
+                  [formControlName]="idx"
+                  [placeholder]="'flashcards.labels-input-placeholder' | translate"
+                  [style.border-left-color]="getLabelColor(idx)"
+                  [style.border-left-width.px]="3"
+                  type="text"
+                />
+                @if (labelsArray.length > 1) {
+                  <button
+                    type="button"
+                    class="btn-remove-label"
+                    (click)="removeLabelField(idx)"
+                    [attr.aria-label]="'Remove label field'"
+                  >×
+                  </button>
+                }
+              </div>
+            }
+          </div>
+          <button
+            type="button"
+            class="btn-add-label"
+            (click)="addLabelField()"
+            [disabled]="!canAddLabel()"
+          >
+            + {{ 'flashcards.add-label-field' | translate }}
+          </button>
         </div>
 
         <div class="form-group">

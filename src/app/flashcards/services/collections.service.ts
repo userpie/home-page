@@ -4,6 +4,7 @@ import {isPlatformBrowser} from '@angular/common';
 import {CollectionMetadata, uuid} from '../flashcards-metadata';
 import {environment} from '../../../environments/environment';
 import {State} from 'ts-fsrs';
+import {TranslateService} from '@ngx-translate/core';
 
 export interface StudyCard {
   id: string;
@@ -22,6 +23,7 @@ export type SortBy = 'createdAt' | 'name' | 'totalCards' | 'dueCards' | 'wordLen
 export class CollectionsService {
   private readonly http = inject(HttpClient);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly translate = inject(TranslateService);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
   // Signals for reactive state management
@@ -264,7 +266,7 @@ export class CollectionsService {
     return this._collectionsMetadata().filter(collection =>
       collection.name.toLowerCase().includes(normalizedQuery) ||
       collection.description.toLowerCase().includes(normalizedQuery) ||
-      collection.labels?.some(label => label.toLowerCase().includes(normalizedQuery))
+      collection.labels?.some(label => label.toLowerCase().includes(normalizedQuery)) || (collection.path && (this.translate.instant('flashcards.default-label') as string).toLowerCase().includes(normalizedQuery))
     );
   }
 
