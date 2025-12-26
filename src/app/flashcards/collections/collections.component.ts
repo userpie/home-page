@@ -60,7 +60,8 @@ export class CollectionsComponent implements OnInit {
 
   collectionForm = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(20)]],
-    description: ['', [Validators.required, Validators.maxLength(200)]],
+    description: ['', [Validators.maxLength(200)]],
+    labels: ['', [Validators.maxLength(200)]],
   });
 
   ngOnInit(): void {
@@ -127,7 +128,8 @@ export class CollectionsComponent implements OnInit {
         // Update existing collection
         this.collectionsService.updateCollection(editingId, {
           name: formValue.name || 'Untitled Collection',
-          description: formValue.description || ''
+          description: formValue.description || '',
+          labels: [formValue.labels || ''],
         });
       } else {
         // Create new collection
@@ -142,6 +144,7 @@ export class CollectionsComponent implements OnInit {
             maxBackLength: 0,
           },
           starred: true,
+          labels: [formValue.labels || ''],
         });
       }
 
@@ -168,7 +171,8 @@ export class CollectionsComponent implements OnInit {
     // Pre-fill the form with the selected collection's data
     this.collectionForm.patchValue({
       name: collection.name,
-      description: collection.description
+      description: collection.description,
+      labels: collection.labels ? collection.labels.toString() : '',
     });
 
     // Store the collection being edited

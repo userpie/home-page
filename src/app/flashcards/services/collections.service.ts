@@ -1,9 +1,9 @@
-import { Injectable, signal, inject, PLATFORM_ID } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { isPlatformBrowser } from '@angular/common';
-import { CollectionMetadata, uuid } from '../flashcards-metadata';
-import { environment } from '../../../environments/environment';
-import { State } from 'ts-fsrs';
+import {Injectable, signal, inject, PLATFORM_ID} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {isPlatformBrowser} from '@angular/common';
+import {CollectionMetadata, uuid} from '../flashcards-metadata';
+import {environment} from '../../../environments/environment';
+import {State} from 'ts-fsrs';
 
 export interface StudyCard {
   id: string;
@@ -134,7 +134,7 @@ export class CollectionsService {
 
     this._collectionsMetadata.update(collections =>
       collections.map(collection =>
-        collection.id === id ? { ...collection, ...updates } : collection
+        collection.id === id ? {...collection, ...updates} : collection
       )
     );
 
@@ -263,7 +263,8 @@ export class CollectionsService {
     const normalizedQuery = query.toLowerCase().trim();
     return this._collectionsMetadata().filter(collection =>
       collection.name.toLowerCase().includes(normalizedQuery) ||
-      collection.description.toLowerCase().includes(normalizedQuery)
+      collection.description.toLowerCase().includes(normalizedQuery) ||
+      collection.labels?.some(label => label.toLowerCase().includes(normalizedQuery))
     );
   }
 

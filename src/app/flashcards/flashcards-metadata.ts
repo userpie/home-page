@@ -13,6 +13,7 @@ export interface CollectionMetadata {
   createdAt: string;
   description: string;
   starred: boolean;
+  labels: string[];
 }
 
 export type uuid = `${string}-${string}-${string}-${string}-${string}`;
