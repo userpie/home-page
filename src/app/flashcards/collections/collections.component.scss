@@ -33,6 +33,16 @@
   max-width: 800px;
   margin: 0 auto;
 
+  .controls-row {
+    display: flex;
+    gap: 1rem;
+    align-items: end;
+
+    .sort-container {
+      flex-grow: 1;
+    }
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 15px;

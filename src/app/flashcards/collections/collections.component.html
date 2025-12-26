@@ -52,25 +52,26 @@
             <option value="wordLength">{{ 'flashcards.sort-by-word-length' | translate }}</option>
           </select>
         </div>
+        <div class="controls-row">
+          <div class="sort-container">
+            <label for="sort-select" class="sort-label">{{ 'flashcards.sort-select' | translate }}</label>
+            <select
+              id="sort-select"
+              class="sort-select"
+              [value]="sortOrder()"
+              (change)="onSortChange($event)"
+            >
+              <option value="desc">{{ 'flashcards.sort-desc' | translate }}</option>
+              <option value="asc">{{ 'flashcards.sort-asc' | translate }}</option>
+            </select>
+          </div>
 
-        <div class="sort-container">
-          <label for="sort-select" class="sort-label">{{ 'flashcards.sort-select' | translate }}</label>
-          <select
-            id="sort-select"
-            class="sort-select"
-            [value]="sortOrder()"
-            (change)="onSortChange($event)"
-          >
-            <option value="desc">{{ 'flashcards.sort-desc' | translate }}</option>
-            <option value="asc">{{ 'flashcards.sort-asc' | translate }}</option>
-          </select>
-        </div>
-
-        <div class="starred-filter-container">
-          <app-star-button
-            [starred]="starredFirst()"
-            (toggle)="starredFirst.set(!starredFirst())"
-          />
+          <div class="starred-filter-container">
+            <app-star-button
+              [starred]="starredFirst()"
+              (toggle)="starredFirst.set(!starredFirst())"
+            />
+          </div>
         </div>
       </div>
     </div>
