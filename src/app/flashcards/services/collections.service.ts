@@ -14,6 +14,8 @@ export interface StudyCard {
   collection: uuid;
 }
 
+export type SortBy = 'createdAt' | 'name' | 'totalCards' | 'dueCards' | 'wordLength';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -316,7 +318,7 @@ export class CollectionsService {
    */
   sortCollections(
     collections: CollectionMetadata[],
-    sortBy: 'createdAt' | 'name' | 'totalCards' | 'dueCards',
+    sortBy: SortBy,
     sortOrder: 'asc' | 'desc'
   ): CollectionMetadata[] {
     return [...collections].sort((a, b) => {
@@ -338,6 +340,11 @@ export class CollectionsService {
           const dueA = a.dueCards ?? a.totalCards;
           const dueB = b.dueCards ?? b.totalCards;
           comparison = dueA - dueB;
+          break;
+        case 'wordLength':
+          const avgA = a.statistics?.averageBackLength ?? 0;
+          const avgB = b.statistics?.averageBackLength ?? 0;
+          comparison = avgA - avgB;
           break;
       }
 

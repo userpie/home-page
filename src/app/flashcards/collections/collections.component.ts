@@ -5,7 +5,7 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {AssetUrlService} from '../../services/asset-url.service';
 import {Button, ButtonSize} from '../../components/button/button';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {CollectionsService} from '../services/collections.service';
+import {CollectionsService, SortBy} from '../services/collections.service';
 
 @Component({
   selector: 'app-collections',
@@ -28,7 +28,7 @@ export class CollectionsComponent implements OnInit {
   showAddForm = signal(false);
   showResetModal = signal(false);
   searchQuery = signal('');
-  sortBy = signal<'createdAt' | 'name' | 'totalCards' | 'dueCards'>('dueCards');
+  sortBy = signal<SortBy>('dueCards');
   sortOrder = signal<'asc' | 'desc'>('asc');
   editingCollectionId = signal<uuid | null>(null);
 
@@ -127,7 +127,7 @@ export class CollectionsComponent implements OnInit {
 
   onSortByChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
-    this.sortBy.set(target.value as 'createdAt' | 'name' | 'totalCards' | 'dueCards');
+    this.sortBy.set(target.value as SortBy);
   }
 
   onSortChange(event: Event): void {

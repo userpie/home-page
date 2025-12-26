@@ -49,6 +49,7 @@
             <option value="name">{{ 'flashcards.sort-by-name' | translate }}</option>
             <option value="totalCards">{{ 'flashcards.sort-by-total' | translate }}</option>
             <option value="dueCards">{{ 'flashcards.sort-by-due' | translate }}</option>
+            <option value="wordLength">{{ 'flashcards.sort-by-word-length' | translate }}</option>
           </select>
         </div>
 
@@ -118,12 +119,7 @@
 
           <div class="array-details">
             <p class="description">{{ collectionMetadata.description }}</p>
-
             <div class="statistics">
-              <div class="stat-item">
-                <span class="label">{{ 'flashcards.average-length' | translate }}</span>
-                <span class="value">{{ collectionMetadata.statistics.averageBackLength }}</span>
-              </div>
               <div class="stat-item">
                 <span class="label">{{ 'flashcards.range' | translate }}</span>
                 <span class="value">
