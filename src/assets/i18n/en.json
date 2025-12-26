@@ -48,8 +48,7 @@
     "loading-cards": "Loading cards...",
     "no-cards": {
       "title": "No cards to review!",
-      "message": "Great job! All cards have been reviewed.",
-      "button": "Add New Card"
+      "message": "Great job! All cards have been reviewed."
     },
     "card": {
       "show-answer": "Show Answer",

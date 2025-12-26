@@ -48,8 +48,7 @@
     "loading-cards": "Kaarten laden...",
     "no-cards": {
       "title": "Geen kaarten om te herzien!",
-      "message": "Goed gedaan! Alle kaarten zijn herzien.",
-      "button": "Nieuwe Kaart Toevoegen"
+      "message": "Goed gedaan! Alle kaarten zijn herzien."
     },
     "card": {
       "show-answer": "Antwoord Tonen",

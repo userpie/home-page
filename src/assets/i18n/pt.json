@@ -48,8 +48,7 @@
     "loading-cards": "Carregando cartões...",
     "no-cards": {
       "title": "Nenhum cartão para revisar!",
-      "message": "Ótimo trabalho! Todos os cartões foram revisados.",
-      "button": "Adicionar Novo Cartão"
+      "message": "Ótimo trabalho! Todos os cartões foram revisados."
     },
     "card": {
       "show-answer": "Mostrar Resposta",
