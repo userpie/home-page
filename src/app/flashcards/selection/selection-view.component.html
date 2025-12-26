@@ -107,6 +107,9 @@
           <button type="submit" [disabled]="cardForm.invalid"
                   class="btn btn-primary">{{ 'flashcards.card.confirm-add-card' | translate }}
           </button>
+          <button type="button" (click)="addCardAndNew()" [disabled]="cardForm.invalid"
+                  class="btn btn-primary">{{ 'flashcards.card.save-and-add-new' | translate }}
+          </button>
           <button type="button" (click)="cancelAddCard()" class="btn btn-secondary">{{ 'common.cancel' | translate }}
           </button>
         </div>
@@ -115,7 +118,7 @@
     </div>
   } @else {
     <div class="controls">
-      <button type="button" (click)="showAddForm.set(true)" class="btn btn-outline">{{
+      <button type="button" (click)="showAddCardForm()" class="btn btn-outline">{{
           'flashcards.card.confirm-add-card' | translate
         }}
       </button>

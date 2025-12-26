@@ -166,9 +166,50 @@ export class SelectionView implements OnInit {
     }
   }
 
+  addCardAndNew(): void {
+    if (this.cardForm.valid) {
+      const formValue = this.cardForm.getRawValue();
+
+      const newCard: StudyCard = {
+        id: crypto.randomUUID(),
+        front: formValue.front,
+        back: formValue.back,
+        fsrsCard: createEmptyCard(),
+        isRevealed: false,
+        collection: formValue.collection,
+      };
+
+      this.allCards.update((cards) => [...cards, newCard]);
+      this.saveCards(formValue.collection);
+
+      // Reset only front and back, keep collection selected
+      this.cardForm.patchValue({
+        front: '',
+        back: ''
+      });
+
+      // Mark fields as untouched to avoid showing validation errors immediately
+      this.cardForm.get('front')?.markAsUntouched();
+      this.cardForm.get('front')?.markAsPristine();
+      this.cardForm.get('back')?.markAsUntouched();
+      this.cardForm.get('back')?.markAsPristine();
+    }
+  }
+
   cancelAddCard(): void {
     this.showAddForm.set(false);
     this.cardForm.reset();
+  }
+
+  showAddCardForm(): void {
+    this.showAddForm.set(true);
+    // Pre-select collection if there's only one
+    const collections = this.selectedCollectionMetadata();
+    if (collections.length === 1) {
+      this.cardForm.patchValue({
+        collection: collections[0].id
+      });
+    }
   }
 
   resetAllCards(): void {
