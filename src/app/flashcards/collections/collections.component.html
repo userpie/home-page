@@ -139,7 +139,7 @@
                 <span class="label">{{ 'flashcards.length-distribution' | translate }}</span>
                 <div class="distribution-items">
                   @for (item of getLengthDistributionEntries(collectionMetadata.lengthDistribution); track item.length) {
-                    <span class="distribution-item"> {{ item.length }}ch: {{ item.count }} </span>
+                    <span class="distribution-item" [class]="getDistributionItemColorClass(item.length)"> {{ item.length }}ch: {{ item.count }} </span>
                   }
                 </div>
               </div>

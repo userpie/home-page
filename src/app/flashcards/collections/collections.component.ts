@@ -48,6 +48,13 @@ export class CollectionsComponent implements OnInit {
     );
   });
 
+  // Calculate the global maximum maxBackLength across all collections
+  globalMaxBackLength = computed(() => {
+    const collections = this.collectionsService.collectionsMetadata();
+    if (collections.length === 0) return 0;
+    return Math.max(...collections.map(c => c.statistics.maxBackLength));
+  });
+
   collectionForm = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(20)]],
     description: ['', [Validators.required, Validators.maxLength(200)]],
@@ -65,6 +72,24 @@ export class CollectionsComponent implements OnInit {
         count,
       }))
       .sort((a, b) => a.length - b.length);
+  }
+
+  getDistributionItemColorClass(length: number): string {
+    // Use the global maximum maxBackLength across all collections
+    const maxLength = this.globalMaxBackLength();
+
+    if (maxLength === 0) return '';
+
+    // Calculate the thresholds for color ranges
+    const thirdRange = maxLength / 3;
+
+    if (length <= thirdRange) {
+      return 'distribution-green';
+    } else if (length <= thirdRange * 2) {
+      return 'distribution-yellow';
+    } else {
+      return 'distribution-red';
+    }
   }
 
   toggleSelection(arrayNumber: uuid): void {
