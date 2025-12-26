@@ -28,6 +28,7 @@
     "add-collection": "Nieuwe Collectie Toevoegen",
     "confirm-edit-collection": "Collectie Bijwerken",
     "confirm-add-collection": "Collectie Toevoegen",
+    "add-card-to-collection": "Kaarten Toevoegen",
     "cards": "kaarten",
     "reset-modal": {
       "title": "Collecties Resetten",
@@ -48,8 +49,7 @@
     "loading-cards": "Kaarten laden...",
     "no-cards": {
       "title": "Geen kaarten om te herzien!",
-      "message": "Goed gedaan! Alle kaarten zijn herzien.",
-      "button": "Nieuwe Kaart Toevoegen"
+      "message": "Goed gedaan! Alle kaarten zijn herzien."
     },
     "card": {
       "show-answer": "Antwoord Tonen",
@@ -66,6 +66,7 @@
       "front-input-placeholder": "Voer de vraag of prompt in",
       "back-input-placeholder": "Voer het antwoord in",
       "confirm-add-card": "Kaart Toevoegen",
+      "save-and-add-new": "Opslaan en nieuwe toevoegen",
       "reset-cards": "Alles Resetten",
       "correct": "Correct",
       "incorrect": "Onjuist",

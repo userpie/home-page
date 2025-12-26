@@ -28,6 +28,7 @@
     "add-collection": "Add New Collection",
     "confirm-edit-collection": "Update Collection",
     "confirm-add-collection": "Add Collection",
+    "add-card-to-collection": "Add Cards",
     "cards": "cards",
     "reset-modal": {
       "title": "Reset Collections",
@@ -48,8 +49,7 @@
     "loading-cards": "Loading cards...",
     "no-cards": {
       "title": "No cards to review!",
-      "message": "Great job! All cards have been reviewed.",
-      "button": "Add New Card"
+      "message": "Great job! All cards have been reviewed."
     },
     "card": {
       "show-answer": "Show Answer",
@@ -66,6 +66,7 @@
       "front-input-placeholder": "Enter the question or prompt",
       "back-input-placeholder": "Enter the answer",
       "confirm-add-card": "Add Card",
+      "save-and-add-new": "Save and add new",
       "reset-cards": "Reset All",
       "correct": "Correct",
       "incorrect": "Incorrect",
