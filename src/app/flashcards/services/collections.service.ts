@@ -51,7 +51,12 @@ export class CollectionsService {
     if (savedData) {
       try {
         const collectionsMetadata = JSON.parse(savedData);
-        this._collectionsMetadata.set(collectionsMetadata);
+        // Ensure all collections have the starred property
+        const normalizedCollections = collectionsMetadata.map((collection: CollectionMetadata) => ({
+          ...collection,
+          starred: collection.starred ?? false
+        }));
+        this._collectionsMetadata.set(normalizedCollections);
         this.recalculateAllDueCards();
         this._isLoading.set(false);
       } catch (error) {
@@ -71,7 +76,12 @@ export class CollectionsService {
       environment.firstPath + '/assets/spaced-repetition/collection-metadata.json'
     ).subscribe({
       next: (collectionsData) => {
-        this._collectionsMetadata.set(collectionsData);
+        // Ensure all default collections have the starred property
+        const normalizedCollections = collectionsData.map((collection: CollectionMetadata) => ({
+          ...collection,
+          starred: collection.starred ?? false
+        }));
+        this._collectionsMetadata.set(normalizedCollections);
         this.saveToLocalStorage();
         this.recalculateAllDueCards();
         this._isLoading.set(false);

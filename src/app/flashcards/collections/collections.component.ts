@@ -6,12 +6,13 @@ import {AssetUrlService} from '../../services/asset-url.service';
 import {Button, ButtonSize} from '../../components/button/button';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {CollectionsService, SortBy} from '../services/collections.service';
+import {StarButtonComponent} from '../../components/star-button/star-button.component';
 
 @Component({
   selector: 'app-collections',
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, Button, TranslatePipe],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Button, TranslatePipe, StarButtonComponent],
   host: {
     '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
   }
@@ -138,6 +139,7 @@ export class CollectionsComponent implements OnInit {
             minBackLength: 0,
             maxBackLength: 0,
           },
+          starred: true,
         });
       }
 
@@ -209,5 +211,11 @@ export class CollectionsComponent implements OnInit {
     // Use the pre-calculated dueCards value from the metadata
     // If not available, fall back to totalCards
     return collectionMetadata.dueCards ?? collectionMetadata.totalCards;
+  }
+
+  toggleStarred(collection: CollectionMetadata): void {
+    this.collectionsService.updateCollection(collection.id, {
+      starred: !collection.starred
+    });
   }
 }

@@ -3,7 +3,13 @@
     <span>{{ 'flashcards.due-cards' | translate }} {{ dueCards().length }}</span>
     <span>{{ 'flashcards.total-cards' | translate }} {{ allCards().length }}</span>
     @if (currentCollection()) {
-      <span class="current-array">{{ currentCollection()!.name }}</span>
+      <div class="current-collection-container">
+        <app-star-button
+          [starred]="currentCollection()!.starred"
+          (toggle)="toggleStarred(currentCollection()!)"
+        />
+        <span class="current-array">{{ currentCollection()!.name }}</span>
+      </div>
     }
   </div>
 }

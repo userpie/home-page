@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  align-items: center;
 
   span {
     padding: 0.4rem 0.8rem;
@@ -14,6 +15,33 @@
       background: #007bff;
       color: white;
       font-weight: 600;
+    }
+  }
+
+  .current-collection-container {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    background: #007bff;
+    border-radius: 0.4rem;
+
+    .current-array {
+      background: transparent;
+      color: white;
+      font-weight: 600;
+      padding: 0;
+    }
+
+    // Override star button colors for blue background
+    app-star-button {
+      ::ng-deep .star-icon {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      &.starred ::ng-deep .star-icon {
+        color: #ffd700;
+      }
     }
   }
 }

@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {CollectionsService, StudyCard} from '../services/collections.service';
+import {StarButtonComponent} from '../../components/star-button/star-button.component';
 
 
 
@@ -14,7 +15,7 @@ import {CollectionsService, StudyCard} from '../services/collections.service';
   selector: 'app-selection',
   templateUrl: './selection-view.component.html',
   styleUrl: './selection-view.component.scss',
-  imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
+  imports: [CommonModule, ReactiveFormsModule, TranslatePipe, StarButtonComponent],
 })
 export class SelectionView implements OnInit {
   private fb = inject(FormBuilder);
@@ -313,6 +314,12 @@ export class SelectionView implements OnInit {
       error: (error) => {
         console.error('Error loading flashcards:', error);
       },
+    });
+  }
+
+  toggleStarred(collection: CollectionMetadata): void {
+    this.collectionsService.updateCollection(collection.id, {
+      starred: !collection.starred
     });
   }
 }
