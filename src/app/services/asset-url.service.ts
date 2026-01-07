@@ -61,4 +61,8 @@ export class AssetUrlService {
   getStarIconUrl() {
     return this.getBackgroundImageUrl('assets/icons/star-icon.svg');
   }
+
+  getMoreIconUrl() {
+    return this.getBackgroundImageUrl('assets/icons/more-icon.svg');
+  }
 }

@@ -93,31 +93,43 @@
             </div>
             <div class="header-right">
               @if (isSelected(collectionMetadata.id)) {
-                <div class="action-buttons">
+                <!-- More button for mobile with action buttons dropdown -->
+                <div class="more-button-container">
                   <app-button
-                    [title]="'Deleting Collection'"
+                    [title]="'More Options'"
                     [size]="ButtonSize.SMALL"
-                    [icon]="assetUrlService.getDeleteIconUrl()"
-                    [backgroundColor]="'#f8d7da'"
-                    [hoverColor]="'#f5c6cb'"
-                    (click)="deleteCollection(collectionMetadata)"
+                    [icon]="assetUrlService.getMoreIconUrl()"
+                    [backgroundColor]="'#e7f3ff'"
+                    [hoverColor]="'#d0e7ff'"
+                    (click)="toggleExpandedActions(collectionMetadata.id)"
                   ></app-button>
-                  <app-button
-                    [title]="'Edit Collection'"
-                    [size]="ButtonSize.SMALL"
-                    [icon]="assetUrlService.getEditIconUrl()"
-                    [backgroundColor]="'#fff3cd'"
-                    [hoverColor]="'#ffeaa7'"
-                    (click)="editCollection(collectionMetadata)"
-                  ></app-button>
-                  <app-button
-                    [title]="'Start'"
-                    [size]="ButtonSize.SMALL"
-                    [icon]="assetUrlService.getStartIconUrl()"
-                    [backgroundColor]="'#d4edda'"
-                    [hoverColor]="'#c3e6cb'"
-                    (click)="startStudying(collectionMetadata)"
-                  ></app-button>
+                  <!-- Action buttons for desktop, mobile when expanded -->
+                  <div class="action-buttons" [class.expanded]="isActionsExpanded(collectionMetadata.id)">
+                    <app-button
+                      [title]="'Deleting Collection'"
+                      [size]="ButtonSize.SMALL"
+                      [icon]="assetUrlService.getDeleteIconUrl()"
+                      [backgroundColor]="'#f8d7da'"
+                      [hoverColor]="'#f5c6cb'"
+                      (click)="deleteCollection(collectionMetadata)"
+                    ></app-button>
+                    <app-button
+                      [title]="'Edit Collection'"
+                      [size]="ButtonSize.SMALL"
+                      [icon]="assetUrlService.getEditIconUrl()"
+                      [backgroundColor]="'#fff3cd'"
+                      [hoverColor]="'#ffeaa7'"
+                      (click)="editCollection(collectionMetadata)"
+                    ></app-button>
+                    <app-button
+                      [title]="'Start'"
+                      [size]="ButtonSize.SMALL"
+                      [icon]="assetUrlService.getStartIconUrl()"
+                      [backgroundColor]="'#d4edda'"
+                      [hoverColor]="'#c3e6cb'"
+                      (click)="startStudying(collectionMetadata)"
+                    ></app-button>
+                  </div>
                 </div>
               }
               @let dueCards = getDueCards(collectionMetadata);
@@ -139,7 +151,7 @@
                     <p class="labels" [style.border-left-color]="getLabelColor(i)">{{ label }}</p>
                   }
                   @if (collectionMetadata.path) {
-                    <p class="labels" [style.border-left-color]="getLabelColor(collectionMetadata.labels?.length || 0)">
+                    <p class="labels" [style.border-left-color]="getLabelColor((collectionMetadata.labels || []).length)">
                       {{ 'flashcards.default-label' | translate }}
                     </p>
                   }
