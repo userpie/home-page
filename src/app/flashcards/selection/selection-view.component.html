@@ -37,7 +37,15 @@
       @if (currentCard().isRevealed) {
         <div class="card-back">
           <p>{{ 'flashcards.card.answer' | translate }}</p>
-          <h3>{{ currentCard().back }}</h3>
+          <div class="card-text-with-speaker">
+            <h3>{{ currentCard().back }}</h3>
+            <button type="button" (click)="speakText(currentCard().back)" class="btn-speaker" aria-label="Speak">
+              🔊
+            </button>
+            <button type="button" (click)="speakTextSlow(currentCard().back)" class="btn-speaker btn-speaker-slow" aria-label="Speak slowly">
+              🐌
+            </button>
+          </div>
 
           <div class="card-stats">
             <small>{{ getCardStats(currentCard()) }}</small>

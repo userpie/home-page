@@ -8,6 +8,7 @@ import {environment} from '../../../environments/environment';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {CollectionsService, StudyCard} from '../services/collections.service';
 import {StarButtonComponent} from '../../components/star-button/star-button.component';
+import {SpeakService} from '../../services/speak-service';
 
 
 
@@ -21,6 +22,7 @@ export class SelectionView implements OnInit {
   private fb = inject(FormBuilder);
   private fsrs = new FSRS({});
   private collectionsService = inject(CollectionsService);
+  private speakService = inject(SpeakService);
 
   isLoading = signal(true);
   allCards = signal<StudyCard[]>([]);
@@ -260,6 +262,14 @@ export class SelectionView implements OnInit {
     const difficulty = Math.round(fsrsCard.difficulty * 10) / 10;
 
     return `${reviews} ${this.translate.instant('flashcards.reviews')}, ${lapses} ${this.translate.instant('flashcards.lapses')}, ${this.translate.instant('flashcards.difficulty')}: ${difficulty}`;
+  }
+
+  speakText(text: string): void {
+    this.speakService.speak(text);
+  }
+
+  speakTextSlow(text: string): void {
+    this.speakService.speak(text, 'nl-BE', 0.55);
   }
 
   private saveCards(id: uuid): void {
