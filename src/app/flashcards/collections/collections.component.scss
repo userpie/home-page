@@ -233,6 +233,16 @@
     gap: 8px;
     height: 32px;
 
+    // Desktop: show action buttons, hide more button
+    .action-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .more-button-container {
+      display: none;
+      position: relative;
+    }
 
     .total-cards {
       background: #e3f2fd;
@@ -253,9 +263,49 @@
       }
     }
 
-    .action-buttons {
-      display: flex;
-      gap: 6px;
+    @media (max-width: 768px) {
+      // Mobile: hide desktop action buttons, show more button
+      .action-buttons {
+        display: none;
+      }
+
+      .more-button-container {
+        display: block;
+      }
+
+      .mobile-action-buttons {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(3px);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 8px;
+        margin-top: 4px;
+        //min-width: 150px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        // Hidden state
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+        &.expanded {
+          // Visible state
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
+          transition: visibility 0s linear 0s, opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+      }
     }
   }
 }

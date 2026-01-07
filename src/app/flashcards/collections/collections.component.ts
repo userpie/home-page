@@ -15,6 +15,7 @@ import {StarButtonComponent} from '../../components/star-button/star-button.comp
   imports: [CommonModule, FormsModule, ReactiveFormsModule, Button, TranslatePipe, StarButtonComponent],
   host: {
     '[style.--search-icon-url]': 'assetUrlService.getSearchIconUrl()',
+    '(document:click)': 'onDocumentClick($event)',
   }
 })
 export class CollectionsComponent implements OnInit {
@@ -33,6 +34,7 @@ export class CollectionsComponent implements OnInit {
   sortOrder = signal<'asc' | 'desc'>('asc');
   starredFirst = signal(true); // Default to showing starred first
   editingCollectionId = signal<uuid | null>(null);
+  expandedActionsId = signal<uuid | null>(null); // Track which card has expanded actions on mobile
 
   // Use service signals
   isLoading = this.collectionsService.isLoading;
@@ -134,6 +136,10 @@ export class CollectionsComponent implements OnInit {
   toggleSelection(arrayNumber: uuid): void {
     if (this.isSelected(arrayNumber)) {
       this.selectedCollectionNumbers.update(numbers => numbers.filter(number => number !== arrayNumber));
+      // Close expanded actions when deselecting
+      if (this.expandedActionsId() === arrayNumber) {
+        this.expandedActionsId.set(null);
+      }
     } else {
       this.selectedCollectionNumbers.update(numbers => [...numbers, arrayNumber]);
     }
@@ -275,5 +281,27 @@ export class CollectionsComponent implements OnInit {
     this.collectionsService.updateCollection(collection.id, {
       starred: !collection.starred
     });
+  }
+
+  toggleExpandedActions(collectionId: uuid): void {
+    // Button already handles stopPropagation in its handleClick method
+    if (this.expandedActionsId() === collectionId) {
+      this.expandedActionsId.set(null);
+    } else {
+      this.expandedActionsId.set(collectionId);
+    }
+  }
+
+  isActionsExpanded(collectionId: uuid): boolean {
+    return this.expandedActionsId() === collectionId;
+  }
+
+  onDocumentClick(event: Event): void {
+    // Close expanded menu when clicking outside
+    // The stopPropagation in button clicks prevents this from firing when clicking the buttons
+    const target = event.target as HTMLElement;
+    if (!target.closest('.header-right')) {
+      this.expandedActionsId.set(null);
+    }
   }
 }
