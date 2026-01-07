@@ -233,9 +233,15 @@
     gap: 8px;
     height: 32px;
 
+    // Desktop: show action buttons, hide more button
+    .action-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
     .more-button-container {
-      display: none; // Hidden on desktop
-      position: relative; // For positioning dropdown
+      display: none;
+      position: relative;
     }
 
     .total-cards {
@@ -257,17 +263,17 @@
       }
     }
 
-    .action-buttons {
-      display: flex;
-      gap: 6px;
-    }
-
     @media (max-width: 768px) {
-      .more-button-container {
-        display: block; // Show on mobile
+      // Mobile: hide desktop action buttons, show more button
+      .action-buttons {
+        display: none;
       }
 
-      .action-buttons {
+      .more-button-container {
+        display: block;
+      }
+
+      .mobile-action-buttons {
         position: absolute;
         top: 100%;
         right: 0;
