@@ -1,6 +1,7 @@
 {
   "common": {
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "close": "Close"
   },
   "flashcards": {
     "title": "Flashcards",
@@ -81,6 +82,14 @@
       "select-collection": "Select Collection"
     },
     "due-cards": "Due Cards:",
-    "total-cards": "Total Cards:"
+    "total-cards": "Total Cards:",
+    "rating-history": {
+      "title": "Rating History",
+      "show": "Show rating history",
+      "no-history": "No rating history yet. Rate this card to start tracking your progress.",
+      "state": "State",
+      "stability": "Stability",
+      "difficulty": "Difficulty"
+    }
   }
 }
