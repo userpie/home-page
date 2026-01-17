@@ -81,6 +81,14 @@
   text-align: center;
   transition: all 0.3s ease;
 
+  .title-bar {
+    display: flex;
+    justify-content: center;
+    .history-button{
+      margin: 1rem;
+    }
+  }
+
   &.revealed {
     background: #f8f9fa;
   }

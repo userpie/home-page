@@ -30,6 +30,10 @@ export class AssetUrlService {
     return this.getBackgroundImageUrl('assets/icons/delete-icon.svg');
   }
 
+  getHistoryIconUrl(): string {
+    return this.getBackgroundImageUrl('assets/icons/history-icon.svg');
+  }
+
   getResetIconUrl(): string {
     return this.getBackgroundImageUrl('assets/icons/reset-icon.svg');
   }

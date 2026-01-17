@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <title>Rating History</title>
+  <!-- Chart/graph representing history -->
+  <path d="M3 3v18h18"/>
+  <path d="M7 17v-6"/>
+  <path d="M12 17v-9"/>
+  <path d="M17 17v-12"/>
+  <!-- Star on top indicating ratings -->
+  <path d="M18 2l1.5 3 3 .5-2.5 2.5.5 3-2.5-1.5L15.5 11l.5-3-2.5-2.5 3-.5z" fill="currentColor"/>
+</svg>

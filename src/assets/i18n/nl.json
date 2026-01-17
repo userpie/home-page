@@ -1,6 +1,7 @@
 {
   "common": {
-    "cancel": "Annuleren"
+    "cancel": "Annuleren",
+    "close": "Sluiten"
   },
   "flashcards": {
     "title": "Flashkaarten",
@@ -81,6 +82,14 @@
       "select-collection": "Selecteer Collectie"
     },
     "due-cards": "Openstaande Kaarten:",
-    "total-cards": "Totaal Aantal Kaarten:"
+    "total-cards": "Totaal Aantal Kaarten:",
+    "rating-history": {
+      "title": "Beoordelingsgeschiedenis",
+      "show": "Toon beoordelingsgeschiedenis",
+      "no-history": "Nog geen beoordelingsgeschiedenis. Beoordeel deze kaart om je voortgang bij te houden.",
+      "state": "Status",
+      "stability": "Stabiliteit",
+      "difficulty": "Moeilijkheid"
+    }
   }
 }

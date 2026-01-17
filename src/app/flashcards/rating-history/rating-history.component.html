@@ -1,0 +1,53 @@
+<div class="rating-history-overlay" (click)="onClose()">
+  <div class="rating-history-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>{{ 'flashcards.rating-history.title' | translate }}</h3>
+      <button type="button" class="close-button" (click)="onClose()" aria-label="Close">
+        ×
+      </button>
+    </div>
+
+    <div class="modal-body">
+      @if (sortedHistory().length === 0) {
+        <div class="empty-state">
+          <p>{{ 'flashcards.rating-history.no-history' | translate }}</p>
+        </div>
+      } @else {
+        <div class="history-list">
+          @for (entry of sortedHistory(); track entry.timestamp) {
+            <div class="history-entry">
+              <div class="entry-header">
+                <span class="rating-badge" [class]="getRatingClass(entry.rating)">
+                  {{ getRatingLabel(entry.rating) }}
+                </span>
+                <span class="entry-time" [title]="formatDate(entry.timestamp)">
+                  {{ formatRelativeTime(entry.timestamp) }}
+                </span>
+              </div>
+              <div class="entry-details">
+                <div class="detail-item">
+                  <span class="detail-label">{{ 'flashcards.rating-history.state' | translate }}:</span>
+                  <span class="detail-value">{{ getStateLabel(entry.state) }}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">{{ 'flashcards.rating-history.stability' | translate }}:</span>
+                  <span class="detail-value">{{ entry.stability.toFixed(2) }}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">{{ 'flashcards.rating-history.difficulty' | translate }}:</span>
+                  <span class="detail-value">{{ entry.difficulty.toFixed(2) }}</span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="onClose()">
+        {{ 'common.close' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

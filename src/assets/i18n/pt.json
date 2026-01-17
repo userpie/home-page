@@ -1,6 +1,7 @@
 {
   "common": {
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "close": "Fechar"
   },
   "flashcards": {
     "title": "Cartões de memória",
@@ -81,6 +82,14 @@
       "select-collection": "Selecionar Coleção"
     },
     "due-cards": "Cartões Pendentes:",
-    "total-cards": "Total de Cartões:"
+    "total-cards": "Total de Cartões:",
+    "rating-history": {
+      "title": "Histórico de Avaliações",
+      "show": "Mostrar histórico de avaliações",
+      "no-history": "Ainda não há histórico de avaliações. Avalie este cartão para começar a acompanhar seu progresso.",
+      "state": "Estado",
+      "stability": "Estabilidade",
+      "difficulty": "Dificuldade"
+    }
   }
 }

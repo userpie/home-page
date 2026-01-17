@@ -25,11 +25,21 @@
 } @else {
   <div class="study-area">
     <div class="flashcard" [class.revealed]="currentCard().isRevealed">
-      <h3>{{ currentCard().front }}</h3>
+      <div class="title-bar">
+        <h3>{{ currentCard().front }}</h3>
+        <div class="history-button">
+          <app-button
+            [size]="ButtonSize.SMALL"
+            [icon]="assetUrlService.getHistoryIconUrl()"
+            [title]="'flashcards.rating-history.show' | translate"
+            (click)="toggleRatingHistory()"
+          ></app-button>
+        </div>
+      </div>
       @if (!currentCard().isRevealed) {
-          <button type="button" (click)="revealCard()"
-                  class="btn btn-secondary reveal-button">{{ 'flashcards.card.show-answer' | translate }}
-          </button>
+        <button type="button" (click)="revealCard()"
+                class="btn btn-secondary reveal-button">{{ 'flashcards.card.show-answer' | translate }}
+        </button>
       } @else {
         <div class="card-back">
           <p>{{ 'flashcards.card.answer' | translate }}</p>
@@ -133,3 +143,11 @@
     </div>
   }
 }
+
+@if (showRatingHistory() && currentCard()) {
+  <app-rating-history
+    [ratingHistory]="currentCard()!.ratingHistory || []"
+    (close)="closeRatingHistory()"
+  ></app-rating-history>
+}
+

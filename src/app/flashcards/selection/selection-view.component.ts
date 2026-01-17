@@ -9,6 +9,9 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {CollectionsService, StudyCard} from '../services/collections.service';
 import {StarButtonComponent} from '../../components/star-button/star-button.component';
 import {SpeakService} from '../../services/speak-service';
+import {Button, ButtonSize} from '../../components/button/button';
+import {AssetUrlService} from '../../services/asset-url.service';
+import {RatingHistoryComponent} from '../rating-history/rating-history.component';
 
 
 
@@ -16,18 +19,20 @@ import {SpeakService} from '../../services/speak-service';
   selector: 'app-selection',
   templateUrl: './selection-view.component.html',
   styleUrl: './selection-view.component.scss',
-  imports: [CommonModule, ReactiveFormsModule, TranslatePipe, StarButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, TranslatePipe, StarButtonComponent, Button, RatingHistoryComponent],
 })
 export class SelectionView implements OnInit {
   private fb = inject(FormBuilder);
   private fsrs = new FSRS({});
   private collectionsService = inject(CollectionsService);
   private speakService = inject(SpeakService);
+  protected assetUrlService = inject(AssetUrlService);
 
   isLoading = signal(true);
   allCards = signal<StudyCard[]>([]);
   currentCardIndex = signal(0);
   showAddForm = signal(false);
+  showRatingHistory = signal(false);
 
   private translate = inject(TranslateService);
   private platformId = inject(PLATFORM_ID);
@@ -401,4 +406,14 @@ export class SelectionView implements OnInit {
       starred: !collection.starred
     });
   }
+
+  toggleRatingHistory(): void {
+    this.showRatingHistory.set(true);
+  }
+
+  closeRatingHistory(): void {
+    this.showRatingHistory.set(false);
+  }
+
+  protected readonly ButtonSize = ButtonSize;
 }
