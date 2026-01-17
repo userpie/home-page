@@ -25,16 +25,12 @@
 } @else {
   <div class="study-area">
     <div class="flashcard" [class.revealed]="currentCard().isRevealed">
-      <div class="card-front">
-        <h3>{{ currentCard().front }}</h3>
-        @if (!currentCard().isRevealed) {
+      <h3>{{ currentCard().front }}</h3>
+      @if (!currentCard().isRevealed) {
           <button type="button" (click)="revealCard()"
-                  class="btn btn-secondary">{{ 'flashcards.card.show-answer' | translate }}
+                  class="btn btn-secondary reveal-button">{{ 'flashcards.card.show-answer' | translate }}
           </button>
-        }
-      </div>
-
-      @if (currentCard().isRevealed) {
+      } @else {
         <div class="card-back">
           <p>{{ 'flashcards.card.answer' | translate }}</p>
           <div class="card-text-with-speaker">
@@ -42,7 +38,8 @@
             <button type="button" (click)="speakText(currentCard().back)" class="btn-speaker" aria-label="Speak">
               🔊
             </button>
-            <button type="button" (click)="speakTextSlow(currentCard().back)" class="btn-speaker btn-speaker-slow" aria-label="Speak slowly">
+            <button type="button" (click)="speakTextSlow(currentCard().back)" class="btn-speaker btn-speaker-slow"
+                    aria-label="Speak slowly">
               🐌
             </button>
           </div>

@@ -3,8 +3,16 @@ import {HttpClient} from '@angular/common/http';
 import {isPlatformBrowser} from '@angular/common';
 import {CollectionMetadata, uuid} from '../flashcards-metadata';
 import {environment} from '../../../environments/environment';
-import {State} from 'ts-fsrs';
+import {State, Rating} from 'ts-fsrs';
 import {TranslateService} from '@ngx-translate/core';
+
+export interface RatingHistoryEntry {
+  timestamp: Date;
+  rating: Rating;
+  stability: number;
+  difficulty: number;
+  state: State;
+}
 
 export interface StudyCard {
   id: string;
@@ -13,6 +21,7 @@ export interface StudyCard {
   fsrsCard: any; // FSRS Card type
   isRevealed?: boolean;
   collection: uuid;
+  ratingHistory?: RatingHistoryEntry[];
 }
 
 export type SortBy = 'createdAt' | 'name' | 'totalCards' | 'dueCards' | 'wordLength';

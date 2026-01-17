@@ -123,6 +123,15 @@ export class SelectionView implements OnInit {
     const schedulingCards = this.fsrs.repeat(current.fsrsCard, new Date());
     const updatedFsrsCard = schedulingCards[rating].card;
 
+    // Create rating history entry
+    const historyEntry = {
+      timestamp: new Date(),
+      rating: rating,
+      stability: updatedFsrsCard.stability,
+      difficulty: updatedFsrsCard.difficulty,
+      state: updatedFsrsCard.state,
+    };
+
     // Update the card in our collection
     const updatedCards = this.allCards().map((card) =>
       card.id === current.id
@@ -130,6 +139,7 @@ export class SelectionView implements OnInit {
           ...card,
           fsrsCard: updatedFsrsCard,
           isRevealed: false,
+          ratingHistory: [...(card.ratingHistory || []), historyEntry],
         }
         : card
     );
@@ -160,6 +170,7 @@ export class SelectionView implements OnInit {
         fsrsCard: createEmptyCard(),
         isRevealed: false,
         collection: formValue.collection,
+        ratingHistory: [],
       };
 
       this.allCards.update((cards) => [...cards, newCard]);
@@ -179,6 +190,7 @@ export class SelectionView implements OnInit {
         fsrsCard: createEmptyCard(),
         isRevealed: false,
         collection: formValue.collection,
+        ratingHistory: [],
       };
 
       this.allCards.update((cards) => [...cards, newCard]);
@@ -220,6 +232,7 @@ export class SelectionView implements OnInit {
         ...card,
         fsrsCard: createEmptyCard(),
         isRevealed: false,
+        ratingHistory: [],
       }));
       this.allCards.set(resetCards);
       this.currentCardIndex.set(0);
@@ -293,6 +306,13 @@ export class SelectionView implements OnInit {
           state: card.fsrsCard.state,
           last_review: card.fsrsCard.last_review?.toISOString(),
         },
+        ratingHistory: card.ratingHistory?.map(entry => ({
+          timestamp: entry.timestamp.toISOString(),
+          rating: entry.rating,
+          stability: entry.stability,
+          difficulty: entry.difficulty,
+          state: entry.state,
+        })),
       }));
 
     localStorage.setItem(id, JSON.stringify(cardsData));
@@ -324,6 +344,13 @@ export class SelectionView implements OnInit {
                 ? new Date(data.fsrsCard.last_review)
                 : undefined,
             },
+            ratingHistory: data.ratingHistory?.map((entry: any) => ({
+              timestamp: new Date(entry.timestamp),
+              rating: entry.rating,
+              stability: entry.stability,
+              difficulty: entry.difficulty,
+              state: entry.state,
+            })) || [],
           }));
           this.allCards.update(addedCards => ([...addedCards, ...cards])
           );
@@ -358,6 +385,7 @@ export class SelectionView implements OnInit {
               ? new Date(data.fsrsCard.last_review)
               : undefined,
           },
+          ratingHistory: [],
         }));
         this.allCards.update(addedCards => ([...addedCards, ...cards]));
         this.saveCards(collection.id);

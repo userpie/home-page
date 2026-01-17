@@ -70,15 +70,14 @@
 }
 
 .flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: white;
   border-radius: 0.6rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   min-height: 270px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   transition: all 0.3s ease;
 
@@ -86,7 +85,6 @@
     background: #f8f9fa;
   }
 
-  .card-front,
   .card-back {
     width: 100%;
 
@@ -178,6 +176,14 @@
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
+
+  &.reveal-button {
+    margin: 0 10rem;
+    padding: 0.9rem 1rem;
+    @media (max-width: 600px) {
+      margin: 0 0;
+    }
+  }
 
   &:disabled {
     opacity: 0.6;
